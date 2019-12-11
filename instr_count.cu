@@ -46,6 +46,8 @@ uint32_t kernel_id = 0;
  * "counter" every time a kernel completes  */
 uint64_t tot_app_instrs = 0;
 
+uint64_t bb_index = 0;
+
 /* kernel instruction counter, updated by the GPU threads */
 __managed__ uint64_t counter = 0;
 
@@ -60,12 +62,21 @@ int exclude_pred_off = 0;
  * therefore to "corrupt" the counter variable */
 pthread_mutex_t mutex;
 
+typedef struct {
+    int g_warp_id;
+    int bb_id;
+    bool call;
+    bool ret;
+} call_trace_t;
+
 /* instrumentation function that we want to inject, please note the use of
  * 1. "extern "C" __device__ __noinline__" to prevent code elimination by the
  * compiler.
  * 2. NVBIT_EXPORT_FUNC(count_instrs) to notify nvbit the name of the function
  * we want to inject. This name must match exactly the function name */
-extern "C" __device__ __noinline__ void count_instrs(int num_instrs,
+extern "C" __device__ __noinline__ void count_instrs(int bb_id,
+                                                     int pc,
+                                                     int num_instrs,
                                                      int count_warp_level) {
     /* all the active threads will compute the active mask */
     const int active_mask = __ballot(1);
@@ -82,9 +93,12 @@ extern "C" __device__ __noinline__ void count_instrs(int num_instrs,
         } else {
             atomicAdd((unsigned long long *)&counter, num_threads * num_instrs);
         }
+
+        int g_warp_id = get_global_warp_id();
+        printf("warp %d at b%d\n", g_warp_id, bb_id);
     }
 }
-NVBIT_EXPORT_FUNC(count_instrs);
+NVBIT_EXPORT_FUNC(count_instrs)
 
 extern "C" __device__ __noinline__ void count_pred_off(int predicate,
                                                        int count_warp_level) {
@@ -110,6 +124,32 @@ extern "C" __device__ __noinline__ void count_pred_off(int predicate,
     }
 }
 NVBIT_EXPORT_FUNC(count_pred_off)
+
+extern "C" __device__ __noinline__ void trace_call(int bb_id,
+                                                   int pc) {
+  const int active_mask = __ballot(1);
+  const int laneid = get_laneid();
+  const int first_laneid = __ffs(active_mask) - 1;
+
+  if (first_laneid == laneid) {
+    int g_warp_id = get_global_warp_id();
+    printf("warp %d call at 0x%x\n", g_warp_id, pc);
+  }
+}
+NVBIT_EXPORT_FUNC(trace_call)
+
+extern "C" __device__ __noinline__ void trace_ret(int bb_id,
+                                                  int pc) {
+  const int active_mask = __ballot(1);
+  const int laneid = get_laneid();
+  const int first_laneid = __ffs(active_mask) - 1;
+
+  if (first_laneid == laneid) {
+    int g_warp_id = get_global_warp_id();
+    printf("warp %d ret at 0x%x\n", g_warp_id, pc);
+  }
+}
+NVBIT_EXPORT_FUNC(trace_ret)
 
 /* nvbit_at_init() is executed as soon as the nvbit tool is loaded. We
  * typically do initializations in this call. In this case for instance we get
@@ -175,13 +215,39 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
         Instr *i = bb->instrs[0];
         /* inject device function */
         nvbit_insert_call(i, "count_instrs", IPOINT_BEFORE);
-        /* add size of basic block in number of instruction */
+        nvbit_add_call_arg_const_val32(i, bb_index);
+        nvbit_add_call_arg_const_val32(i, i->getOffset());
         nvbit_add_call_arg_const_val32(i, bb->instrs.size());
         /* add count warp level option */
         nvbit_add_call_arg_const_val32(i, count_warp_level);
         if (verbose) {
             i->print("Inject count_instr before - ");
         }
+
+        for (auto *i : bb->instrs) { 
+          std::string opcode(i->getOpcode());
+          if (opcode.find("CAL") != std::string::npos) {
+            /* inject device function */
+            nvbit_insert_call(i, "trace_call", IPOINT_BEFORE);
+            nvbit_add_call_arg_const_val32(i, bb_index);
+            nvbit_add_call_arg_const_val32(i, i->getOffset());
+            if (verbose) {
+              i->print("Inject count_instr before - ");
+            }
+          }
+
+          if (opcode.find("RET") != std::string::npos) {
+            /* inject device function */
+            nvbit_insert_call(i, "trace_ret", IPOINT_BEFORE);
+            nvbit_add_call_arg_const_val32(i, bb_index);
+            nvbit_add_call_arg_const_val32(i, i->getOffset());
+            if (verbose) {
+              i->print("Inject count_instr before - ");
+            }
+          }
+        }
+
+        ++bb_index;
     }
 
     if (exclude_pred_off) {
