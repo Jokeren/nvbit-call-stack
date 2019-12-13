@@ -39,6 +39,23 @@
 /* nvbit utility functions */
 #include "utils/utils.h"
 
+/* for channel */
+#include "utils/channel.hpp"
+
+/* Channel used to communicate from GPU to CPU receiving thread */
+#define CHANNEL_SIZE (1l << 20)
+static __managed__ ChannelDev channel_dev;
+static ChannelHost channel_host;
+
+/* receiving thread and its control variables */
+pthread_t recv_thread;
+volatile bool recv_thread_started = false;
+volatile bool recv_thread_receiving = false;
+
+/* skip flag used to avoid re-entry on the nvbit_callback when issuing
+ * flush_channel kernel call */
+bool skip_flag = false;
+
 /* kernel id counter, maintained in system memory */
 uint32_t kernel_id = 0;
 
@@ -58,6 +75,8 @@ int verbose = 0;
 int count_warp_level = 1;
 int exclude_pred_off = 0;
 
+#define CALL_STACK_DEBUG 0
+
 /* a pthread mutex, used to prevent multiple kernels to run concurrently and
  * therefore to "corrupt" the counter variable */
 pthread_mutex_t mutex;
@@ -65,8 +84,8 @@ pthread_mutex_t mutex;
 typedef struct {
     int g_warp_id;
     int bb_id;
-    bool call;
-    bool ret;
+    int call;
+    int ret;
 } call_trace_t;
 
 /* instrumentation function that we want to inject, please note the use of
@@ -94,8 +113,17 @@ extern "C" __device__ __noinline__ void count_instrs(int bb_id,
             atomicAdd((unsigned long long *)&counter, num_threads * num_instrs);
         }
 
-        int g_warp_id = get_global_warp_id();
-        printf("warp %d at b%d\n", g_warp_id, bb_id);
+        call_trace_t call_trace;
+        call_trace.g_warp_id = get_global_warp_id();
+        call_trace.bb_id = bb_id;
+        call_trace.ret = -1;
+        call_trace.call = -1;
+
+        channel_dev.push(&call_trace, sizeof(call_trace_t));
+
+        if (CALL_STACK_DEBUG) {
+          printf("warp %d at b%d\n", call_trace.g_warp_id, call_trace.bb_id);
+        }
     }
 }
 NVBIT_EXPORT_FUNC(count_instrs)
@@ -132,8 +160,17 @@ extern "C" __device__ __noinline__ void trace_call(int bb_id,
   const int first_laneid = __ffs(active_mask) - 1;
 
   if (first_laneid == laneid) {
-    int g_warp_id = get_global_warp_id();
-    printf("warp %d call at 0x%x\n", g_warp_id, pc);
+    call_trace_t call_trace;
+    call_trace.g_warp_id = get_global_warp_id();
+    call_trace.bb_id = bb_id;
+    call_trace.ret = -1;
+    call_trace.call = pc;
+
+    channel_dev.push(&call_trace, sizeof(call_trace_t));
+
+    if (CALL_STACK_DEBUG) {
+      printf("warp %d call at 0x%x\n", call_trace.g_warp_id, pc);
+    }
   }
 }
 NVBIT_EXPORT_FUNC(trace_call)
@@ -145,8 +182,17 @@ extern "C" __device__ __noinline__ void trace_ret(int bb_id,
   const int first_laneid = __ffs(active_mask) - 1;
 
   if (first_laneid == laneid) {
-    int g_warp_id = get_global_warp_id();
-    printf("warp %d ret at 0x%x\n", g_warp_id, pc);
+    call_trace_t call_trace;
+    call_trace.g_warp_id = get_global_warp_id();
+    call_trace.bb_id = bb_id;
+    call_trace.ret = pc;
+    call_trace.call = -1;
+
+    channel_dev.push(&call_trace, sizeof(call_trace_t));
+
+    if (CALL_STACK_DEBUG) {
+      printf("warp %d call at 0x%x\n", call_trace.g_warp_id, pc);
+    }
   }
 }
 NVBIT_EXPORT_FUNC(trace_ret)
@@ -269,6 +315,17 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
     }
 }
 
+__global__ void flush_channel() {
+    /* push memory access with negative cta id to communicate the kernel is
+     * completed */
+    call_trace_t call_trace;
+    call_trace.bb_id = -1;
+    channel_dev.push(&call_trace, sizeof(call_trace_t));
+
+    /* flush channel */
+    channel_dev.flush();
+}
+
 /* This call-back is triggered every time a CUDA driver call is encountered.
  * Here we can look for a particular CUDA driver call by checking at the
  * call back ids  which are defined in tools_cuda_api_meta.h.
@@ -277,6 +334,8 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
  * */
 void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
                          const char *name, void *params, CUresult *pStatus) {
+    if (skip_flag) return;
+
     /* Identify all the possible CUDA launch events */
     if (cbid == API_CUDA_cuLaunch || cbid == API_CUDA_cuLaunchKernel_ptsz ||
         cbid == API_CUDA_cuLaunchGrid || cbid == API_CUDA_cuLaunchGridAsync ||
@@ -309,6 +368,11 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
              * 3. Print the thread instruction counters
              * 4. Release the lock*/
             CUDA_SAFECALL(cuCtxSynchronize());
+            skip_flag = true;
+            flush_channel<<<1, 1>>>();
+            CUDA_SAFECALL(cuCtxSynchronize());
+            skip_flag = false;
+
             tot_app_instrs += counter;
             int num_ctas = 0;
             if (cbid == API_CUDA_cuLaunchKernel_ptsz ||
@@ -321,7 +385,55 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
                 "instructions %ld, total instructions %ld\n",
                 kernel_id++, nvbit_get_func_name(ctx, p->f), num_ctas, counter,
                 tot_app_instrs);
+
+            /* wait here until the receiving thread has not finished with the
+             * current kernel */
+            while (recv_thread_receiving) {
+                pthread_yield();
+            }
+
             pthread_mutex_unlock(&mutex);
         }
+    }
+}
+
+void *recv_thread_fun(void *) {
+    char *recv_buffer = (char *)malloc(CHANNEL_SIZE);
+
+    while (recv_thread_started) {
+        uint32_t num_recv_bytes = 0;
+        if (recv_thread_receiving &&
+            (num_recv_bytes = channel_host.recv(recv_buffer, CHANNEL_SIZE)) >
+                0) {
+            uint32_t num_processed_bytes = 0;
+            while (num_processed_bytes < num_recv_bytes) {
+                call_trace_t *call_trace =
+                    (call_trace_t *)&recv_buffer[num_processed_bytes];
+
+                /* when we get this cta_id_x it means the kernel has completed
+                 */
+                if (call_trace->bb_id == -1) {
+                    recv_thread_receiving = false;
+                    break;
+                }
+
+                num_processed_bytes += sizeof(call_trace_t);
+            }
+        }
+    }
+    free(recv_buffer);
+    return NULL;
+}
+
+void nvbit_at_ctx_init(CUcontext ctx) {
+    recv_thread_started = true;
+    channel_host.init(0, CHANNEL_SIZE, &channel_dev, NULL);
+    pthread_create(&recv_thread, NULL, recv_thread_fun, NULL);
+}
+
+void nvbit_at_ctx_term(CUcontext ctx) {
+    if (recv_thread_started) {
+        recv_thread_started = false;
+        pthread_join(recv_thread, NULL);
     }
 }
