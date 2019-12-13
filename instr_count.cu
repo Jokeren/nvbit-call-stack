@@ -81,11 +81,18 @@ int exclude_pred_off = 0;
  * therefore to "corrupt" the counter variable */
 pthread_mutex_t mutex;
 
+enum CallTraceFlags {
+  CALL_TRACE_INST = 1,
+  CALL_TRACE_CALL = 2,
+  CALL_TRACE_RET = 4
+};
+
 typedef struct {
+    uint64_t func_addr;
     int g_warp_id;
-    int bb_id;
-    int call;
-    int ret;
+    int offset;
+    // 1: normal, 2: call, 4: ret
+    int flags;
 } call_trace_t;
 
 /* instrumentation function that we want to inject, please note the use of
@@ -93,8 +100,8 @@ typedef struct {
  * compiler.
  * 2. NVBIT_EXPORT_FUNC(count_instrs) to notify nvbit the name of the function
  * we want to inject. This name must match exactly the function name */
-extern "C" __device__ __noinline__ void count_instrs(int bb_id,
-                                                     int pc,
+extern "C" __device__ __noinline__ void count_instrs(uint64_t func_addr,
+                                                     int offset,
                                                      int num_instrs,
                                                      int count_warp_level) {
     /* all the active threads will compute the active mask */
@@ -114,15 +121,16 @@ extern "C" __device__ __noinline__ void count_instrs(int bb_id,
         }
 
         call_trace_t call_trace;
+        call_trace.func_addr = func_addr;
         call_trace.g_warp_id = get_global_warp_id();
-        call_trace.bb_id = bb_id;
-        call_trace.ret = -1;
-        call_trace.call = -1;
+        call_trace.offset = offset;
+        call_trace.flags = CALL_TRACE_INST;
 
         channel_dev.push(&call_trace, sizeof(call_trace_t));
 
         if (CALL_STACK_DEBUG) {
-          printf("warp %d at b%d\n", call_trace.g_warp_id, call_trace.bb_id);
+          printf("warp %d at function 0x%x:0x%x\n", call_trace.g_warp_id,
+            call_trace.func_addr, call_trace.offset);
         }
     }
 }
@@ -153,45 +161,47 @@ extern "C" __device__ __noinline__ void count_pred_off(int predicate,
 }
 NVBIT_EXPORT_FUNC(count_pred_off)
 
-extern "C" __device__ __noinline__ void trace_call(int bb_id,
-                                                   int pc) {
+extern "C" __device__ __noinline__ void trace_call(uint64_t func_addr,
+                                                   int offset) {
   const int active_mask = __ballot(1);
   const int laneid = get_laneid();
   const int first_laneid = __ffs(active_mask) - 1;
 
   if (first_laneid == laneid) {
     call_trace_t call_trace;
+    call_trace.func_addr = func_addr;
     call_trace.g_warp_id = get_global_warp_id();
-    call_trace.bb_id = bb_id;
-    call_trace.ret = -1;
-    call_trace.call = pc;
+    call_trace.offset = offset;
+    call_trace.flags = CALL_TRACE_CALL;
 
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
     if (CALL_STACK_DEBUG) {
-      printf("warp %d call at 0x%x\n", call_trace.g_warp_id, pc);
+      printf("warp %d at function 0x%x:0x%x\n", call_trace.g_warp_id,
+        call_trace.func_addr, call_trace.offset);
     }
   }
 }
 NVBIT_EXPORT_FUNC(trace_call)
 
-extern "C" __device__ __noinline__ void trace_ret(int bb_id,
-                                                  int pc) {
+extern "C" __device__ __noinline__ void trace_ret(uint64_t func_addr,
+                                                  int offset) {
   const int active_mask = __ballot(1);
   const int laneid = get_laneid();
   const int first_laneid = __ffs(active_mask) - 1;
 
   if (first_laneid == laneid) {
     call_trace_t call_trace;
+    call_trace.func_addr = func_addr;
     call_trace.g_warp_id = get_global_warp_id();
-    call_trace.bb_id = bb_id;
-    call_trace.ret = pc;
-    call_trace.call = -1;
+    call_trace.offset = offset;
+    call_trace.flags = CALL_TRACE_RET;
 
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
     if (CALL_STACK_DEBUG) {
-      printf("warp %d call at 0x%x\n", call_trace.g_warp_id, pc);
+      printf("warp %d at function 0x%x:0x%x\n", call_trace.g_warp_id,
+        call_trace.func_addr, call_trace.offset);
     }
   }
 }
@@ -256,12 +266,14 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
                nvbit_get_func_name(ctx, func), cfg.bbs.size());
     }
 
+    uint64_t func_addr = nvbit_get_func_addr(func);
+
     /* Iterate on basic block and inject the first instruction */
     for (auto &bb : cfg.bbs) {
         Instr *i = bb->instrs[0];
         /* inject device function */
         nvbit_insert_call(i, "count_instrs", IPOINT_BEFORE);
-        nvbit_add_call_arg_const_val32(i, bb_index);
+        nvbit_add_call_arg_const_val64(i, func_addr);
         nvbit_add_call_arg_const_val32(i, i->getOffset());
         nvbit_add_call_arg_const_val32(i, bb->instrs.size());
         /* add count warp level option */
@@ -275,7 +287,7 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
           if (opcode.find("CAL") != std::string::npos) {
             /* inject device function */
             nvbit_insert_call(i, "trace_call", IPOINT_BEFORE);
-            nvbit_add_call_arg_const_val32(i, bb_index);
+            nvbit_add_call_arg_const_val64(i, func_addr);
             nvbit_add_call_arg_const_val32(i, i->getOffset());
             if (verbose) {
               i->print("Inject count_instr before - ");
@@ -285,7 +297,7 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
           if (opcode.find("RET") != std::string::npos) {
             /* inject device function */
             nvbit_insert_call(i, "trace_ret", IPOINT_BEFORE);
-            nvbit_add_call_arg_const_val32(i, bb_index);
+            nvbit_add_call_arg_const_val64(i, func_addr);
             nvbit_add_call_arg_const_val32(i, i->getOffset());
             if (verbose) {
               i->print("Inject count_instr before - ");
@@ -319,7 +331,7 @@ __global__ void flush_channel() {
     /* push memory access with negative cta id to communicate the kernel is
      * completed */
     call_trace_t call_trace;
-    call_trace.bb_id = -1;
+    call_trace.func_addr = 0;
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
     /* flush channel */
@@ -412,7 +424,7 @@ void *recv_thread_fun(void *) {
 
                 /* when we get this cta_id_x it means the kernel has completed
                  */
-                if (call_trace->bb_id == -1) {
+                if (call_trace->func_addr == 0) {
                     recv_thread_receiving = false;
                     break;
                 }
