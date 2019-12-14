@@ -42,8 +42,22 @@
 /* for channel */
 #include "utils/channel.hpp"
 
+enum CallTraceFlags {
+  CALL_TRACE_INST = 1,
+  CALL_TRACE_CALL = 2,
+  CALL_TRACE_RET = 4
+};
+
+typedef struct {
+    uint64_t func_addr;
+    int g_warp_id;
+    int offset;
+    // 1: normal, 2: call, 4: ret
+    int flags;
+} call_trace_t;
+
 /* Channel used to communicate from GPU to CPU receiving thread */
-#define CHANNEL_SIZE (1l << 20)
+#define CHANNEL_SIZE ((1l << 10) * sizeof(call_trace_t))
 static __managed__ ChannelDev channel_dev;
 static ChannelHost channel_host;
 
@@ -54,7 +68,7 @@ volatile bool recv_thread_receiving = false;
 
 /* skip flag used to avoid re-entry on the nvbit_callback when issuing
  * flush_channel kernel call */
-bool skip_flag = false;
+volatile bool skip_flag = false;
 
 /* kernel id counter, maintained in system memory */
 uint32_t kernel_id = 0;
@@ -75,25 +89,11 @@ int verbose = 0;
 int count_warp_level = 1;
 int exclude_pred_off = 0;
 
-#define CALL_STACK_DEBUG 0
+#define CALL_STACK_DEBUG 1
 
 /* a pthread mutex, used to prevent multiple kernels to run concurrently and
  * therefore to "corrupt" the counter variable */
 pthread_mutex_t mutex;
-
-enum CallTraceFlags {
-  CALL_TRACE_INST = 1,
-  CALL_TRACE_CALL = 2,
-  CALL_TRACE_RET = 4
-};
-
-typedef struct {
-    uint64_t func_addr;
-    int g_warp_id;
-    int offset;
-    // 1: normal, 2: call, 4: ret
-    int flags;
-} call_trace_t;
 
 /* instrumentation function that we want to inject, please note the use of
  * 1. "extern "C" __device__ __noinline__" to prevent code elimination by the
@@ -363,7 +363,6 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
              * 2. Select if we want to run the instrumented or original
              * version of the kernel
              * 3. Reset the kernel instruction counter */
-
             pthread_mutex_lock(&mutex);
             if (kernel_id >= ker_begin_interval &&
                 kernel_id < ker_end_interval) {
@@ -372,6 +371,7 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
                 nvbit_enable_instrumented(ctx, p->f, false);
             }
             counter = 0;
+            recv_thread_receiving = true;
         } else {
             /* if we are exiting a kernel launch:
              * 1. Wait until the kernel is completed using
@@ -382,6 +382,8 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
             CUDA_SAFECALL(cuCtxSynchronize());
             skip_flag = true;
             flush_channel<<<1, 1>>>();
+            printf("Launch kernel %d - %s\n",
+                kernel_id++, nvbit_get_func_name(ctx, p->f));
             CUDA_SAFECALL(cuCtxSynchronize());
             skip_flag = false;
 
@@ -403,7 +405,6 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
             while (recv_thread_receiving) {
                 pthread_yield();
             }
-
             pthread_mutex_unlock(&mutex);
         }
     }
@@ -418,6 +419,11 @@ void *recv_thread_fun(void *) {
             (num_recv_bytes = channel_host.recv(recv_buffer, CHANNEL_SIZE)) >
                 0) {
             uint32_t num_processed_bytes = 0;
+
+            if (CALL_STACK_DEBUG) {
+              printf("recv %d bytes\n", num_recv_bytes);
+            }
+
             while (num_processed_bytes < num_recv_bytes) {
                 call_trace_t *call_trace =
                     (call_trace_t *)&recv_buffer[num_processed_bytes];
