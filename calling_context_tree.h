@@ -13,9 +13,9 @@ class CallingContextTree {
   struct CCTNode {
     uint64_t func_addr;
     // block_offset->nblocks
-    std::map<int, int> blocks;
+    std::map<uint64_t, int> blocks;
     // callsite-><call_count, node>
-    std::map<int, std::pair<CCTNode, int> > children;
+    std::map<uint64_t, std::pair<CCTNode, int> > children;
 
     CCTNode() : func_addr(0) {}
     CCTNode(uint64_t func_addr) :
@@ -24,31 +24,41 @@ class CallingContextTree {
 
   struct StackNode {
     uint64_t func_addr;
-    int offset;
+    uint64_t offset;
 
     StackNode() : func_addr(0), offset(0) {}
-    StackNode(uint64_t func_addr, int offset) :
+    StackNode(uint64_t func_addr, uint64_t offset) :
       func_addr(func_addr), offset(offset) {}
   };
 
   CallingContextTree() {}
 
-  void call(int g_warp_id, uint64_t func_addr, int offset) {
-    if (call_stacks_.find(g_warp_id) == call_stacks_.end()) {
+  void call(int g_thread_id, uint64_t func_addr, uint64_t offset) {
+    if (call_stacks_.find(g_thread_id) == call_stacks_.end()) {
       // gpu root
       StackNode stack_node(0, func_addr);
-      call_stacks_[g_warp_id].push_back(stack_node);
+      call_stacks_[g_thread_id].push_back(stack_node);
     }
-    call_stacks_[g_warp_id].push_back(StackNode(func_addr, offset));
-    update(call_stacks_[g_warp_id], func_addr, offset, true);
+    call_stacks_[g_thread_id].push_back(StackNode(func_addr, offset));
+    if (CALLING_CONTEXT_TREE_DEBUG) {
+      std::cout << "thread: " << g_thread_id << " call " << std::hex << "0x" << offset <<
+        " at func_addr 0x" << func_addr << std::dec << std::endl;
+    }
+    update(call_stacks_[g_thread_id], func_addr, offset, true, false);
   }
 
-  void ret(int g_warp_id) {
-    call_stacks_[g_warp_id].pop_back();
+  void ret(int g_thread_id, uint64_t func_addr, uint64_t offset) {
+    if (CALLING_CONTEXT_TREE_DEBUG) {
+      std::cout << "thread: " << g_thread_id << " ret " << std::endl;
+    }
+    update(call_stacks_[g_thread_id], func_addr, offset, false, true);
+    if (call_stacks_.find(g_thread_id) != call_stacks_.end()) {
+      call_stacks_[g_thread_id].pop_back();
+    }
   }
 
-  void block(int g_warp_id, uint64_t func_addr, int offset) {
-    update(call_stacks_[g_warp_id], func_addr, offset, false);
+  void block(int g_thread_id, uint64_t func_addr, uint64_t offset) {
+    update(call_stacks_[g_thread_id], func_addr, offset, false, false);
   }
 
   // map <function_addr, offset> to <cubin_id, offset>
@@ -66,26 +76,29 @@ class CallingContextTree {
  private:
   // Copy a call_stack
   void update(std::list<StackNode> call_stack,
-    uint64_t func_addr, int offset, bool is_call) {
+    uint64_t func_addr, uint64_t offset, bool is_call, bool is_ret) {
     CCTNode *tree_node = &root_;
     CCTNode *parent = NULL;
-    int call_site = 0;
+    uint64_t call_site = 0;
     while (call_stack.empty() == false) {
-      auto &node = call_stack.front();
+      auto node = call_stack.front();
       call_stack.pop_front();
       if (tree_node->func_addr != node.func_addr) {
         CCTNode cct_node(node.func_addr);
         parent->children[call_site].first = cct_node;
         tree_node = &(parent->children[call_site].first);
         if (CALLING_CONTEXT_TREE_DEBUG) {
-          std::cout << "parent 0x" << parent->func_addr << " insert at 0x" << call_site << std::endl;
+          std::cout << "parent 0x" << std::hex << parent->func_addr <<
+            " insert at 0x" << call_site << std::dec << std::endl;
         }
       }
       call_site = node.offset;
       parent = tree_node;
       tree_node = &(tree_node->children[call_site].first);
     }
-    if (is_call) {
+    if (is_ret) {
+      tree_node->func_addr = func_addr;
+    } else if (is_call) {
       parent->children[call_site].second++;
     } else {
       // last node, update block

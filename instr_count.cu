@@ -50,12 +50,15 @@ enum CallTraceFlags {
   CALL_TRACE_RET = 4
 };
 
+static const int WARP_SIZE = 32;
+
 typedef struct {
   uint64_t func_addr;
   int g_warp_id;
   int offset;
   // 1: normal, 2: call, 4: ret
   int flags;
+  int mask;
 } call_trace_t;
 
 /* Channel used to communicate from GPU to CPU receiving thread */
@@ -91,7 +94,8 @@ int verbose = 0;
 int count_warp_level = 1;
 int exclude_pred_off = 0;
 
-#define CALL_STACK_DEBUG 1
+#define CALL_STACK_DEBUG_GPU 0
+#define CALL_STACK_DEBUG_CPU 0
 
 /* a pthread mutex, used to prevent multiple kernels to run concurrently and
  * therefore to "corrupt" the counter variable */
@@ -102,12 +106,16 @@ pthread_mutex_t mutex;
  * compiler.
  * 2. NVBIT_EXPORT_FUNC(count_instrs) to notify nvbit the name of the function
  * we want to inject. This name must match exactly the function name */
-extern "C" __device__ __noinline__ void count_instrs(uint64_t func_addr,
+extern "C" __device__ __noinline__ void count_instrs(
+  int pred,
+  uint64_t func_addr,
   int offset,
   int num_instrs,
   int count_warp_level) {
   /* all the active threads will compute the active mask */
   const int active_mask = __ballot(1);
+
+  const int predicate_mask = __ballot(pred);
   /* each thread will get a lane id (get_lane_id is in utils/utils.h) */
   const int laneid = get_laneid();
   /* get the id of the first active thread */
@@ -127,10 +135,11 @@ extern "C" __device__ __noinline__ void count_instrs(uint64_t func_addr,
     call_trace.g_warp_id = get_global_warp_id();
     call_trace.offset = offset;
     call_trace.flags = CALL_TRACE_INST;
+    call_trace.mask = active_mask & predicate_mask;
 
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
-    if (CALL_STACK_DEBUG) {
+    if (CALL_STACK_DEBUG_GPU) {
       printf("warp %d at function 0x%lx:0x%x\n", call_trace.g_warp_id,
         call_trace.func_addr, call_trace.offset);
     }
@@ -163,8 +172,11 @@ extern "C" __device__ __noinline__ void count_pred_off(int predicate,
   }
 NVBIT_EXPORT_FUNC(count_pred_off)
 
-extern "C" __device__ __noinline__ void trace_call(uint64_t func_addr,
+extern "C" __device__ __noinline__ void trace_call(
+  int pred,
+  uint64_t func_addr,
   int offset) {
+  const int predicate_mask = __ballot(pred);
   const int active_mask = __ballot(1);
   const int laneid = get_laneid();
   const int first_laneid = __ffs(active_mask) - 1;
@@ -175,10 +187,11 @@ extern "C" __device__ __noinline__ void trace_call(uint64_t func_addr,
     call_trace.g_warp_id = get_global_warp_id();
     call_trace.offset = offset;
     call_trace.flags = CALL_TRACE_CALL;
+    call_trace.mask = active_mask & predicate_mask;
 
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
-    if (CALL_STACK_DEBUG) {
+    if (CALL_STACK_DEBUG_GPU) {
       printf("warp %d call at function 0x%lx:0x%x\n", call_trace.g_warp_id,
         call_trace.func_addr, call_trace.offset);
     }
@@ -186,8 +199,11 @@ extern "C" __device__ __noinline__ void trace_call(uint64_t func_addr,
 }
 NVBIT_EXPORT_FUNC(trace_call)
 
-extern "C" __device__ __noinline__ void trace_ret(uint64_t func_addr,
+extern "C" __device__ __noinline__ void trace_ret(
+  int pred,
+  uint64_t func_addr,
   int offset) {
+  const int predicate_mask = __ballot(pred);
   const int active_mask = __ballot(1);
   const int laneid = get_laneid();
   const int first_laneid = __ffs(active_mask) - 1;
@@ -198,10 +214,11 @@ extern "C" __device__ __noinline__ void trace_ret(uint64_t func_addr,
     call_trace.g_warp_id = get_global_warp_id();
     call_trace.offset = offset;
     call_trace.flags = CALL_TRACE_RET;
+    call_trace.mask = active_mask & predicate_mask;
 
     channel_dev.push(&call_trace, sizeof(call_trace_t));
 
-    if (CALL_STACK_DEBUG) {
+    if (CALL_STACK_DEBUG_GPU) {
       printf("warp %d ret at function 0x%lx:0x%x\n", call_trace.g_warp_id,
         call_trace.func_addr, call_trace.offset);
     }
@@ -274,6 +291,8 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
     Instr *i = bb->instrs[0];
     /* inject device function */
     nvbit_insert_call(i, "count_instrs", IPOINT_BEFORE);
+    /* add predicate as argument */
+    nvbit_add_call_arg_pred_val(i);
     nvbit_add_call_arg_const_val64(i, func_addr);
     nvbit_add_call_arg_const_val32(i, i->getOffset());
     nvbit_add_call_arg_const_val32(i, bb->instrs.size());
@@ -288,6 +307,8 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
       if (opcode.find("CAL") != std::string::npos) {
         /* inject device function */
         nvbit_insert_call(i, "trace_call", IPOINT_BEFORE);
+        /* add predicate as argument */
+        nvbit_add_call_arg_pred_val(i);
         nvbit_add_call_arg_const_val64(i, func_addr);
         nvbit_add_call_arg_const_val32(i, i->getOffset());
         if (verbose) {
@@ -298,6 +319,8 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
       if (opcode.find("RET") != std::string::npos) {
         /* inject device function */
         nvbit_insert_call(i, "trace_ret", IPOINT_BEFORE);
+        /* add predicate as argument */
+        nvbit_add_call_arg_pred_val(i);
         nvbit_add_call_arg_const_val64(i, func_addr);
         nvbit_add_call_arg_const_val32(i, i->getOffset());
         if (verbose) {
@@ -380,11 +403,11 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
        * 2. Get number of thread blocks in the kernel
        * 3. Print the thread instruction counters
        * 4. Release the lock*/
-      CUDA_SAFECALL(cuCtxSynchronize());
       skip_flag = true;
-      flush_channel<<<1, 1>>>();
       printf("Launch kernel %d - %s\n",
         kernel_id++, nvbit_get_func_name(ctx, p->f));
+      CUDA_SAFECALL(cuCtxSynchronize());
+      flush_channel<<<1, 1>>>();
       CUDA_SAFECALL(cuCtxSynchronize());
       skip_flag = false;
 
@@ -422,7 +445,7 @@ void *recv_thread_fun(void *) {
       0) {
       uint32_t num_processed_bytes = 0;
 
-      if (CALL_STACK_DEBUG) {
+      if (CALL_STACK_DEBUG_CPU) {
         printf("recv %d bytes\n", num_recv_bytes);
       }
 
@@ -437,18 +460,30 @@ void *recv_thread_fun(void *) {
           break;
         }
 
-        if (CALL_STACK_DEBUG) {
+        if (CALL_STACK_DEBUG_CPU) {
           std::cout << "recv" << std::endl;
           std::cout << "warp_id: " << call_trace->g_warp_id << " flags: " << call_trace->flags <<
             " func_addr: 0x" << std::hex << call_trace->func_addr << " offset: 0x" << call_trace->offset << std::endl;
         }
         
         if ((call_trace->flags & CALL_TRACE_CALL)) {
-          cct.call(call_trace->g_warp_id, call_trace->func_addr, call_trace->offset);
+          for (size_t i = 0; i < WARP_SIZE; ++i) {
+            if ((1 << i) & call_trace->mask) {
+              cct.call(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+            }
+          }
         } else if ((call_trace->flags & CALL_TRACE_RET)) {
-          cct.ret(call_trace->g_warp_id);
+          for (size_t i = 0; i < WARP_SIZE; ++i) {
+            if ((1 << i) & call_trace->mask) {
+              cct.ret(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+            }
+          }
         } else {
-          cct.block(call_trace->g_warp_id, call_trace->func_addr, call_trace->offset);
+          for (size_t i = 0; i < WARP_SIZE; ++i) {
+            if ((1 << i) & call_trace->mask) {
+              cct.block(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+            }
+          }
         }
 
         num_processed_bytes += sizeof(call_trace_t);
@@ -456,16 +491,15 @@ void *recv_thread_fun(void *) {
     }
   }
 
-  if (CALL_STACK_DEBUG) {
-    std::cout << "Calling context tree: " << std::endl;
-    std::cout << cct.to_string() << std::endl;
-  }
+  std::cout << "Calling context tree: " << std::endl;
+  std::cout << cct.to_string() << std::endl;
 
   free(recv_buffer);
   return NULL;
 }
 
 void nvbit_at_ctx_init(CUcontext ctx) {
+  std::cout << "Context create ctx: " << ctx << std::endl;
   recv_thread_started = true;
   channel_host.init(0, CHANNEL_SIZE, &channel_dev, NULL);
   pthread_create(&recv_thread, NULL, recv_thread_fun, NULL);
