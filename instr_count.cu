@@ -29,6 +29,7 @@
 #include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <map>
 
 /* every tool needs to include this once */
 #include "nvbit_tool.h"
@@ -61,8 +62,23 @@ typedef struct {
   int mask;
 } call_trace_t;
 
+typedef struct {
+  uint32_t unknown_field1[4]; 
+  uint32_t function_index;
+  uint32_t unknown_field2[3]; 
+  CUmodule cumod;
+} cufunc_t;
+
+
+typedef struct {
+  uint32_t cubin_id;
+} cumod_t;
+
+// function_address -> <cubin_id, function_id>
+std::map<uint64_t, std::pair<int, int>> func_cubin_map;
+
 /* Channel used to communicate from GPU to CPU receiving thread */
-#define CHANNEL_SIZE ((1l << 10) * sizeof(call_trace_t))
+#define CHANNEL_SIZE ((1l << 15) * sizeof(call_trace_t))
 static __managed__ ChannelDev channel_dev;
 static ChannelHost channel_host;
 
@@ -259,6 +275,10 @@ NVBIT_EXPORT_FUNC(trace_ret)
  * them. */
 void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
   uint64_t func_addr = nvbit_get_func_addr(func);
+  cufunc_t *cufunc = (cufunc_t *)func;
+  cumod_t *cumod = (cumod_t *)cufunc->cumod;
+  auto p = std::pair<int, int>(cumod->cubin_id, cufunc->function_index);
+  func_cubin_map[func_addr] = p;
   /* Get the static control flow graph of instruction */
   const CFG_t &cfg = nvbit_get_CFG(ctx, func);
   if (cfg.is_degenerate) {
@@ -493,6 +513,7 @@ void *recv_thread_fun(void *) {
 
   std::cout << "Calling context tree: " << std::endl;
   std::cout << cct.to_string() << std::endl;
+  std::cout << cct.dump(func_cubin_map) << std::endl;
 
   free(recv_buffer);
   return NULL;

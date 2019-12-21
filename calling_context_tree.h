@@ -2,6 +2,7 @@
 #define CALLING_CONTEXT_TREE_H
 
 #include <map>
+#include <deque>
 #include <list>
 #include <sstream>
 #include <iostream>
@@ -61,15 +62,17 @@ class CallingContextTree {
     update(call_stacks_[g_thread_id], func_addr, offset, false, false);
   }
 
-  // map <function_addr, offset> to <cubin_id, offset>
-  void dump(std::map<uint64_t, std::pair<int, uint64_t> > &function_cubin_map,
-    const std::string &file_name) {
+  // map <function_addr> to <cubin_id, function_id>
+  std::string dump(std::map<uint64_t, std::pair<int, int>> &func_cubin_map) {
     // [node_id, parent_id, cubin_id, offset, call_count]
+    std::string ret;
+    dfs2(root_, "", ret, func_cubin_map);
+    return ret;
   }
 
   std::string to_string() {
     std::string ret;
-    dfs(root_, "", ret);
+    dfs1(root_, "", ret);
     return ret;
   }
   
@@ -107,7 +110,7 @@ class CallingContextTree {
     }
   }
 
-  void dfs(CCTNode &node, std::string prefix, std::string &ret) {
+  void dfs1(CCTNode &node, std::string prefix, std::string &ret) {
     std::stringstream ss;
     ss << "Func: 0x" << std::hex << node.func_addr << std::endl;
     ret += ss.str();
@@ -123,7 +126,23 @@ class CallingContextTree {
       sss << prefix << "Call: 0x" << std::hex << iter.first << ": " <<
         std::dec << iter.second.second << "->";
       ret += sss.str(); 
-      dfs(iter.second.first, prefix, ret);
+      dfs1(iter.second.first, prefix, ret);
+    }
+  }
+
+  void dfs2(CCTNode &node, std::string prefix, std::string &ret,
+    std::map<uint64_t, std::pair<int, int>> &func_cubin_map) {
+    auto p = func_cubin_map[node.func_addr];
+    for (auto iter : node.children) {
+      // [module_id, function_id, offset]
+      auto offset = iter.first;
+      std::stringstream ss;
+      ss << "[" << p.first << "," << p.second << "," <<
+        std::hex << offset << "]->";
+      std::stringstream sss;
+      sss << prefix << ss.str() << iter.second.second << std::endl;
+      ret += sss.str();
+      dfs2(iter.second.first, prefix + ss.str(), ret, func_cubin_map);
     }
   }
 
