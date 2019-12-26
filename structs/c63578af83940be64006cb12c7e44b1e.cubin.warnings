@@ -1,0 +1,14 @@
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZZN8rajaperf4apps6ENERGY14runCudaVariantENS_9VariantIDEENKUlvE_clEvENKUllE0_clEl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZZN8rajaperf4apps6ENERGY14runCudaVariantENS_9VariantIDEENKUlvE_clEvENKUllE4_clEl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZZN8rajaperf4apps6ENERGY14runCudaVariantENS_9VariantIDEENKUlvE_clEvENKUllE3_clEl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf4apps11energycalc2EPdS1_S1_S1_S1_S1_S1_S1_S1_dl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf4apps11energycalc6EPdS1_S1_S1_S1_S1_S1_S1_S1_ddl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf4apps11energycalc5EPdS1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_dddl

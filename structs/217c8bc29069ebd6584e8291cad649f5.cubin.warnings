@@ -1,0 +1,6 @@
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZN8rajaperf5lcals9PLANCKIAN14runCudaVariantENS_9VariantIDEENKUllE_clEl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf5lcals9planckianEPdS1_S1_S1_S1_l

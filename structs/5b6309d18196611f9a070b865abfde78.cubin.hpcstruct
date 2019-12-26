@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!DOCTYPE HPCToolkitStructure [
+<!-- ******************************************************************** -->
+<!-- HPCToolkit Structure DTD                                             -->
+<!-- Version 4.7                                                          -->
+<!-- ******************************************************************** -->
+
+<!ELEMENT HPCToolkitStructure (LM)*>
+<!ATTLIST HPCToolkitStructure
+	version CDATA #REQUIRED
+	i       CDATA #REQUIRED
+	n       CDATA #IMPLIED>
+  <!-- Load module: -->
+  <!--   (i)d: unique identifier for cross referencing -->
+  <!--   (n)ame -->
+  <!--   (l)ine range: "beg-end" (inclusive range) -->
+  <!--   (v)ma-range-set: "{[beg-end), [beg-end)...}" -->
+  <!--   (t)arget: target function address -->
+  <!--   (d)evice: device name -->
+  <!ELEMENT LM (F|P)*>
+  <!ATTLIST LM
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- File: -->
+  <!ELEMENT F (P|L|S)*>
+  <!ATTLIST F
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED>
+  <!-- Procedure: ln=link name (if different than name) -->
+  <!ELEMENT P (P|A|L|S|C)*>
+  <!ATTLIST P
+	i  CDATA #REQUIRED
+	n  CDATA #REQUIRED
+	ln CDATA #IMPLIED
+	l  CDATA #IMPLIED
+	s  CDATA #IMPLIED
+	v  CDATA #IMPLIED>
+  <!-- Alien: (f)ilename -->
+  <!ELEMENT A (A|L|S|C)*>
+  <!ATTLIST A
+	i CDATA #REQUIRED
+	f CDATA #IMPLIED
+	n CDATA #IMPLIED
+	ln CDATA #IMPLIED
+	l CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Loop -->
+  <!ELEMENT L (A|L|S|C)*>
+  <!ATTLIST L
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	f CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Statement -->
+  <!ELEMENT S EMPTY>
+  <!ATTLIST S
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- Callsite (a special Statement) -->
+  <!ELEMENT C (C)*>
+  <!ATTLIST C
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED
+	t CDATA #IMPLIED
+  d CDATA #IMPLIED>
+]>
+<HPCToolkitStructure i="0" version="4.7" n="">
+<LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/5b6309d18196611f9a070b865abfde78.cubin" v="{}">
+  <F i="3" n="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h">
+    <P i="4" n="std::remove_reference&lt;std::allocator&lt;char&gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::allocator&lt;char&gt;&amp;&gt;(std::allocator&lt;char&gt;&amp;)" ln="_ZSt4moveIRSaIcEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0xa080-0xa081)}">
+      <S i="5" l="0" v="{[0x360-0x380)}"/>
+      <S i="6" l="98" v="{[0xa080-0xa220)}"/>
+      <S i="7" l="99" v="{[0xa220-0xa370) [0xa390-0xa3d0)}"/>
+      <L i="8" l="99" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa370-0xa371)}">
+        <S i="9" l="99" v="{[0xa370-0xa390)}"/>
+      </L>
+      <L i="10" l="99" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa3d0-0xa3d1)}">
+        <S i="11" l="99" v="{[0xa3d0-0xa3e0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="12" n="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h">
+    <P i="13" n="cudaDeviceGetAttribute" l="85" v="{[0x9e80-0x9e81)}">
+      <S i="14" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="15" l="85" v="{[0x9e80-0x9f90)}"/>
+      <S i="16" l="87" v="{[0x9f90-0x9fd0) [0x9ff0-0xa010)}"/>
+      <L i="17" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x9fd0-0x9fd1)}">
+        <S i="18" l="87" v="{[0x9fd0-0x9ff0)}"/>
+      </L>
+      <L i="19" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa010-0xa011)}">
+        <S i="20" l="87" v="{[0xa010-0xa020)}"/>
+      </L>
+    </P>
+    <P i="21" n="cudaMalloc" l="75" v="{[0xa400-0xa401)}">
+      <S i="22" l="0" v="{[0x310-0x380)}"/>
+      <S i="23" l="75" v="{[0xa400-0xa670)}"/>
+      <S i="24" l="77" v="{[0xa670-0xa6b0) [0xa6d0-0xa700)}"/>
+      <L i="25" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa6b0-0xa6b1)}">
+        <S i="26" l="77" v="{[0xa6b0-0xa6d0)}"/>
+      </L>
+      <L i="27" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa700-0xa701)}">
+        <S i="28" l="77" v="{[0xa700-0xa710)}"/>
+      </L>
+    </P>
+    <P i="29" n="cudaOccupancyMaxActiveBlocksPerMultiprocessor" l="95" v="{[0xa780-0xa781)}">
+      <S i="30" l="0" v="{[0x260-0x280)}"/>
+      <S i="31" l="95" v="{[0xa780-0xa950)}"/>
+      <S i="32" l="97" v="{[0xa950-0xa990) [0xa9b0-0xa9d0)}"/>
+      <L i="33" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa990-0xa991)}">
+        <S i="34" l="97" v="{[0xa990-0xa9b0)}"/>
+      </L>
+      <L i="35" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa9d0-0xa9d1)}">
+        <S i="36" l="97" v="{[0xa9d0-0xa9e0)}"/>
+      </L>
+    </P>
+    <P i="37" n="cudaGetDevice" l="90" v="{[0xaa00-0xaa01)}">
+      <S i="38" l="0" v="{[0x120-0x180)}"/>
+      <S i="39" l="90" v="{[0xaa00-0xaa90)}"/>
+      <S i="40" l="92" v="{[0xaa90-0xaad0) [0xaaf0-0xab10)}"/>
+      <L i="41" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xaad0-0xaad1)}">
+        <S i="42" l="92" v="{[0xaad0-0xaaf0)}"/>
+      </L>
+      <L i="43" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xab10-0xab11)}">
+        <S i="44" l="92" v="{[0xab10-0xab20)}"/>
+      </L>
+    </P>
+    <P i="45" n="cudaFuncGetAttributes" l="80" v="{[0xab80-0xab81)}">
+      <S i="46" l="0" v="{[0x310-0x380)}"/>
+      <S i="47" l="80" v="{[0xab80-0xadf0)}"/>
+      <S i="48" l="82" v="{[0xadf0-0xae30) [0xae50-0xae80)}"/>
+      <L i="49" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xae30-0xae31)}">
+        <S i="50" l="82" v="{[0xae30-0xae50)}"/>
+      </L>
+      <L i="51" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xae80-0xae81)}">
+        <S i="52" l="82" v="{[0xae80-0xae90)}"/>
+      </L>
+    </P>
+    <P i="53" n="cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags" l="100" v="{[0xaf00-0xaf01)}">
+      <S i="54" l="0" v="{[0x2a0-0x300)}"/>
+      <S i="55" l="100" v="{[0xaf00-0xb110)}"/>
+      <S i="56" l="102" v="{[0xb110-0xb150) [0xb170-0xb190)}"/>
+      <L i="57" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xb150-0xb151)}">
+        <S i="58" l="102" v="{[0xb150-0xb170)}"/>
+      </L>
+      <L i="59" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xb190-0xb191)}">
+        <S i="60" l="102" v="{[0xb190-0xb1a0)}"/>
+      </L>
+    </P>
+  </F>
+</LM>
+</HPCToolkitStructure>

@@ -1,0 +1,4 @@
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZN8rajaperf4apps14DEL_DOT_VEC_2D14runCudaVariantENS_9VariantIDEENKUllE_clEl
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf4apps11deldotvec2dEPdS1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_S1_Plddl
