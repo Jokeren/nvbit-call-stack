@@ -514,6 +514,7 @@ void *recv_thread_fun(void *) {
   std::cout << "Calling context tree: " << std::endl;
   std::cout << cct.to_string() << std::endl;
   std::cout << cct.dump(func_cubin_map) << std::endl;
+  std::cout << cct.dump_callees() << std::endl;
 
   free(recv_buffer);
   return NULL;

@@ -50,18 +50,18 @@ def calc_call_path_ratio(call_paths):
     for call_path in call_paths:
         call_path[-1] = call_path[-1] / s
 
+# do not count missing calls which are due to the failure of nvdisasm
 def compare_call_paths(hpctoolkit_call_paths, nvbit_call_paths):
     error = 0.0
-    for h_call_path in hpctoolkit_call_paths:
-        k1 = h_call_path[:-1]
-        c1 = h_call_path[-1]
-        for n_call_path in nvbit_call_paths:
-            k2 = n_call_path[:-1]
-            c2 = n_call_path[-1]
+    for n_call_path in nvbit_call_paths:
+        k1 = n_call_path[:-1]
+        c1 = n_call_path[-1]
+        for h_call_path in hpctoolkit_call_paths:
+            k2 = h_call_path[:-1]
+            c2 = h_call_path[-1]
             if k1 == k2:
-                e = (abs(c2 - c1) / c2) * c2
+                e = (abs(c1 - c2) / c1) * c1
                 error += e
-                break
     return error
 
 if __name__ == "__main__":

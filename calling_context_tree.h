@@ -2,6 +2,7 @@
 #define CALLING_CONTEXT_TREE_H
 
 #include <map>
+#include <set>
 #include <deque>
 #include <list>
 #include <sstream>
@@ -75,6 +76,32 @@ class CallingContextTree {
     dfs1(root_, "", ret);
     return ret;
   }
+
+  std::string dump_callees() {
+    // <callsite, <block_maps, count>>
+    std::map<uint64_t, std::vector<std::map<uint64_t, int>>> callees;
+    dfs3(root_, callees); 
+
+    std::string ret;
+    for (auto iter : callees) {
+      std::stringstream ss;
+      auto func_addr = iter.first;
+      ss << "0x" << std::hex << func_addr << std::dec << std::endl;
+
+      auto &vec = iter.second;
+      for (auto &b_map : vec) {
+        for (auto b_iter : b_map) {
+          ss << b_iter.first << ":" << b_iter.second << ",";
+        }
+        if (b_map.size() != 0) {
+          ss << std::endl;
+        }
+      }
+      ret += ss.str();
+    }
+
+    return ret;
+  }
   
  private:
   // Copy a call_stack
@@ -143,6 +170,15 @@ class CallingContextTree {
       sss << prefix << ss.str() << iter.second.second << std::endl;
       ret += sss.str();
       dfs2(iter.second.first, prefix + ss.str(), ret, func_cubin_map);
+    }
+  }
+
+  void dfs3(CCTNode &node, std::map<uint64_t, std::vector<std::map<uint64_t,int>>> &callees) {
+    for (auto iter : node.children) {
+      auto *child = &(iter.second.first);
+      auto offset = child->func_addr;
+      callees[offset].push_back(child->blocks);
+      dfs3(*child, callees);
     }
   }
 
