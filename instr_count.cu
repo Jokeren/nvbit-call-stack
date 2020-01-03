@@ -78,7 +78,7 @@ typedef struct {
 std::map<uint64_t, std::pair<int, int>> func_cubin_map;
 
 /* Channel used to communicate from GPU to CPU receiving thread */
-#define CHANNEL_SIZE ((1l << 15) * sizeof(call_trace_t))
+#define CHANNEL_SIZE (1024 * 1024 * 8)
 static __managed__ ChannelDev channel_dev;
 static ChannelHost channel_host;
 
@@ -110,6 +110,8 @@ int verbose = 0;
 int count_warp_level = 1;
 int exclude_pred_off = 0;
 
+#define CALL_STACK_PERFORMANCE 0
+#define CALL_STACK_BB 0
 #define CALL_STACK_DEBUG_GPU 0
 #define CALL_STACK_DEBUG_CPU 0
 
@@ -309,17 +311,20 @@ void nvbit_at_function_first_load(CUcontext ctx, CUfunction func) {
   /* Iterate on basic block and inject the first instruction */
   for (auto &bb : cfg.bbs) {
     Instr *i = bb->instrs[0];
-    /* inject device function */
-    nvbit_insert_call(i, "count_instrs", IPOINT_BEFORE);
-    /* add predicate as argument */
-    nvbit_add_call_arg_pred_val(i);
-    nvbit_add_call_arg_const_val64(i, func_addr);
-    nvbit_add_call_arg_const_val32(i, i->getOffset());
-    nvbit_add_call_arg_const_val32(i, bb->instrs.size());
-    /* add count warp level option */
-    nvbit_add_call_arg_const_val32(i, count_warp_level);
-    if (verbose) {
-      i->print("Inject count_instr before - ");
+
+    if (CALL_STACK_BB) {
+      /* inject device function */
+      nvbit_insert_call(i, "count_instrs", IPOINT_BEFORE);
+      /* add predicate as argument */
+      nvbit_add_call_arg_pred_val(i);
+      nvbit_add_call_arg_const_val64(i, func_addr);
+      nvbit_add_call_arg_const_val32(i, i->getOffset());
+      nvbit_add_call_arg_const_val32(i, bb->instrs.size());
+      /* add count warp level option */
+      nvbit_add_call_arg_const_val32(i, count_warp_level);
+      if (verbose) {
+        i->print("Inject count_instr before - ");
+      }
     }
 
     for (auto *i : bb->instrs) { 
@@ -390,6 +395,13 @@ __global__ void flush_channel() {
  * */
 void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
   const char *name, void *params, CUresult *pStatus) {
+  int num_ctas = 0;
+  if (cbid == API_CUDA_cuLaunchKernel_ptsz ||
+    cbid == API_CUDA_cuLaunchKernel) {
+    cuLaunchKernel_params *p2 = (cuLaunchKernel_params *)params;
+    num_ctas = p2->gridDimX * p2->gridDimY * p2->gridDimZ;
+  }
+
   if (skip_flag) return;
 
   /* Identify all the possible CUDA launch events */
@@ -423,32 +435,34 @@ void nvbit_at_cuda_event(CUcontext ctx, int is_exit, nvbit_api_cuda_t cbid,
        * 2. Get number of thread blocks in the kernel
        * 3. Print the thread instruction counters
        * 4. Release the lock*/
+
       skip_flag = true;
-      printf("Launch kernel %d - %s\n",
-        kernel_id++, nvbit_get_func_name(ctx, p->f));
+      if (CALL_STACK_DEBUG_CPU) {
+        printf("Launch kernel %d - %s\n",
+          kernel_id, nvbit_get_func_name(ctx, p->f));
+      }
+
       CUDA_SAFECALL(cuCtxSynchronize());
       flush_channel<<<1, 1>>>();
       CUDA_SAFECALL(cuCtxSynchronize());
       skip_flag = false;
 
       tot_app_instrs += counter;
-      int num_ctas = 0;
-      if (cbid == API_CUDA_cuLaunchKernel_ptsz ||
-        cbid == API_CUDA_cuLaunchKernel) {
-        cuLaunchKernel_params *p2 = (cuLaunchKernel_params *)params;
-        num_ctas = p2->gridDimX * p2->gridDimY * p2->gridDimZ;
+
+      if (CALL_STACK_DEBUG_CPU) {
+        printf(
+          "kernel %d - %s - #thread-blocks %d,  kernel "
+          "instructions %ld, total instructions %ld\n",
+          kernel_id, nvbit_get_func_name(ctx, p->f), num_ctas, counter,
+          tot_app_instrs);
       }
-      printf(
-        "kernel %d - %s - #thread-blocks %d,  kernel "
-        "instructions %ld, total instructions %ld\n",
-        kernel_id++, nvbit_get_func_name(ctx, p->f), num_ctas, counter,
-        tot_app_instrs);
 
       /* wait here until the receiving thread has not finished with the
        * current kernel */
       while (recv_thread_receiving) {
         pthread_yield();
       }
+      kernel_id++;
       pthread_mutex_unlock(&mutex);
     }
   }
@@ -486,22 +500,26 @@ void *recv_thread_fun(void *) {
             " func_addr: 0x" << std::hex << call_trace->func_addr << " offset: 0x" << call_trace->offset << std::endl;
         }
         
-        if ((call_trace->flags & CALL_TRACE_CALL)) {
-          for (size_t i = 0; i < WARP_SIZE; ++i) {
-            if ((1 << i) & call_trace->mask) {
-              cct.call(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+        if (!CALL_STACK_PERFORMANCE) {
+          if ((call_trace->flags & CALL_TRACE_CALL)) {
+            for (size_t i = 0; i < WARP_SIZE; ++i) {
+              if ((1 << i) & call_trace->mask) {
+                cct.call(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+              }
             }
-          }
-        } else if ((call_trace->flags & CALL_TRACE_RET)) {
-          for (size_t i = 0; i < WARP_SIZE; ++i) {
-            if ((1 << i) & call_trace->mask) {
-              cct.ret(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+          } else if ((call_trace->flags & CALL_TRACE_RET)) {
+            for (size_t i = 0; i < WARP_SIZE; ++i) {
+              if ((1 << i) & call_trace->mask) {
+                cct.ret(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+              }
             }
-          }
-        } else {
-          for (size_t i = 0; i < WARP_SIZE; ++i) {
-            if ((1 << i) & call_trace->mask) {
-              cct.block(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+          } else {
+            if (CALL_STACK_BB) {
+              for (size_t i = 0; i < WARP_SIZE; ++i) {
+                if ((1 << i) & call_trace->mask) {
+                  cct.block(call_trace->g_warp_id * WARP_SIZE + i, call_trace->func_addr, call_trace->offset);
+                }
+              }
             }
           }
         }
