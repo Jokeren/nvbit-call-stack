@@ -65,7 +65,7 @@
 	l CDATA #REQUIRED
 	v CDATA #IMPLIED
 	t CDATA #IMPLIED
-  d CDATA #IMPLIED>
+	d CDATA #IMPLIED>
 ]>
 <HPCToolkitStructure i="0" version="4.7" n="">
 <LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/7ef9aa478fea0218cb636b0cab62cac5.cubin" v="{}">

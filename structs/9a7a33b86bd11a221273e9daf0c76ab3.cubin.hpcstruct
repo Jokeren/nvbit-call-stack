@@ -1,0 +1,761 @@
+<?xml version="1.0"?>
+<!DOCTYPE HPCToolkitStructure [
+<!-- ******************************************************************** -->
+<!-- HPCToolkit Structure DTD                                             -->
+<!-- Version 4.7                                                          -->
+<!-- ******************************************************************** -->
+
+<!ELEMENT HPCToolkitStructure (LM)*>
+<!ATTLIST HPCToolkitStructure
+	version CDATA #REQUIRED
+	i       CDATA #REQUIRED
+	n       CDATA #IMPLIED>
+  <!-- Load module: -->
+  <!--   (i)d: unique identifier for cross referencing -->
+  <!--   (n)ame -->
+  <!--   (l)ine range: "beg-end" (inclusive range) -->
+  <!--   (v)ma-range-set: "{[beg-end), [beg-end)...}" -->
+  <!--   (t)arget: target function address -->
+  <!--   (d)evice: device name -->
+  <!ELEMENT LM (F|P)*>
+  <!ATTLIST LM
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- File: -->
+  <!ELEMENT F (P|L|S)*>
+  <!ATTLIST F
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED>
+  <!-- Procedure: ln=link name (if different than name) -->
+  <!ELEMENT P (P|A|L|S|C)*>
+  <!ATTLIST P
+	i  CDATA #REQUIRED
+	n  CDATA #REQUIRED
+	ln CDATA #IMPLIED
+	l  CDATA #IMPLIED
+	s  CDATA #IMPLIED
+	v  CDATA #IMPLIED>
+  <!-- Alien: (f)ilename -->
+  <!ELEMENT A (A|L|S|C)*>
+  <!ATTLIST A
+	i CDATA #REQUIRED
+	f CDATA #IMPLIED
+	n CDATA #IMPLIED
+	ln CDATA #IMPLIED
+	l CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Loop -->
+  <!ELEMENT L (A|L|S|C)*>
+  <!ATTLIST L
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	f CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Statement -->
+  <!ELEMENT S EMPTY>
+  <!ATTLIST S
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- Callsite (a special Statement) -->
+  <!ELEMENT C (C)*>
+  <!ATTLIST C
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED
+	t CDATA #IMPLIED
+	d CDATA #IMPLIED>
+]>
+<HPCToolkitStructure i="0" version="4.7" n="">
+<LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/9a7a33b86bd11a221273e9daf0c76ab3.cubin" v="{}">
+  <F i="3" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp">
+    <P i="4" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(long, long)" ln="_ZN4RAJA17TypedRangeSegmentIllEC1Ell" l="98" v="{[0x55f80-0x55f81)}">
+      <S i="5" l="0" v="{[0x5c0-0x600)}"/>
+      <S i="6" l="98" v="{[0x55f80-0x56340)}"/>
+      <S i="7" l="99" v="{[0x56340-0x563a0) [0x563b0-0x56490)}"/>
+      <S i="8" l="101" v="{[0x564a0-0x56530)}"/>
+      <C i="9" l="99" v="{[0x563a0-0x563b0)}" t="0x5a680" d="NVIDIA sm_70"/>
+      <C i="10" l="99" v="{[0x56490-0x564a0)}" t="0x5a680" d="NVIDIA sm_70"/>
+      <L i="11" l="101" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0x56530-0x56531)}">
+        <S i="12" l="101" v="{[0x56530-0x56540)}"/>
+      </L>
+    </P>
+    <P i="13" n="RAJA::TypedRangeSegment&lt;long, long&gt;::~TypedRangeSegment()" ln="_ZN4RAJA17TypedRangeSegmentIllED2Ev" l="128" v="{[0x59a00-0x59a01)}">
+      <S i="14" l="0" v="{[0x250-0x280)}"/>
+      <S i="15" l="128" v="{[0x59a00-0x59c40)}"/>
+      <L i="16" l="128" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0x59c40-0x59c41)}">
+        <S i="17" l="128" v="{[0x59c40-0x59c50)}"/>
+      </L>
+    </P>
+    <P i="18" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(long, long)" ln="_ZN4RAJA17TypedRangeSegmentIllEC2Ell" l="101" v="{[0x5ef80-0x5ef81)}">
+      <S i="19" l="0" v="{[0x350-0x380)}"/>
+      <S i="20" l="101" v="{[0x5ef80-0x5f200) [0x5f210-0x5f2c0)}"/>
+      <C i="21" l="101" v="{[0x5f200-0x5f210)}" t="0x55f80" d="NVIDIA sm_70"/>
+      <L i="22" l="101" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0x5f2c0-0x5f2c1)}">
+        <S i="23" l="101" v="{[0x5f2c0-0x5f2d0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="24" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp">
+    <P i="25" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC2ERKS3_" l="66" v="{[0x57800-0x57801)}">
+      <S i="26" l="0" v="{[0x290-0x300)}"/>
+      <S i="27" l="66" v="{[0x57800-0x579e0) [0x579f0-0x57a80)}"/>
+      <C i="28" l="66" v="{[0x579e0-0x579f0)}" t="0x62780" d="NVIDIA sm_70"/>
+      <L i="29" l="66" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x57a80-0x57a81)}">
+        <S i="30" l="66" v="{[0x57a80-0x57a90)}"/>
+      </L>
+    </P>
+    <P i="31" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator+(long const&amp;) const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEplERKl" l="153" v="{[0x59080-0x59081)}">
+      <S i="32" l="0" v="{[0x670-0x680)}"/>
+      <S i="33" l="153" v="{[0x59080-0x59390)}"/>
+      <S i="34" l="156" v="{[0x59390-0x59560) [0x59570-0x596e0)}"/>
+      <C i="35" l="156" v="{[0x59560-0x59570)}" t="0x5a680" d="NVIDIA sm_70"/>
+      <L i="36" l="156" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x596e0-0x596e1)}">
+        <S i="37" l="156" v="{[0x596e0-0x596f0)}"/>
+      </L>
+    </P>
+    <P i="38" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(long const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC1ERKl" l="59" v="{[0x5a680-0x5a681)}">
+      <S i="39" l="0" v="{[0x160-0x180)}"/>
+      <S i="40" l="59" v="{[0x5a680-0x5a750)}"/>
+      <S i="41" l="60" v="{[0x5a750-0x5a7b0)}"/>
+      <S i="42" l="62" v="{[0x5a7b0-0x5a7d0)}"/>
+      <L i="43" l="62" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x5a7d0-0x5a7d1)}">
+        <S i="44" l="62" v="{[0x5a7d0-0x5a7e0)}"/>
+      </L>
+    </P>
+    <P i="45" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator-(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;) const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEmiERKS3_" l="148" v="{[0x60400-0x60401)}">
+      <S i="46" l="0" v="{[0x2c0-0x300)}"/>
+      <S i="47" l="148" v="{[0x60400-0x604d0)}"/>
+      <S i="48" l="151" v="{[0x604d0-0x60660) [0x60680-0x606b0)}"/>
+      <L i="49" l="151" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x60660-0x60661)}">
+        <S i="50" l="151" v="{[0x60660-0x60680)}"/>
+      </L>
+      <L i="51" l="151" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x606b0-0x606b1)}">
+        <S i="52" l="151" v="{[0x606b0-0x606c0)}"/>
+      </L>
+    </P>
+    <P i="53" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator*() const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEdeEv" l="176" v="{[0x62200-0x62201)}">
+      <S i="54" l="0" v="{[0x210-0x280)}"/>
+      <S i="55" l="176" v="{[0x62200-0x62270)}"/>
+      <S i="56" l="178" v="{[0x62270-0x623b0) [0x623d0-0x62400)}"/>
+      <L i="57" l="178" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x623b0-0x623b1)}">
+        <S i="58" l="178" v="{[0x623b0-0x623d0)}"/>
+      </L>
+      <L i="59" l="178" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x62400-0x62401)}">
+        <S i="60" l="178" v="{[0x62400-0x62410)}"/>
+      </L>
+    </P>
+    <P i="61" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC1ERKS3_" l="63" v="{[0x62780-0x62781)}">
+      <S i="62" l="0" v="{[0x160-0x180)}"/>
+      <S i="63" l="63" v="{[0x62780-0x62850)}"/>
+      <S i="64" l="64" v="{[0x62850-0x628b0)}"/>
+      <S i="65" l="66" v="{[0x628b0-0x628d0)}"/>
+      <L i="66" l="66" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x628d0-0x628d1)}">
+        <S i="67" l="66" v="{[0x628d0-0x628e0)}"/>
+      </L>
+    </P>
+    <P i="68" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(long const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC2ERKl" l="62" v="{[0x64800-0x64801)}">
+      <S i="69" l="0" v="{[0x290-0x300)}"/>
+      <S i="70" l="62" v="{[0x64800-0x649e0) [0x649f0-0x64a80)}"/>
+      <C i="71" l="62" v="{[0x649e0-0x649f0)}" t="0x5a680" d="NVIDIA sm_70"/>
+      <L i="72" l="62" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x64a80-0x64a81)}">
+        <S i="73" l="62" v="{[0x64a80-0x64a90)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="74" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp">
+    <P i="75" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEEC2ERKS8_" l="242" v="{[0x54180-0x54181)}">
+      <S i="76" l="0" v="{[0x290-0x300)}"/>
+      <S i="77" l="242" v="{[0x54180-0x54360) [0x54370-0x54400)}"/>
+      <C i="78" l="242" v="{[0x54360-0x54370)}" t="0x61100" d="NVIDIA sm_70"/>
+      <L i="79" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x54400-0x54401)}">
+        <S i="80" l="242" v="{[0x54400-0x54410)}"/>
+      </L>
+    </P>
+    <P i="81" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3maxENS_6detail9ReduceSeqEEC1Eii" l="165" v="{[0x54600-0x54601)}">
+      <S i="82" l="0" v="{[0x310-0x380)}"/>
+      <S i="83" l="165" v="{[0x54600-0x547a0)}"/>
+      <S i="84" l="166" v="{[0x547e0-0x54840)}"/>
+      <S i="85" l="167" v="{[0x547a0-0x547e0)}"/>
+      <S i="86" l="168" v="{[0x54850-0x54900)}"/>
+      <C i="87" l="166" v="{[0x54840-0x54850)}" t="0x64e80" d="NVIDIA sm_70"/>
+      <L i="88" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x54900-0x54901)}">
+        <S i="89" l="168" v="{[0x54900-0x54910)}"/>
+      </L>
+    </P>
+    <P i="90" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEEC1Eii" l="222" v="{[0x54980-0x54981)}">
+      <S i="91" l="0" v="{[0x2b0-0x300)}"/>
+      <S i="92" l="222" v="{[0x54980-0x54ab0)}"/>
+      <S i="93" l="223" v="{[0x54ae0-0x54c00)}"/>
+      <S i="94" l="224" v="{[0x54ab0-0x54ae0)}"/>
+      <S i="95" l="225" v="{[0x54c00-0x54c20)}"/>
+      <L i="96" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x54c20-0x54c21)}">
+        <S i="97" l="225" v="{[0x54c20-0x54c30)}"/>
+      </L>
+    </P>
+    <P i="98" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt;::combine(int const&amp;) const" ln="_ZNK4RAJA6reduce6detail10BaseReduceIiNS0_3minENS_6detail9ReduceSeqEE7combineERKi" l="196" v="{[0x54c80-0x54c81)}">
+      <S i="99" l="196" v="{[0x54c80-0x54eb0) [0x54ec0-0x54ff0)}"/>
+      <C i="100" l="196" v="{[0x54eb0-0x54ec0)}" t="0x63280" d="NVIDIA sm_70"/>
+      <L i="101" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x54ff0-0x54ff1)}">
+        <S i="102" l="196" v="{[0x54ff0-0x55000)}"/>
+      </L>
+    </P>
+    <P i="103" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3sumENS_6detail9ReduceSeqEEC2Eii" l="168" v="{[0x55300-0x55301)}">
+      <S i="104" l="0" v="{[0x290-0x300)}"/>
+      <S i="105" l="168" v="{[0x55300-0x554e0) [0x554f0-0x55580)}"/>
+      <C i="106" l="168" v="{[0x554e0-0x554f0)}" t="0x62900" d="NVIDIA sm_70"/>
+      <L i="107" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x55580-0x55581)}">
+        <S i="108" l="168" v="{[0x55580-0x55590)}"/>
+      </L>
+    </P>
+    <P i="109" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3minENS_6detail9ReduceSeqEEC1Eii" l="165" v="{[0x55c00-0x55c01)}">
+      <S i="110" l="0" v="{[0x310-0x380)}"/>
+      <S i="111" l="165" v="{[0x55c00-0x55da0)}"/>
+      <S i="112" l="166" v="{[0x55de0-0x55e40)}"/>
+      <S i="113" l="167" v="{[0x55da0-0x55de0)}"/>
+      <S i="114" l="168" v="{[0x55e50-0x55f00)}"/>
+      <C i="115" l="166" v="{[0x55e40-0x55e50)}" t="0x5e680" d="NVIDIA sm_70"/>
+      <L i="116" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x55f00-0x55f01)}">
+        <S i="117" l="168" v="{[0x55f00-0x55f10)}"/>
+      </L>
+    </P>
+    <P i="118" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt;::combine(int const&amp;) const" ln="_ZNK4RAJA6reduce6detail10BaseReduceIiNS0_3maxENS_6detail9ReduceSeqEE7combineERKi" l="196" v="{[0x56580-0x56581)}">
+      <S i="119" l="196" v="{[0x56580-0x567b0) [0x567c0-0x568f0)}"/>
+      <C i="120" l="196" v="{[0x567b0-0x567c0)}" t="0x61800" d="NVIDIA sm_70"/>
+      <L i="121" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x568f0-0x568f1)}">
+        <S i="122" l="196" v="{[0x568f0-0x56900)}"/>
+      </L>
+    </P>
+    <P i="123" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEED1Ev" l="246" v="{[0x56900-0x56901)}">
+      <S i="124" l="0" v="{[0xbe0-0xc00)}"/>
+      <S i="125" l="246" v="{[0x56900-0x56b90)}"/>
+      <S i="126" l="248" v="{[0x56b90-0x56df0)}"/>
+      <S i="127" l="249" v="{[0x56df0-0x570a0)}"/>
+      <S i="128" l="251" v="{[0x573c0-0x574d0)}"/>
+      <A i="129" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="130" l="72" v="{[0x570a0-0x57210) [0x57220-0x573c0)}"/>
+        <C i="131" l="72" v="{[0x57210-0x57220)}" t="0x55000" d="NVIDIA sm_70"/>
+      </A>
+      <L i="132" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x574d0-0x574d1)}">
+        <S i="133" l="251" v="{[0x574d0-0x574e0)}"/>
+      </L>
+    </P>
+    <P i="134" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEEC2ERKS8_" l="242" v="{[0x57500-0x57501)}">
+      <S i="135" l="0" v="{[0x290-0x300)}"/>
+      <S i="136" l="242" v="{[0x57500-0x576e0) [0x576f0-0x57780)}"/>
+      <C i="137" l="242" v="{[0x576e0-0x576f0)}" t="0x64300" d="NVIDIA sm_70"/>
+      <L i="138" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x57780-0x57781)}">
+        <S i="139" l="242" v="{[0x57780-0x57790)}"/>
+      </L>
+    </P>
+    <P i="140" n="RAJA::reduce::detail::BaseReduceSum&lt;int, RAJA::detail::ReduceSeq&gt;::operator+=(int) const" ln="_ZNK4RAJA6reduce6detail13BaseReduceSumIiNS_6detail9ReduceSeqEEpLEi" l="378" v="{[0x57b00-0x57b01)}">
+      <S i="141" l="0" v="{[0x620-0x680)}"/>
+      <S i="142" l="378" v="{[0x57b00-0x57df0)}"/>
+      <S i="143" l="380" v="{[0x57df0-0x57e50)}"/>
+      <S i="144" l="381" v="{[0x57e60-0x58050) [0x58070-0x58110)}"/>
+      <C i="145" l="380" v="{[0x57e50-0x57e60)}" t="0x64b00" d="NVIDIA sm_70"/>
+      <L i="146" l="381" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x58050-0x58051)}">
+        <S i="147" l="381" v="{[0x58050-0x58070)}"/>
+      </L>
+      <L i="148" l="381" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x58110-0x58111)}">
+        <S i="149" l="381" v="{[0x58110-0x58120)}"/>
+      </L>
+    </P>
+    <P i="150" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEEC2Eii" l="225" v="{[0x58800-0x58801)}">
+      <S i="151" l="0" v="{[0x290-0x300)}"/>
+      <S i="152" l="225" v="{[0x58800-0x589e0) [0x589f0-0x58a80)}"/>
+      <C i="153" l="225" v="{[0x589e0-0x589f0)}" t="0x60700" d="NVIDIA sm_70"/>
+      <L i="154" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x58a80-0x58a81)}">
+        <S i="155" l="225" v="{[0x58a80-0x58a90)}"/>
+      </L>
+    </P>
+    <P i="156" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEED2Ev" l="251" v="{[0x58e80-0x58e81)}">
+      <S i="157" l="0" v="{[0x1d0-0x200)}"/>
+      <S i="158" l="251" v="{[0x58e80-0x58fc0) [0x58fd0-0x59040)}"/>
+      <C i="159" l="251" v="{[0x58fc0-0x58fd0)}" t="0x5f800" d="NVIDIA sm_70"/>
+      <L i="160" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x59040-0x59041)}">
+        <S i="161" l="251" v="{[0x59040-0x59050)}"/>
+      </L>
+    </P>
+    <P i="162" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3minENS_6detail9ReduceSeqEEC1ERKS6_" l="183" v="{[0x59700-0x59701)}">
+      <S i="163" l="0" v="{[0x290-0x300)}"/>
+      <S i="164" l="183" v="{[0x59700-0x598e0) [0x598f0-0x59980)}"/>
+      <C i="165" l="183" v="{[0x598e0-0x598f0)}" t="0x5c200" d="NVIDIA sm_70"/>
+      <L i="166" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x59980-0x59981)}">
+        <S i="167" l="183" v="{[0x59980-0x59990)}"/>
+      </L>
+    </P>
+    <P i="168" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::combine(int const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEE7combineERKi" l="255" v="{[0x59c80-0x59c81)}">
+      <S i="169" l="0" v="{[0x990-0xa00)}"/>
+      <S i="170" l="255" v="{[0x59c80-0x5a150) [0x5a480-0x5a600)}"/>
+      <A i="171" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="172" l="72" v="{[0x5a150-0x5a2c0) [0x5a2d0-0x5a480)}"/>
+        <C i="173" l="72" v="{[0x5a2c0-0x5a2d0)}" t="0x55000" d="NVIDIA sm_70"/>
+      </A>
+      <L i="174" l="255" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5a600-0x5a601)}">
+        <S i="175" l="255" v="{[0x5a600-0x5a610)}"/>
+      </L>
+    </P>
+    <P i="176" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEED2Ev" l="251" v="{[0x5ab00-0x5ab01)}">
+      <S i="177" l="0" v="{[0x1d0-0x200)}"/>
+      <S i="178" l="251" v="{[0x5ab00-0x5ac40) [0x5ac50-0x5acc0)}"/>
+      <C i="179" l="251" v="{[0x5ac40-0x5ac50)}" t="0x5c800" d="NVIDIA sm_70"/>
+      <L i="180" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5acc0-0x5acc1)}">
+        <S i="181" l="251" v="{[0x5acc0-0x5acd0)}"/>
+      </L>
+    </P>
+    <P i="182" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3maxENS_6detail9ReduceSeqEEC1ERKS6_" l="183" v="{[0x5b000-0x5b001)}">
+      <S i="183" l="0" v="{[0x290-0x300)}"/>
+      <S i="184" l="183" v="{[0x5b000-0x5b1e0) [0x5b1f0-0x5b280)}"/>
+      <C i="185" l="183" v="{[0x5b1e0-0x5b1f0)}" t="0x58180" d="NVIDIA sm_70"/>
+      <L i="186" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5b280-0x5b281)}">
+        <S i="187" l="183" v="{[0x5b280-0x5b290)}"/>
+      </L>
+    </P>
+    <P i="188" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEEC1ERKS8_" l="237" v="{[0x5b300-0x5b301)}">
+      <S i="189" l="0" v="{[0x4f0-0x500)}"/>
+      <S i="190" l="237" v="{[0x5b300-0x5b3f0)}"/>
+      <S i="191" l="238" v="{[0x5b3f0-0x5b5e0)}"/>
+      <S i="192" l="239" v="{[0x5b5e0-0x5b6e0)}"/>
+      <S i="193" l="240" v="{[0x5b6e0-0x5b7c0)}"/>
+      <S i="194" l="242" v="{[0x5b7c0-0x5b7e0)}"/>
+      <L i="195" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5b7e0-0x5b7e1)}">
+        <S i="196" l="242" v="{[0x5b7e0-0x5b7f0)}"/>
+      </L>
+    </P>
+    <P i="197" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEEC2Eii" l="225" v="{[0x5b800-0x5b801)}">
+      <S i="198" l="0" v="{[0x290-0x300)}"/>
+      <S i="199" l="225" v="{[0x5b800-0x5b9e0) [0x5b9f0-0x5ba80)}"/>
+      <C i="200" l="225" v="{[0x5b9e0-0x5b9f0)}" t="0x5dc80" d="NVIDIA sm_70"/>
+      <L i="201" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5ba80-0x5ba81)}">
+        <S i="202" l="225" v="{[0x5ba80-0x5ba90)}"/>
+      </L>
+    </P>
+    <P i="203" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3sumENS_6detail9ReduceSeqEEC2ERKS6_" l="183" v="{[0x5bf00-0x5bf01)}">
+      <S i="204" l="0" v="{[0x290-0x300)}"/>
+      <S i="205" l="183" v="{[0x5bf00-0x5c0e0) [0x5c0f0-0x5c180)}"/>
+      <C i="206" l="183" v="{[0x5c0e0-0x5c0f0)}" t="0x5e380" d="NVIDIA sm_70"/>
+      <L i="207" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5c180-0x5c181)}">
+        <S i="208" l="183" v="{[0x5c180-0x5c190)}"/>
+      </L>
+    </P>
+    <P i="209" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEED1Ev" l="246" v="{[0x5c800-0x5c801)}">
+      <S i="210" l="0" v="{[0xbe0-0xc00)}"/>
+      <S i="211" l="246" v="{[0x5c800-0x5ca90)}"/>
+      <S i="212" l="248" v="{[0x5ca90-0x5ccf0)}"/>
+      <S i="213" l="249" v="{[0x5ccf0-0x5cfa0)}"/>
+      <S i="214" l="251" v="{[0x5d2c0-0x5d3d0)}"/>
+      <A i="215" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="216" l="72" v="{[0x5cfa0-0x5d110) [0x5d120-0x5d2c0)}"/>
+        <C i="217" l="72" v="{[0x5d110-0x5d120)}" t="0x5df80" d="NVIDIA sm_70"/>
+      </A>
+      <L i="218" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5d3d0-0x5d3d1)}">
+        <S i="219" l="251" v="{[0x5d3d0-0x5d3e0)}"/>
+      </L>
+    </P>
+    <P i="220" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3maxENS_6detail9ReduceSeqEEC2Eii" l="168" v="{[0x5d680-0x5d681)}">
+      <S i="221" l="0" v="{[0x290-0x300)}"/>
+      <S i="222" l="168" v="{[0x5d680-0x5d860) [0x5d870-0x5d900)}"/>
+      <C i="223" l="168" v="{[0x5d860-0x5d870)}" t="0x54600" d="NVIDIA sm_70"/>
+      <L i="224" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5d900-0x5d901)}">
+        <S i="225" l="168" v="{[0x5d900-0x5d910)}"/>
+      </L>
+    </P>
+    <P i="226" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEEC2Eii" l="225" v="{[0x5d980-0x5d981)}">
+      <S i="227" l="0" v="{[0x290-0x300)}"/>
+      <S i="228" l="225" v="{[0x5d980-0x5db60) [0x5db70-0x5dc00)}"/>
+      <C i="229" l="225" v="{[0x5db60-0x5db70)}" t="0x54980" d="NVIDIA sm_70"/>
+      <L i="230" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5dc00-0x5dc01)}">
+        <S i="231" l="225" v="{[0x5dc00-0x5dc10)}"/>
+      </L>
+    </P>
+    <P i="232" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEEC1Eii" l="222" v="{[0x5dc80-0x5dc81)}">
+      <S i="233" l="0" v="{[0x2b0-0x300)}"/>
+      <S i="234" l="222" v="{[0x5dc80-0x5ddb0)}"/>
+      <S i="235" l="223" v="{[0x5dde0-0x5df00)}"/>
+      <S i="236" l="224" v="{[0x5ddb0-0x5dde0)}"/>
+      <S i="237" l="225" v="{[0x5df00-0x5df20)}"/>
+      <L i="238" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5df20-0x5df21)}">
+        <S i="239" l="225" v="{[0x5df20-0x5df30)}"/>
+      </L>
+    </P>
+    <P i="240" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3sumENS_6detail9ReduceSeqEEC1ERKS6_" l="183" v="{[0x5e380-0x5e381)}">
+      <S i="241" l="0" v="{[0x290-0x300)}"/>
+      <S i="242" l="183" v="{[0x5e380-0x5e560) [0x5e570-0x5e600)}"/>
+      <C i="243" l="183" v="{[0x5e560-0x5e570)}" t="0x55600" d="NVIDIA sm_70"/>
+      <L i="244" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5e600-0x5e601)}">
+        <S i="245" l="183" v="{[0x5e600-0x5e610)}"/>
+      </L>
+    </P>
+    <P i="246" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3minENS_6detail9ReduceSeqEEC2Eii" l="168" v="{[0x5ec80-0x5ec81)}">
+      <S i="247" l="0" v="{[0x290-0x300)}"/>
+      <S i="248" l="168" v="{[0x5ec80-0x5ee60) [0x5ee70-0x5ef00)}"/>
+      <C i="249" l="168" v="{[0x5ee60-0x5ee70)}" t="0x55c00" d="NVIDIA sm_70"/>
+      <L i="250" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5ef00-0x5ef01)}">
+        <S i="251" l="168" v="{[0x5ef00-0x5ef10)}"/>
+      </L>
+    </P>
+    <P i="252" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEED2Ev" l="251" v="{[0x5f600-0x5f601)}">
+      <S i="253" l="0" v="{[0x1d0-0x200)}"/>
+      <S i="254" l="251" v="{[0x5f600-0x5f740) [0x5f750-0x5f7c0)}"/>
+      <C i="255" l="251" v="{[0x5f740-0x5f750)}" t="0x56900" d="NVIDIA sm_70"/>
+      <L i="256" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x5f7c0-0x5f7c1)}">
+        <S i="257" l="251" v="{[0x5f7c0-0x5f7d0)}"/>
+      </L>
+    </P>
+    <P i="258" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::~BaseCombinable()" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEED1Ev" l="246" v="{[0x5f800-0x5f801)}">
+      <S i="259" l="0" v="{[0xbe0-0xc00)}"/>
+      <S i="260" l="246" v="{[0x5f800-0x5fa90)}"/>
+      <S i="261" l="248" v="{[0x5fa90-0x5fcf0)}"/>
+      <S i="262" l="249" v="{[0x5fcf0-0x5ffa0)}"/>
+      <S i="263" l="251" v="{[0x602c0-0x603d0)}"/>
+      <A i="264" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="265" l="72" v="{[0x5ffa0-0x60110) [0x60120-0x602c0)}"/>
+        <C i="266" l="72" v="{[0x60110-0x60120)}" t="0x5bb00" d="NVIDIA sm_70"/>
+      </A>
+      <L i="267" l="251" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x603d0-0x603d1)}">
+        <S i="268" l="251" v="{[0x603d0-0x603e0)}"/>
+      </L>
+    </P>
+    <P i="269" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::BaseCombinable(int, int)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEEC1Eii" l="222" v="{[0x60700-0x60701)}">
+      <S i="270" l="0" v="{[0x2b0-0x300)}"/>
+      <S i="271" l="222" v="{[0x60700-0x60830)}"/>
+      <S i="272" l="223" v="{[0x60860-0x60980)}"/>
+      <S i="273" l="224" v="{[0x60830-0x60860)}"/>
+      <S i="274" l="225" v="{[0x60980-0x609a0)}"/>
+      <L i="275" l="225" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x609a0-0x609a1)}">
+        <S i="276" l="225" v="{[0x609a0-0x609b0)}"/>
+      </L>
+    </P>
+    <P i="277" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEEC1ERKS8_" l="237" v="{[0x61100-0x61101)}">
+      <S i="278" l="0" v="{[0x4f0-0x500)}"/>
+      <S i="279" l="237" v="{[0x61100-0x611f0)}"/>
+      <S i="280" l="238" v="{[0x611f0-0x613e0)}"/>
+      <S i="281" l="239" v="{[0x613e0-0x614e0)}"/>
+      <S i="282" l="240" v="{[0x614e0-0x615c0)}"/>
+      <S i="283" l="242" v="{[0x615c0-0x615e0)}"/>
+      <L i="284" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x615e0-0x615e1)}">
+        <S i="285" l="242" v="{[0x615e0-0x615f0)}"/>
+      </L>
+    </P>
+    <P i="286" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::combine(int const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEE7combineERKi" l="255" v="{[0x61800-0x61801)}">
+      <S i="287" l="0" v="{[0x990-0xa00)}"/>
+      <S i="288" l="255" v="{[0x61800-0x61cd0) [0x62000-0x62180)}"/>
+      <A i="289" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="290" l="72" v="{[0x61cd0-0x61e40) [0x61e50-0x62000)}"/>
+        <C i="291" l="72" v="{[0x61e40-0x61e50)}" t="0x5bb00" d="NVIDIA sm_70"/>
+      </A>
+      <L i="292" l="255" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x62180-0x62181)}">
+        <S i="293" l="255" v="{[0x62180-0x62190)}"/>
+      </L>
+    </P>
+    <P i="294" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::min, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3minENS_6detail9ReduceSeqEEC2ERKS6_" l="183" v="{[0x62480-0x62481)}">
+      <S i="295" l="0" v="{[0x290-0x300)}"/>
+      <S i="296" l="183" v="{[0x62480-0x62660) [0x62670-0x62700)}"/>
+      <C i="297" l="183" v="{[0x62660-0x62670)}" t="0x59700" d="NVIDIA sm_70"/>
+      <L i="298" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x62700-0x62701)}">
+        <S i="299" l="183" v="{[0x62700-0x62710)}"/>
+      </L>
+    </P>
+    <P i="300" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt;::BaseReduce(int, int)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3sumENS_6detail9ReduceSeqEEC1Eii" l="165" v="{[0x62900-0x62901)}">
+      <S i="301" l="0" v="{[0x310-0x380)}"/>
+      <S i="302" l="165" v="{[0x62900-0x62aa0)}"/>
+      <S i="303" l="166" v="{[0x62ae0-0x62b40)}"/>
+      <S i="304" l="167" v="{[0x62aa0-0x62ae0)}"/>
+      <S i="305" l="168" v="{[0x62b50-0x62c00)}"/>
+      <C i="306" l="166" v="{[0x62b40-0x62b50)}" t="0x62c80" d="NVIDIA sm_70"/>
+      <L i="307" l="168" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x62c00-0x62c01)}">
+        <S i="308" l="168" v="{[0x62c00-0x62c10)}"/>
+      </L>
+    </P>
+    <P i="309" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::min&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; &gt;::combine(int const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3minIiEENS_6detail9ReduceSeqIiS4_EEE7combineERKi" l="255" v="{[0x63280-0x63281)}">
+      <S i="310" l="0" v="{[0x990-0xa00)}"/>
+      <S i="311" l="255" v="{[0x63280-0x63750) [0x63a80-0x63c00)}"/>
+      <A i="312" l="72" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="313" l="72" v="{[0x63750-0x638c0) [0x638d0-0x63a80)}"/>
+        <C i="314" l="72" v="{[0x638c0-0x638d0)}" t="0x5df80" d="NVIDIA sm_70"/>
+      </A>
+      <L i="315" l="255" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x63c00-0x63c01)}">
+        <S i="316" l="255" v="{[0x63c00-0x63c10)}"/>
+      </L>
+    </P>
+    <P i="317" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt;::BaseReduce(RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::max, RAJA::detail::ReduceSeq&gt; const&amp;)" ln="_ZN4RAJA6reduce6detail10BaseReduceIiNS0_3maxENS_6detail9ReduceSeqEEC2ERKS6_" l="183" v="{[0x63d00-0x63d01)}">
+      <S i="318" l="0" v="{[0x290-0x300)}"/>
+      <S i="319" l="183" v="{[0x63d00-0x63ee0) [0x63ef0-0x63f80)}"/>
+      <C i="320" l="183" v="{[0x63ee0-0x63ef0)}" t="0x5b000" d="NVIDIA sm_70"/>
+      <L i="321" l="183" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x63f80-0x63f81)}">
+        <S i="322" l="183" v="{[0x63f80-0x63f90)}"/>
+      </L>
+    </P>
+    <P i="323" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::sum&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3sumIiEENS_6detail9ReduceSeqIiS4_EEEC2ERKS8_" l="242" v="{[0x64000-0x64001)}">
+      <S i="324" l="0" v="{[0x290-0x300)}"/>
+      <S i="325" l="242" v="{[0x64000-0x641e0) [0x641f0-0x64280)}"/>
+      <C i="326" l="242" v="{[0x641e0-0x641f0)}" t="0x5b300" d="NVIDIA sm_70"/>
+      <L i="327" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x64280-0x64281)}">
+        <S i="328" l="242" v="{[0x64280-0x64290)}"/>
+      </L>
+    </P>
+    <P i="329" n="RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt;::BaseCombinable(RAJA::reduce::detail::BaseCombinable&lt;int, RAJA::reduce::max&lt;int&gt;, RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; &gt; const&amp;)" ln="_ZN4RAJA6reduce6detail14BaseCombinableIiNS0_3maxIiEENS_6detail9ReduceSeqIiS4_EEEC1ERKS8_" l="237" v="{[0x64300-0x64301)}">
+      <S i="330" l="0" v="{[0x4f0-0x500)}"/>
+      <S i="331" l="237" v="{[0x64300-0x643f0)}"/>
+      <S i="332" l="238" v="{[0x643f0-0x645e0)}"/>
+      <S i="333" l="239" v="{[0x645e0-0x646e0)}"/>
+      <S i="334" l="240" v="{[0x646e0-0x647c0)}"/>
+      <S i="335" l="242" v="{[0x647c0-0x647e0)}"/>
+      <L i="336" l="242" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x647e0-0x647e1)}">
+        <S i="337" l="242" v="{[0x647e0-0x647f0)}"/>
+      </L>
+    </P>
+    <P i="338" n="RAJA::reduce::detail::BaseReduce&lt;int, RAJA::reduce::sum, RAJA::detail::ReduceSeq&gt;::combine(int const&amp;) const" ln="_ZNK4RAJA6reduce6detail10BaseReduceIiNS0_3sumENS_6detail9ReduceSeqEE7combineERKi" l="196" v="{[0x64b00-0x64b01)}">
+      <S i="339" l="196" v="{[0x64b00-0x64d30) [0x64d40-0x64e70)}"/>
+      <C i="340" l="196" v="{[0x64d30-0x64d40)}" t="0x59c80" d="NVIDIA sm_70"/>
+      <L i="341" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/pattern/detail/reduce.hpp" v="{[0x64e70-0x64e71)}">
+        <S i="342" l="196" v="{[0x64e70-0x64e80)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="343" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp">
+    <P i="344" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3sumIiEEEC1ERKS5_" l="49" v="{[0x55600-0x55601)}">
+      <S i="345" l="0" v="{[0x290-0x300)}"/>
+      <S i="346" l="49" v="{[0x55600-0x557e0) [0x557f0-0x55880)}"/>
+      <C i="347" l="49" v="{[0x557e0-0x557f0)}" t="0x64000" d="NVIDIA sm_70"/>
+      <L i="348" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x55880-0x55881)}">
+        <S i="349" l="49" v="{[0x55880-0x55890)}"/>
+      </L>
+    </P>
+    <P i="350" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3minIiEEEC2Eii" l="58" v="{[0x55900-0x55901)}">
+      <S i="351" l="0" v="{[0x290-0x300)}"/>
+      <S i="352" l="58" v="{[0x55900-0x55ae0) [0x55af0-0x55b80)}"/>
+      <C i="353" l="58" v="{[0x55ae0-0x55af0)}" t="0x5e680" d="NVIDIA sm_70"/>
+      <L i="354" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x55b80-0x55b81)}">
+        <S i="355" l="58" v="{[0x55b80-0x55b90)}"/>
+      </L>
+    </P>
+    <P i="356" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3maxIiEEEC1ERKS5_" l="49" v="{[0x58180-0x58181)}">
+      <S i="357" l="0" v="{[0x290-0x300)}"/>
+      <S i="358" l="49" v="{[0x58180-0x58360) [0x58370-0x58400)}"/>
+      <C i="359" l="49" v="{[0x58360-0x58370)}" t="0x57500" d="NVIDIA sm_70"/>
+      <L i="360" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x58400-0x58401)}">
+        <S i="361" l="49" v="{[0x58400-0x58410)}"/>
+      </L>
+    </P>
+    <P i="362" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3sumIiEEEC2Eii" l="58" v="{[0x5a800-0x5a801)}">
+      <S i="363" l="0" v="{[0x290-0x300)}"/>
+      <S i="364" l="58" v="{[0x5a800-0x5a9e0) [0x5a9f0-0x5aa80)}"/>
+      <C i="365" l="58" v="{[0x5a9e0-0x5a9f0)}" t="0x62c80" d="NVIDIA sm_70"/>
+      <L i="366" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5aa80-0x5aa81)}">
+        <S i="367" l="58" v="{[0x5aa80-0x5aa90)}"/>
+      </L>
+    </P>
+    <P i="368" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3minIiEEEC1ERKS5_" l="49" v="{[0x5c200-0x5c201)}">
+      <S i="369" l="0" v="{[0x290-0x300)}"/>
+      <S i="370" l="49" v="{[0x5c200-0x5c3e0) [0x5c3f0-0x5c480)}"/>
+      <C i="371" l="49" v="{[0x5c3e0-0x5c3f0)}" t="0x54180" d="NVIDIA sm_70"/>
+      <L i="372" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5c480-0x5c481)}">
+        <S i="373" l="49" v="{[0x5c480-0x5c490)}"/>
+      </L>
+    </P>
+    <P i="374" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3maxIiEEEC2Eii" l="58" v="{[0x5c500-0x5c501)}">
+      <S i="375" l="0" v="{[0x290-0x300)}"/>
+      <S i="376" l="58" v="{[0x5c500-0x5c6e0) [0x5c6f0-0x5c780)}"/>
+      <C i="377" l="58" v="{[0x5c6e0-0x5c6f0)}" t="0x64e80" d="NVIDIA sm_70"/>
+      <L i="378" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5c780-0x5c781)}">
+        <S i="379" l="58" v="{[0x5c780-0x5c790)}"/>
+      </L>
+    </P>
+    <P i="380" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3minIiEEEC1Eii" l="58" v="{[0x5e680-0x5e681)}">
+      <S i="381" l="0" v="{[0x290-0x300)}"/>
+      <S i="382" l="58" v="{[0x5e680-0x5e860) [0x5e870-0x5e900)}"/>
+      <C i="383" l="58" v="{[0x5e860-0x5e870)}" t="0x58800" d="NVIDIA sm_70"/>
+      <L i="384" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5e900-0x5e901)}">
+        <S i="385" l="58" v="{[0x5e900-0x5e910)}"/>
+      </L>
+    </P>
+    <P i="386" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3maxIiEEEC2ERKS5_" l="49" v="{[0x5e980-0x5e981)}">
+      <S i="387" l="0" v="{[0x290-0x300)}"/>
+      <S i="388" l="49" v="{[0x5e980-0x5eb60) [0x5eb70-0x5ec00)}"/>
+      <C i="389" l="49" v="{[0x5eb60-0x5eb70)}" t="0x58180" d="NVIDIA sm_70"/>
+      <L i="390" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5ec00-0x5ec01)}">
+        <S i="391" l="49" v="{[0x5ec00-0x5ec10)}"/>
+      </L>
+    </P>
+    <P i="392" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3sumIiEEEC2ERKS5_" l="49" v="{[0x5f300-0x5f301)}">
+      <S i="393" l="0" v="{[0x290-0x300)}"/>
+      <S i="394" l="49" v="{[0x5f300-0x5f4e0) [0x5f4f0-0x5f580)}"/>
+      <C i="395" l="49" v="{[0x5f4e0-0x5f4f0)}" t="0x55600" d="NVIDIA sm_70"/>
+      <L i="396" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x5f580-0x5f581)}">
+        <S i="397" l="49" v="{[0x5f580-0x5f590)}"/>
+      </L>
+    </P>
+    <P i="398" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::sum&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3sumIiEEEC1Eii" l="58" v="{[0x62c80-0x62c81)}">
+      <S i="399" l="0" v="{[0x290-0x300)}"/>
+      <S i="400" l="58" v="{[0x62c80-0x62e60) [0x62e70-0x62f00)}"/>
+      <C i="401" l="58" v="{[0x62e60-0x62e70)}" t="0x5d980" d="NVIDIA sm_70"/>
+      <L i="402" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x62f00-0x62f01)}">
+        <S i="403" l="58" v="{[0x62f00-0x62f10)}"/>
+      </L>
+    </P>
+    <P i="404" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt;::ReduceSeq(RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::min&lt;int&gt; &gt; const&amp;)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3minIiEEEC2ERKS5_" l="49" v="{[0x62f80-0x62f81)}">
+      <S i="405" l="0" v="{[0x290-0x300)}"/>
+      <S i="406" l="49" v="{[0x62f80-0x63160) [0x63170-0x63200)}"/>
+      <C i="407" l="49" v="{[0x63160-0x63170)}" t="0x5c200" d="NVIDIA sm_70"/>
+      <L i="408" l="49" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x63200-0x63201)}">
+        <S i="409" l="49" v="{[0x63200-0x63210)}"/>
+      </L>
+    </P>
+    <P i="410" n="RAJA::detail::ReduceSeq&lt;int, RAJA::reduce::max&lt;int&gt; &gt;::ReduceSeq(int, int)" ln="_ZN4RAJA6detail9ReduceSeqIiNS_6reduce3maxIiEEEC1Eii" l="58" v="{[0x64e80-0x64e81)}">
+      <S i="411" l="0" v="{[0x290-0x300)}"/>
+      <S i="412" l="58" v="{[0x64e80-0x65060) [0x65070-0x65100)}"/>
+      <C i="413" l="58" v="{[0x65060-0x65070)}" t="0x5b800" d="NVIDIA sm_70"/>
+      <L i="414" l="58" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/policy/sequential/reduce.hpp" v="{[0x65100-0x65101)}">
+        <S i="415" l="58" v="{[0x65100-0x65110)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="416" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp">
+    <P i="417" n="RAJA::operators::plus&lt;int, int, int&gt;::operator()(int const&amp;, int const&amp;) const" ln="_ZNK4RAJA9operators4plusIiiiEclERKiS4_" l="313" v="{[0x55000-0x55001)}">
+      <S i="418" l="0" v="{[0x2b0-0x300)}"/>
+      <S i="419" l="313" v="{[0x55000-0x55130)}"/>
+      <S i="420" l="316" v="{[0x55130-0x55260) [0x55280-0x552a0)}"/>
+      <L i="421" l="316" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x55260-0x55261)}">
+        <S i="422" l="316" v="{[0x55260-0x55280)}"/>
+      </L>
+      <L i="423" l="316" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x552a0-0x552a1)}">
+        <S i="424" l="316" v="{[0x552a0-0x552b0)}"/>
+      </L>
+    </P>
+    <P i="425" n="RAJA::operators::maximum&lt;int, int, int&gt;::operator()(int const&amp;, int const&amp;) const" ln="_ZNK4RAJA9operators7maximumIiiiEclERKiS4_" l="445" v="{[0x5bb00-0x5bb01)}">
+      <S i="426" l="0" v="{[0x3c0-0x400)}"/>
+      <S i="427" l="445" v="{[0x5bb00-0x5bc30)}"/>
+      <S i="428" l="448" v="{[0x5bc30-0x5be70) [0x5be90-0x5beb0)}"/>
+      <L i="429" l="448" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x5be70-0x5be71)}">
+        <S i="430" l="448" v="{[0x5be70-0x5be90)}"/>
+      </L>
+      <L i="431" l="448" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x5beb0-0x5beb1)}">
+        <S i="432" l="448" v="{[0x5beb0-0x5bec0)}"/>
+      </L>
+    </P>
+    <P i="433" n="RAJA::operators::minimum&lt;int, int, int&gt;::operator()(int const&amp;, int const&amp;) const" ln="_ZNK4RAJA9operators7minimumIiiiEclERKiS4_" l="431" v="{[0x5df80-0x5df81)}">
+      <S i="434" l="0" v="{[0x3c0-0x400)}"/>
+      <S i="435" l="431" v="{[0x5df80-0x5e0b0)}"/>
+      <S i="436" l="434" v="{[0x5e0b0-0x5e2f0) [0x5e310-0x5e330)}"/>
+      <L i="437" l="434" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x5e2f0-0x5e2f1)}">
+        <S i="438" l="434" v="{[0x5e2f0-0x5e310)}"/>
+      </L>
+      <L i="439" l="434" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0x5e330-0x5e331)}">
+        <S i="440" l="434" v="{[0x5e330-0x5e340)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="441" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/tpl/cub/cub/util_device.cuh">
+    <P i="442" n="cub::EmptyKernel&lt;void&gt;()" ln="_ZN3cub11EmptyKernelIvEEvv" l="110" v="{[0x63c80-0x63c81)}">
+      <S i="443" l="0" v="{[0x40-0x80)}"/>
+      <S i="444" l="110" v="{[0x63c80-0x63cc0)}"/>
+    </P>
+  </F>
+  <F i="445" n="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h">
+    <P i="446" n="std::forward&lt;rajaperf::basic::REDUCE3_INT::runKernel(rajaperf::VariantID)::{lambda(long)#1}&gt;(std::remove_reference&lt;rajaperf::basic::REDUCE3_INT::runKernel(rajaperf::VariantID)::{lambda(long)#1}&gt;::type&amp;)" ln="_ZSt7forwardIZN8rajaperf5basic11REDUCE3_INT9runKernelENS0_9VariantIDEEUllE_EOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x58480-0x58481)}">
+      <S i="447" l="0" v="{[0x360-0x380)}"/>
+      <S i="448" l="73" v="{[0x58480-0x58620)}"/>
+      <S i="449" l="74" v="{[0x58620-0x58770) [0x58790-0x587d0)}"/>
+      <L i="450" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x58770-0x58771)}">
+        <S i="451" l="74" v="{[0x58770-0x58790)}"/>
+      </L>
+      <L i="452" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x587d0-0x587d1)}">
+        <S i="453" l="74" v="{[0x587d0-0x587e0)}"/>
+      </L>
+    </P>
+    <P i="454" n="std::forward&lt;RAJA::policy::loop::loop_exec&gt;(std::remove_reference&lt;RAJA::policy::loop::loop_exec&gt;::type&amp;)" ln="_ZSt7forwardIN4RAJA6policy4loop9loop_execEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x60d80-0x60d81)}">
+      <S i="455" l="0" v="{[0x360-0x380)}"/>
+      <S i="456" l="73" v="{[0x60d80-0x60f20)}"/>
+      <S i="457" l="74" v="{[0x60f20-0x61070) [0x61090-0x610d0)}"/>
+      <L i="458" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x61070-0x61071)}">
+        <S i="459" l="74" v="{[0x61070-0x61090)}"/>
+      </L>
+      <L i="460" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x610d0-0x610d1)}">
+        <S i="461" l="74" v="{[0x610d0-0x610e0)}"/>
+      </L>
+    </P>
+    <P i="462" n="std::forward&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(std::remove_reference&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::type&amp;)" ln="_ZSt7forwardIN4RAJA17TypedRangeSegmentIllEEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x65180-0x65181)}">
+      <S i="463" l="0" v="{[0x360-0x380)}"/>
+      <S i="464" l="73" v="{[0x65180-0x65320)}"/>
+      <S i="465" l="74" v="{[0x65320-0x65470) [0x65490-0x654d0)}"/>
+      <L i="466" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x65470-0x65471)}">
+        <S i="467" l="74" v="{[0x65470-0x65490)}"/>
+      </L>
+      <L i="468" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x654d0-0x654d1)}">
+        <S i="469" l="74" v="{[0x654d0-0x654e0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="470" n="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h">
+    <P i="471" n="cudaGetDevice" l="90" v="{[0x54480-0x54481)}">
+      <S i="472" l="0" v="{[0x120-0x180)}"/>
+      <S i="473" l="90" v="{[0x54480-0x54510)}"/>
+      <S i="474" l="92" v="{[0x54510-0x54550) [0x54570-0x54590)}"/>
+      <L i="475" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x54550-0x54551)}">
+        <S i="476" l="92" v="{[0x54550-0x54570)}"/>
+      </L>
+      <L i="477" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x54590-0x54591)}">
+        <S i="478" l="92" v="{[0x54590-0x545a0)}"/>
+      </L>
+    </P>
+    <P i="479" n="cudaFuncGetAttributes" l="80" v="{[0x58b00-0x58b01)}">
+      <S i="480" l="0" v="{[0x310-0x380)}"/>
+      <S i="481" l="80" v="{[0x58b00-0x58d70)}"/>
+      <S i="482" l="82" v="{[0x58d70-0x58db0) [0x58dd0-0x58e00)}"/>
+      <L i="483" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x58db0-0x58db1)}">
+        <S i="484" l="82" v="{[0x58db0-0x58dd0)}"/>
+      </L>
+      <L i="485" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x58e00-0x58e01)}">
+        <S i="486" l="82" v="{[0x58e00-0x58e10)}"/>
+      </L>
+    </P>
+    <P i="487" n="cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags" l="100" v="{[0x5ad00-0x5ad01)}">
+      <S i="488" l="0" v="{[0x2a0-0x300)}"/>
+      <S i="489" l="100" v="{[0x5ad00-0x5af10)}"/>
+      <S i="490" l="102" v="{[0x5af10-0x5af50) [0x5af70-0x5af90)}"/>
+      <L i="491" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x5af50-0x5af51)}">
+        <S i="492" l="102" v="{[0x5af50-0x5af70)}"/>
+      </L>
+      <L i="493" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x5af90-0x5af91)}">
+        <S i="494" l="102" v="{[0x5af90-0x5afa0)}"/>
+      </L>
+    </P>
+    <P i="495" n="cudaOccupancyMaxActiveBlocksPerMultiprocessor" l="95" v="{[0x5d400-0x5d401)}">
+      <S i="496" l="0" v="{[0x260-0x280)}"/>
+      <S i="497" l="95" v="{[0x5d400-0x5d5d0)}"/>
+      <S i="498" l="97" v="{[0x5d5d0-0x5d610) [0x5d630-0x5d650)}"/>
+      <L i="499" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x5d610-0x5d611)}">
+        <S i="500" l="97" v="{[0x5d610-0x5d630)}"/>
+      </L>
+      <L i="501" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x5d650-0x5d651)}">
+        <S i="502" l="97" v="{[0x5d650-0x5d660)}"/>
+      </L>
+    </P>
+    <P i="503" n="cudaMalloc" l="75" v="{[0x60a00-0x60a01)}">
+      <S i="504" l="0" v="{[0x310-0x380)}"/>
+      <S i="505" l="75" v="{[0x60a00-0x60c70)}"/>
+      <S i="506" l="77" v="{[0x60c70-0x60cb0) [0x60cd0-0x60d00)}"/>
+      <L i="507" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x60cb0-0x60cb1)}">
+        <S i="508" l="77" v="{[0x60cb0-0x60cd0)}"/>
+      </L>
+      <L i="509" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x60d00-0x60d01)}">
+        <S i="510" l="77" v="{[0x60d00-0x60d10)}"/>
+      </L>
+    </P>
+    <P i="511" n="cudaDeviceGetAttribute" l="85" v="{[0x61600-0x61601)}">
+      <S i="512" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="513" l="85" v="{[0x61600-0x61710)}"/>
+      <S i="514" l="87" v="{[0x61710-0x61750) [0x61770-0x61790)}"/>
+      <L i="515" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x61750-0x61751)}">
+        <S i="516" l="87" v="{[0x61750-0x61770)}"/>
+      </L>
+      <L i="517" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x61790-0x61791)}">
+        <S i="518" l="87" v="{[0x61790-0x617a0)}"/>
+      </L>
+    </P>
+  </F>
+</LM>
+</HPCToolkitStructure>

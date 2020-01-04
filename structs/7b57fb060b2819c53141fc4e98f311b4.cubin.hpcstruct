@@ -65,12 +65,12 @@
 	l CDATA #REQUIRED
 	v CDATA #IMPLIED
 	t CDATA #IMPLIED
-  d CDATA #IMPLIED>
+	d CDATA #IMPLIED>
 ]>
 <HPCToolkitStructure i="0" version="4.7" n="">
 <LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/7b57fb060b2819c53141fc4e98f311b4.cubin" v="{}">
   <F i="3" n="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h">
-    <P i="4" n="std::remove_reference&lt;std::allocator&lt;char&gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::allocator&lt;char&gt;&amp;&gt;(std::allocator&lt;char&gt;&amp;)" ln="_ZSt4moveIRSaIcEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0xd300-0xd301)}">
+    <P i="4" n="std::move&lt;std::allocator&lt;char&gt;&amp;&gt;(std::allocator&lt;char&gt;&amp;)" ln="_ZSt4moveIRSaIcEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0xd300-0xd301)}">
       <S i="5" l="0" v="{[0x360-0x380)}"/>
       <S i="6" l="98" v="{[0xd300-0xd4a0)}"/>
       <S i="7" l="99" v="{[0xd4a0-0xd5f0) [0xd610-0xd650)}"/>
@@ -81,7 +81,7 @@
         <S i="11" l="99" v="{[0xd650-0xd660)}"/>
       </L>
     </P>
-    <P i="12" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&amp; std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;::type&amp;)" ln="_ZSt7forwardINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0xd980-0xd981)}">
+    <P i="12" n="std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;::type&amp;)" ln="_ZSt7forwardINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0xd980-0xd981)}">
       <S i="13" l="0" v="{[0x360-0x380)}"/>
       <S i="14" l="73" v="{[0xd980-0xdb20)}"/>
       <S i="15" l="74" v="{[0xdb20-0xdc70) [0xdc90-0xdcd0)}"/>
@@ -92,7 +92,7 @@
         <S i="19" l="74" v="{[0xdcd0-0xdce0)}"/>
       </L>
     </P>
-    <P i="20" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp; std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS8_E4typeE" l="73" v="{[0xe700-0xe701)}">
+    <P i="20" n="std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS8_E4typeE" l="73" v="{[0xe700-0xe701)}">
       <S i="21" l="0" v="{[0x360-0x380)}"/>
       <S i="22" l="73" v="{[0xe700-0xe8a0)}"/>
       <S i="23" l="74" v="{[0xe8a0-0xe9f0) [0xea10-0xea50)}"/>

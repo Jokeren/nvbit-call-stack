@@ -65,12 +65,12 @@
 	l CDATA #REQUIRED
 	v CDATA #IMPLIED
 	t CDATA #IMPLIED
-  d CDATA #IMPLIED>
+	d CDATA #IMPLIED>
 ]>
 <HPCToolkitStructure i="0" version="4.7" n="">
 <LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/1f8327658fb5599468e4578ad04ab2ba.cubin" v="{}">
   <F i="3" n="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h">
-    <P i="4" n="rajaperf::KernelBase*&amp;&amp; std::forward&lt;rajaperf::KernelBase*&gt;(std::remove_reference&lt;rajaperf::KernelBase*&gt;::type&amp;)" ln="_ZSt7forwardIPN8rajaperf10KernelBaseEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x28700-0x28701)}">
+    <P i="4" n="std::forward&lt;rajaperf::KernelBase*&gt;(std::remove_reference&lt;rajaperf::KernelBase*&gt;::type&amp;)" ln="_ZSt7forwardIPN8rajaperf10KernelBaseEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x28700-0x28701)}">
       <S i="5" l="0" v="{[0x360-0x380)}"/>
       <S i="6" l="73" v="{[0x28700-0x288a0)}"/>
       <S i="7" l="74" v="{[0x288a0-0x289f0) [0x28a10-0x28a50)}"/>
@@ -81,7 +81,7 @@
         <S i="11" l="74" v="{[0x28a50-0x28a60)}"/>
       </L>
     </P>
-    <P i="12" n="std::remove_reference&lt;std::allocator&lt;rajaperf::VariantID&gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::allocator&lt;rajaperf::VariantID&gt;&amp;&gt;(std::allocator&lt;rajaperf::VariantID&gt;&amp;)" ln="_ZSt4moveIRSaIN8rajaperf9VariantIDEEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x28a80-0x28a81)}">
+    <P i="12" n="std::move&lt;std::allocator&lt;rajaperf::VariantID&gt;&amp;&gt;(std::allocator&lt;rajaperf::VariantID&gt;&amp;)" ln="_ZSt4moveIRSaIN8rajaperf9VariantIDEEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x28a80-0x28a81)}">
       <S i="13" l="0" v="{[0x360-0x380)}"/>
       <S i="14" l="98" v="{[0x28a80-0x28c20)}"/>
       <S i="15" l="99" v="{[0x28c20-0x28d70) [0x28d90-0x28dd0)}"/>
@@ -92,7 +92,7 @@
         <S i="19" l="99" v="{[0x28dd0-0x28de0)}"/>
       </L>
     </P>
-    <P i="20" n="std::remove_reference&lt;rajaperf::KernelID&amp;&gt;::type&amp;&amp; std::move&lt;rajaperf::KernelID&amp;&gt;(rajaperf::KernelID&amp;)" ln="_ZSt4moveIRN8rajaperf8KernelIDEEONSt16remove_referenceIT_E4typeEOS4_" l="98" v="{[0x29000-0x29001)}">
+    <P i="20" n="std::move&lt;rajaperf::KernelID&amp;&gt;(rajaperf::KernelID&amp;)" ln="_ZSt4moveIRN8rajaperf8KernelIDEEONSt16remove_referenceIT_E4typeEOS4_" l="98" v="{[0x29000-0x29001)}">
       <S i="21" l="0" v="{[0x140-0x180)}"/>
       <S i="22" l="98" v="{[0x29000-0x29070)}"/>
       <S i="23" l="99" v="{[0x29070-0x290e0) [0x29100-0x29130)}"/>
@@ -103,7 +103,7 @@
         <S i="27" l="99" v="{[0x29130-0x29140)}"/>
       </L>
     </P>
-    <P i="28" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp; std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS7_E4typeE" l="73" v="{[0x29180-0x29181)}">
+    <P i="28" n="std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS7_E4typeE" l="73" v="{[0x29180-0x29181)}">
       <S i="29" l="0" v="{[0x360-0x380)}"/>
       <S i="30" l="73" v="{[0x29180-0x29320)}"/>
       <S i="31" l="74" v="{[0x29320-0x29470) [0x29490-0x294d0)}"/>
@@ -114,7 +114,7 @@
         <S i="35" l="74" v="{[0x294d0-0x294e0)}"/>
       </L>
     </P>
-    <P i="36" n="std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp; std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRSt17_Rb_tree_iteratorIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x29500-0x29501)}">
+    <P i="36" n="std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRSt17_Rb_tree_iteratorIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x29500-0x29501)}">
       <S i="37" l="0" v="{[0x360-0x380)}"/>
       <S i="38" l="73" v="{[0x29500-0x296a0)}"/>
       <S i="39" l="74" v="{[0x296a0-0x297f0) [0x29810-0x29850)}"/>
@@ -125,7 +125,7 @@
         <S i="43" l="74" v="{[0x29850-0x29860)}"/>
       </L>
     </P>
-    <P i="44" n="std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp;&amp; std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt; &gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt; &gt;::type&amp;)" ln="_ZSt7forwardISt17_Rb_tree_iteratorIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x29880-0x29881)}">
+    <P i="44" n="std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt; &gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt; &gt;::type&amp;)" ln="_ZSt7forwardISt17_Rb_tree_iteratorIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x29880-0x29881)}">
       <S i="45" l="0" v="{[0x360-0x380)}"/>
       <S i="46" l="73" v="{[0x29880-0x29a20)}"/>
       <S i="47" l="74" v="{[0x29a20-0x29b70) [0x29b90-0x29bd0)}"/>
@@ -136,7 +136,7 @@
         <S i="51" l="74" v="{[0x29bd0-0x29be0)}"/>
       </L>
     </P>
-    <P i="52" n="std::remove_reference&lt;std::allocator&lt;double&gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::allocator&lt;double&gt;&amp;&gt;(std::allocator&lt;double&gt;&amp;)" ln="_ZSt4moveIRSaIdEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x29c00-0x29c01)}">
+    <P i="52" n="std::move&lt;std::allocator&lt;double&gt;&amp;&gt;(std::allocator&lt;double&gt;&amp;)" ln="_ZSt4moveIRSaIdEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x29c00-0x29c01)}">
       <S i="53" l="0" v="{[0x360-0x380)}"/>
       <S i="54" l="98" v="{[0x29c00-0x29da0)}"/>
       <S i="55" l="99" v="{[0x29da0-0x29ef0) [0x29f10-0x29f50)}"/>
@@ -147,7 +147,7 @@
         <S i="59" l="99" v="{[0x29f50-0x29f60)}"/>
       </L>
     </P>
-    <P i="60" n="rajaperf::VariantID const&amp; std::forward&lt;rajaperf::VariantID const&amp;&gt;(std::remove_reference&lt;rajaperf::VariantID const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf9VariantIDEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2a180-0x2a181)}">
+    <P i="60" n="std::forward&lt;rajaperf::VariantID const&amp;&gt;(std::remove_reference&lt;rajaperf::VariantID const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf9VariantIDEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2a180-0x2a181)}">
       <S i="61" l="0" v="{[0x140-0x180)}"/>
       <S i="62" l="73" v="{[0x2a180-0x2a1f0)}"/>
       <S i="63" l="74" v="{[0x2a1f0-0x2a260) [0x2a280-0x2a2b0)}"/>
@@ -158,7 +158,7 @@
         <S i="67" l="74" v="{[0x2a2b0-0x2a2c0)}"/>
       </L>
     </P>
-    <P i="68" n="rajaperf::Executor::FOMGroup&amp;&amp; std::forward&lt;rajaperf::Executor::FOMGroup&gt;(std::remove_reference&lt;rajaperf::Executor::FOMGroup&gt;::type&amp;)" ln="_ZSt7forwardIN8rajaperf8Executor8FOMGroupEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x2a300-0x2a301)}">
+    <P i="68" n="std::forward&lt;rajaperf::Executor::FOMGroup&gt;(std::remove_reference&lt;rajaperf::Executor::FOMGroup&gt;::type&amp;)" ln="_ZSt7forwardIN8rajaperf8Executor8FOMGroupEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x2a300-0x2a301)}">
       <S i="69" l="0" v="{[0x360-0x380)}"/>
       <S i="70" l="73" v="{[0x2a300-0x2a4a0)}"/>
       <S i="71" l="74" v="{[0x2a4a0-0x2a5f0) [0x2a610-0x2a650)}"/>
@@ -169,7 +169,7 @@
         <S i="75" l="74" v="{[0x2a650-0x2a660)}"/>
       </L>
     </P>
-    <P i="76" n="std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp; std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRSt17_Rb_tree_iteratorIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x2a900-0x2a901)}">
+    <P i="76" n="std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::KernelID&gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRSt17_Rb_tree_iteratorIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x2a900-0x2a901)}">
       <S i="77" l="0" v="{[0x360-0x380)}"/>
       <S i="78" l="73" v="{[0x2a900-0x2aaa0)}"/>
       <S i="79" l="74" v="{[0x2aaa0-0x2abf0) [0x2ac10-0x2ac50)}"/>
@@ -180,7 +180,7 @@
         <S i="83" l="74" v="{[0x2ac50-0x2ac60)}"/>
       </L>
     </P>
-    <P i="84" n="std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;)" ln="_ZSt4moveIRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEONSt16remove_referenceIT_E4typeEOS8_" l="98" v="{[0x2ac80-0x2ac81)}">
+    <P i="84" n="std::move&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&gt;(std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;)" ln="_ZSt4moveIRNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEONSt16remove_referenceIT_E4typeEOS8_" l="98" v="{[0x2ac80-0x2ac81)}">
       <S i="85" l="0" v="{[0x360-0x380)}"/>
       <S i="86" l="98" v="{[0x2ac80-0x2ae20)}"/>
       <S i="87" l="99" v="{[0x2ae20-0x2af70) [0x2af90-0x2afd0)}"/>
@@ -191,7 +191,7 @@
         <S i="91" l="99" v="{[0x2afd0-0x2afe0)}"/>
       </L>
     </P>
-    <P i="92" n="std::_Rb_tree_node&lt;rajaperf::VariantID&gt;*&amp; std::forward&lt;std::_Rb_tree_node&lt;rajaperf::VariantID&gt;*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node&lt;rajaperf::VariantID&gt;*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt13_Rb_tree_nodeIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2b000-0x2b001)}">
+    <P i="92" n="std::forward&lt;std::_Rb_tree_node&lt;rajaperf::VariantID&gt;*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node&lt;rajaperf::VariantID&gt;*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt13_Rb_tree_nodeIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2b000-0x2b001)}">
       <S i="93" l="0" v="{[0x360-0x380)}"/>
       <S i="94" l="73" v="{[0x2b000-0x2b1a0)}"/>
       <S i="95" l="74" v="{[0x2b1a0-0x2b2f0) [0x2b310-0x2b350)}"/>
@@ -202,7 +202,7 @@
         <S i="99" l="74" v="{[0x2b350-0x2b360)}"/>
       </L>
     </P>
-    <P i="100" n="std::_Rb_tree_node_base*&amp; std::forward&lt;std::_Rb_tree_node_base*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node_base*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt18_Rb_tree_node_baseEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x2b380-0x2b381)}">
+    <P i="100" n="std::forward&lt;std::_Rb_tree_node_base*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node_base*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt18_Rb_tree_node_baseEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0x2b380-0x2b381)}">
       <S i="101" l="0" v="{[0x360-0x380)}"/>
       <S i="102" l="73" v="{[0x2b380-0x2b520)}"/>
       <S i="103" l="74" v="{[0x2b520-0x2b670) [0x2b690-0x2b6d0)}"/>
@@ -213,7 +213,7 @@
         <S i="107" l="74" v="{[0x2b6d0-0x2b6e0)}"/>
       </L>
     </P>
-    <P i="108" n="std::remove_reference&lt;std::vector&lt;double, std::allocator&lt;double&gt; &gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::vector&lt;double, std::allocator&lt;double&gt; &gt;&amp;&gt;(std::vector&lt;double, std::allocator&lt;double&gt; &gt;&amp;)" ln="_ZSt4moveIRSt6vectorIdSaIdEEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2b700-0x2b701)}">
+    <P i="108" n="std::move&lt;std::vector&lt;double, std::allocator&lt;double&gt; &gt;&amp;&gt;(std::vector&lt;double, std::allocator&lt;double&gt; &gt;&amp;)" ln="_ZSt4moveIRSt6vectorIdSaIdEEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2b700-0x2b701)}">
       <S i="109" l="0" v="{[0x360-0x380)}"/>
       <S i="110" l="98" v="{[0x2b700-0x2b8a0)}"/>
       <S i="111" l="99" v="{[0x2b8a0-0x2b9f0) [0x2ba10-0x2ba50)}"/>
@@ -224,7 +224,7 @@
         <S i="115" l="99" v="{[0x2ba50-0x2ba60)}"/>
       </L>
     </P>
-    <P i="116" n="std::_Rb_tree_node&lt;rajaperf::KernelID&gt;*&amp; std::forward&lt;std::_Rb_tree_node&lt;rajaperf::KernelID&gt;*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node&lt;rajaperf::KernelID&gt;*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt13_Rb_tree_nodeIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2be00-0x2be01)}">
+    <P i="116" n="std::forward&lt;std::_Rb_tree_node&lt;rajaperf::KernelID&gt;*&amp;&gt;(std::remove_reference&lt;std::_Rb_tree_node&lt;rajaperf::KernelID&gt;*&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRPSt13_Rb_tree_nodeIN8rajaperf8KernelIDEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2be00-0x2be01)}">
       <S i="117" l="0" v="{[0x360-0x380)}"/>
       <S i="118" l="73" v="{[0x2be00-0x2bfa0)}"/>
       <S i="119" l="74" v="{[0x2bfa0-0x2c0f0) [0x2c110-0x2c150)}"/>
@@ -235,7 +235,7 @@
         <S i="123" l="74" v="{[0x2c150-0x2c160)}"/>
       </L>
     </P>
-    <P i="124" n="std::remove_reference&lt;rajaperf::VariantID*&amp;&gt;::type&amp;&amp; std::move&lt;rajaperf::VariantID*&amp;&gt;(rajaperf::VariantID*&amp;)" ln="_ZSt4moveIRPN8rajaperf9VariantIDEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2c180-0x2c181)}">
+    <P i="124" n="std::move&lt;rajaperf::VariantID*&amp;&gt;(rajaperf::VariantID*&amp;)" ln="_ZSt4moveIRPN8rajaperf9VariantIDEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2c180-0x2c181)}">
       <S i="125" l="0" v="{[0x360-0x380)}"/>
       <S i="126" l="98" v="{[0x2c180-0x2c320)}"/>
       <S i="127" l="99" v="{[0x2c320-0x2c470) [0x2c490-0x2c4d0)}"/>
@@ -246,7 +246,7 @@
         <S i="131" l="99" v="{[0x2c4d0-0x2c4e0)}"/>
       </L>
     </P>
-    <P i="132" n="std::remove_reference&lt;std::allocator&lt;char&gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::allocator&lt;char&gt;&amp;&gt;(std::allocator&lt;char&gt;&amp;)" ln="_ZSt4moveIRSaIcEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x2c500-0x2c501)}">
+    <P i="132" n="std::move&lt;std::allocator&lt;char&gt;&amp;&gt;(std::allocator&lt;char&gt;&amp;)" ln="_ZSt4moveIRSaIcEEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x2c500-0x2c501)}">
       <S i="133" l="0" v="{[0x360-0x380)}"/>
       <S i="134" l="98" v="{[0x2c500-0x2c6a0)}"/>
       <S i="135" l="99" v="{[0x2c6a0-0x2c7f0) [0x2c810-0x2c850)}"/>
@@ -257,7 +257,7 @@
         <S i="139" l="99" v="{[0x2c850-0x2c860)}"/>
       </L>
     </P>
-    <P i="140" n="rajaperf::KernelID&amp;&amp; std::forward&lt;rajaperf::KernelID&gt;(std::remove_reference&lt;rajaperf::KernelID&gt;::type&amp;)" ln="_ZSt7forwardIN8rajaperf8KernelIDEEOT_RNSt16remove_referenceIS2_E4typeE" l="73" v="{[0x2c880-0x2c881)}">
+    <P i="140" n="std::forward&lt;rajaperf::KernelID&gt;(std::remove_reference&lt;rajaperf::KernelID&gt;::type&amp;)" ln="_ZSt7forwardIN8rajaperf8KernelIDEEOT_RNSt16remove_referenceIS2_E4typeE" l="73" v="{[0x2c880-0x2c881)}">
       <S i="141" l="0" v="{[0x140-0x180)}"/>
       <S i="142" l="73" v="{[0x2c880-0x2c8f0)}"/>
       <S i="143" l="74" v="{[0x2c8f0-0x2c960) [0x2c980-0x2c9b0)}"/>
@@ -268,7 +268,7 @@
         <S i="147" l="74" v="{[0x2c9b0-0x2c9c0)}"/>
       </L>
     </P>
-    <P i="148" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&amp;&amp; std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;::type&amp;)" ln="_ZSt7forwardINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2ca00-0x2ca01)}">
+    <P i="148" n="std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; &gt;::type&amp;)" ln="_ZSt7forwardINSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0x2ca00-0x2ca01)}">
       <S i="149" l="0" v="{[0x360-0x380)}"/>
       <S i="150" l="73" v="{[0x2ca00-0x2cba0)}"/>
       <S i="151" l="74" v="{[0x2cba0-0x2ccf0) [0x2cd10-0x2cd50)}"/>
@@ -279,7 +279,7 @@
         <S i="155" l="74" v="{[0x2cd50-0x2cd60)}"/>
       </L>
     </P>
-    <P i="156" n="rajaperf::Executor::FOMGroup const&amp; std::forward&lt;rajaperf::Executor::FOMGroup const&amp;&gt;(std::remove_reference&lt;rajaperf::Executor::FOMGroup const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf8Executor8FOMGroupEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x2cd80-0x2cd81)}">
+    <P i="156" n="std::forward&lt;rajaperf::Executor::FOMGroup const&amp;&gt;(std::remove_reference&lt;rajaperf::Executor::FOMGroup const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf8Executor8FOMGroupEEOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x2cd80-0x2cd81)}">
       <S i="157" l="0" v="{[0x360-0x380)}"/>
       <S i="158" l="73" v="{[0x2cd80-0x2cf20)}"/>
       <S i="159" l="74" v="{[0x2cf20-0x2d070) [0x2d090-0x2d0d0)}"/>
@@ -290,7 +290,7 @@
         <S i="163" l="74" v="{[0x2d0d0-0x2d0e0)}"/>
       </L>
     </P>
-    <P i="164" n="bool&amp;&amp; std::forward&lt;bool&gt;(std::remove_reference&lt;bool&gt;::type&amp;)" ln="_ZSt7forwardIbEOT_RNSt16remove_referenceIS0_E4typeE" l="73" v="{[0x2d100-0x2d101)}">
+    <P i="164" n="std::forward&lt;bool&gt;(std::remove_reference&lt;bool&gt;::type&amp;)" ln="_ZSt7forwardIbEOT_RNSt16remove_referenceIS0_E4typeE" l="73" v="{[0x2d100-0x2d101)}">
       <S i="165" l="0" v="{[0x140-0x180)}"/>
       <S i="166" l="73" v="{[0x2d100-0x2d170)}"/>
       <S i="167" l="74" v="{[0x2d170-0x2d1e0) [0x2d200-0x2d230)}"/>
@@ -301,7 +301,7 @@
         <S i="171" l="74" v="{[0x2d230-0x2d240)}"/>
       </L>
     </P>
-    <P i="172" n="std::remove_reference&lt;rajaperf::KernelBase*&amp;&gt;::type&amp;&amp; std::move&lt;rajaperf::KernelBase*&amp;&gt;(rajaperf::KernelBase*&amp;)" ln="_ZSt4moveIRPN8rajaperf10KernelBaseEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2d400-0x2d401)}">
+    <P i="172" n="std::move&lt;rajaperf::KernelBase*&amp;&gt;(rajaperf::KernelBase*&amp;)" ln="_ZSt4moveIRPN8rajaperf10KernelBaseEEONSt16remove_referenceIT_E4typeEOS5_" l="98" v="{[0x2d400-0x2d401)}">
       <S i="173" l="0" v="{[0x360-0x380)}"/>
       <S i="174" l="98" v="{[0x2d400-0x2d5a0)}"/>
       <S i="175" l="99" v="{[0x2d5a0-0x2d6f0) [0x2d710-0x2d750)}"/>
@@ -312,7 +312,7 @@
         <S i="179" l="99" v="{[0x2d750-0x2d760)}"/>
       </L>
     </P>
-    <P i="180" n="std::remove_reference&lt;std::vector&lt;rajaperf::VariantID, std::allocator&lt;rajaperf::VariantID&gt; &gt;&amp;&gt;::type&amp;&amp; std::move&lt;std::vector&lt;rajaperf::VariantID, std::allocator&lt;rajaperf::VariantID&gt; &gt;&amp;&gt;(std::vector&lt;rajaperf::VariantID, std::allocator&lt;rajaperf::VariantID&gt; &gt;&amp;)" ln="_ZSt4moveIRSt6vectorIN8rajaperf9VariantIDESaIS2_EEEONSt16remove_referenceIT_E4typeEOS7_" l="98" v="{[0x2d780-0x2d781)}">
+    <P i="180" n="std::move&lt;std::vector&lt;rajaperf::VariantID, std::allocator&lt;rajaperf::VariantID&gt; &gt;&amp;&gt;(std::vector&lt;rajaperf::VariantID, std::allocator&lt;rajaperf::VariantID&gt; &gt;&amp;)" ln="_ZSt4moveIRSt6vectorIN8rajaperf9VariantIDESaIS2_EEEONSt16remove_referenceIT_E4typeEOS7_" l="98" v="{[0x2d780-0x2d781)}">
       <S i="181" l="0" v="{[0x360-0x380)}"/>
       <S i="182" l="98" v="{[0x2d780-0x2d920)}"/>
       <S i="183" l="99" v="{[0x2d920-0x2da70) [0x2da90-0x2dad0)}"/>
@@ -323,7 +323,7 @@
         <S i="187" l="99" v="{[0x2dad0-0x2dae0)}"/>
       </L>
     </P>
-    <P i="188" n="bool&amp; std::forward&lt;bool&amp;&gt;(std::remove_reference&lt;bool&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRbEOT_RNSt16remove_referenceIS1_E4typeE" l="73" v="{[0x2de00-0x2de01)}">
+    <P i="188" n="std::forward&lt;bool&amp;&gt;(std::remove_reference&lt;bool&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRbEOT_RNSt16remove_referenceIS1_E4typeE" l="73" v="{[0x2de00-0x2de01)}">
       <S i="189" l="0" v="{[0x140-0x180)}"/>
       <S i="190" l="73" v="{[0x2de00-0x2de70)}"/>
       <S i="191" l="74" v="{[0x2de70-0x2dee0) [0x2df00-0x2df30)}"/>
@@ -334,7 +334,7 @@
         <S i="195" l="74" v="{[0x2df30-0x2df40)}"/>
       </L>
     </P>
-    <P i="196" n="std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp; std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS8_E4typeE" l="73" v="{[0x2df80-0x2df81)}">
+    <P i="196" n="std::forward&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;(std::remove_reference&lt;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt; const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEEOT_RNSt16remove_referenceIS8_E4typeE" l="73" v="{[0x2df80-0x2df81)}">
       <S i="197" l="0" v="{[0x360-0x380)}"/>
       <S i="198" l="73" v="{[0x2df80-0x2e120)}"/>
       <S i="199" l="74" v="{[0x2e120-0x2e270) [0x2e290-0x2e2d0)}"/>
@@ -345,7 +345,7 @@
         <S i="203" l="74" v="{[0x2e2d0-0x2e2e0)}"/>
       </L>
     </P>
-    <P i="204" n="std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt;&amp;&amp; std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt; &gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt; &gt;::type&amp;)" ln="_ZSt7forwardISt17_Rb_tree_iteratorIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2e300-0x2e301)}">
+    <P i="204" n="std::forward&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt; &gt;(std::remove_reference&lt;std::_Rb_tree_iterator&lt;rajaperf::VariantID&gt; &gt;::type&amp;)" ln="_ZSt7forwardISt17_Rb_tree_iteratorIN8rajaperf9VariantIDEEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2e300-0x2e301)}">
       <S i="205" l="0" v="{[0x360-0x380)}"/>
       <S i="206" l="73" v="{[0x2e300-0x2e4a0)}"/>
       <S i="207" l="74" v="{[0x2e4a0-0x2e5f0) [0x2e610-0x2e650)}"/>
@@ -356,7 +356,7 @@
         <S i="211" l="74" v="{[0x2e650-0x2e660)}"/>
       </L>
     </P>
-    <P i="212" n="rajaperf::KernelID const&amp; std::forward&lt;rajaperf::KernelID const&amp;&gt;(std::remove_reference&lt;rajaperf::KernelID const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf8KernelIDEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2e680-0x2e681)}">
+    <P i="212" n="std::forward&lt;rajaperf::KernelID const&amp;&gt;(std::remove_reference&lt;rajaperf::KernelID const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN8rajaperf8KernelIDEEOT_RNSt16remove_referenceIS4_E4typeE" l="73" v="{[0x2e680-0x2e681)}">
       <S i="213" l="0" v="{[0x140-0x180)}"/>
       <S i="214" l="73" v="{[0x2e680-0x2e6f0)}"/>
       <S i="215" l="74" v="{[0x2e6f0-0x2e760) [0x2e780-0x2e7b0)}"/>
@@ -367,7 +367,7 @@
         <S i="219" l="74" v="{[0x2e7b0-0x2e7c0)}"/>
       </L>
     </P>
-    <P i="220" n="std::remove_reference&lt;double*&amp;&gt;::type&amp;&amp; std::move&lt;double*&amp;&gt;(double*&amp;)" ln="_ZSt4moveIRPdEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x2e800-0x2e801)}">
+    <P i="220" n="std::move&lt;double*&amp;&gt;(double*&amp;)" ln="_ZSt4moveIRPdEONSt16remove_referenceIT_E4typeEOS3_" l="98" v="{[0x2e800-0x2e801)}">
       <S i="221" l="0" v="{[0x360-0x380)}"/>
       <S i="222" l="98" v="{[0x2e800-0x2e9a0)}"/>
       <S i="223" l="99" v="{[0x2e9a0-0x2eaf0) [0x2eb10-0x2eb50)}"/>

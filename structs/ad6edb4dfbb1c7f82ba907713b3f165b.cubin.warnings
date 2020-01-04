@@ -1,0 +1,10 @@
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZN8rajaperf9polybench13POLYBENCH_ADI14runCudaVariantENS_9VariantIDEENKUllllE4_clElll
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf9polybench4adi1EldddddPdS1_S1_S1_
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZZN8rajaperf9polybench13POLYBENCH_ADI14runCudaVariantENS_9VariantIDEENKUllllE0_clElll
+nvdisasm error   : Untrackable indirect branch (needs a SIBCALL annotation?)
+WARNING: unable to parse function: _ZN8rajaperf9polybench4adi2EldddddPdS1_S1_S1_

@@ -1,3 +1,7 @@
+CUBINS_DIR =  /home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins
+STRUCTS_DIR = /home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/structs
+CUBIN_CFG = yes
+
 #*******************************************************************************
 # a helper template makefile used by hpcstruct at runtime
 #
@@ -44,23 +48,19 @@ W := $(patsubst %.hpcstruct,%.warnings,$(S))
 #-------------------------------------------------------------------------------
 $(STRUCTS_DIR)/%.hpcstruct: $(CUBINS_DIR)/%
 	@cubin_name=`basename -s x $<`
+	struct_name=$@
 	warn_name=$(STRUCTS_DIR)/$$cubin_name.warnings
 	echo msg: beginning analysis of $$cubin_name
-	hpcstruct -o $@ $< > $$warn_name 2>&1
+	hpcstruct --gpucfg $(CUBIN_CFG) -o $$struct_name $< > $$warn_name 2>&1
 	if [ -s $$warn_name ]; then
 		echo WARNING: incomplete analysis of $$cubin_name\; see $$warn_name for details
+		if test ! -s $$struct_name ; then
+		    rm -f $$struct_name
+		fi
 	else
 		rm -f $$warn_name
 	fi
 	echo msg: completed analysis of $$cubin_name
-
-
-#-------------------------------------------------------------------------------
-# default target:
-#    invoke make recursively with supplementary arguments
-#-------------------------------------------------------------------------------
-default:
-	@make -k -j --silent analyze
 
 
 #-------------------------------------------------------------------------------
@@ -77,3 +77,4 @@ clean:
 	@rm -f $(S)
 	@echo removing all warnings in $(STRUCTS_DIR)
 	@rm -f $(W)
+

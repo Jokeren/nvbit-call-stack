@@ -1,0 +1,1196 @@
+<?xml version="1.0"?>
+<!DOCTYPE HPCToolkitStructure [
+<!-- ******************************************************************** -->
+<!-- HPCToolkit Structure DTD                                             -->
+<!-- Version 4.7                                                          -->
+<!-- ******************************************************************** -->
+
+<!ELEMENT HPCToolkitStructure (LM)*>
+<!ATTLIST HPCToolkitStructure
+	version CDATA #REQUIRED
+	i       CDATA #REQUIRED
+	n       CDATA #IMPLIED>
+  <!-- Load module: -->
+  <!--   (i)d: unique identifier for cross referencing -->
+  <!--   (n)ame -->
+  <!--   (l)ine range: "beg-end" (inclusive range) -->
+  <!--   (v)ma-range-set: "{[beg-end), [beg-end)...}" -->
+  <!--   (t)arget: target function address -->
+  <!--   (d)evice: device name -->
+  <!ELEMENT LM (F|P)*>
+  <!ATTLIST LM
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- File: -->
+  <!ELEMENT F (P|L|S)*>
+  <!ATTLIST F
+	i CDATA #REQUIRED
+	n CDATA #REQUIRED>
+  <!-- Procedure: ln=link name (if different than name) -->
+  <!ELEMENT P (P|A|L|S|C)*>
+  <!ATTLIST P
+	i  CDATA #REQUIRED
+	n  CDATA #REQUIRED
+	ln CDATA #IMPLIED
+	l  CDATA #IMPLIED
+	s  CDATA #IMPLIED
+	v  CDATA #IMPLIED>
+  <!-- Alien: (f)ilename -->
+  <!ELEMENT A (A|L|S|C)*>
+  <!ATTLIST A
+	i CDATA #REQUIRED
+	f CDATA #IMPLIED
+	n CDATA #IMPLIED
+	ln CDATA #IMPLIED
+	l CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Loop -->
+  <!ELEMENT L (A|L|S|C)*>
+  <!ATTLIST L
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	f CDATA #IMPLIED
+	v CDATA #IMPLIED>
+  <!-- Statement -->
+  <!ELEMENT S EMPTY>
+  <!ATTLIST S
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED>
+  <!-- Callsite (a special Statement) -->
+  <!ELEMENT C (C)*>
+  <!ATTLIST C
+	i CDATA #REQUIRED
+	l CDATA #REQUIRED
+	v CDATA #IMPLIED
+	t CDATA #IMPLIED
+	d CDATA #IMPLIED>
+]>
+<HPCToolkitStructure i="0" version="4.7" n="">
+<LM i="2" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/hpctoolkit-raja-perf.exe-measurements/cubins/68b6f775ac9e00f3df86229e8b381b05.cubin" v="{}">
+  <F i="3" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/src/polybench/POLYBENCH_FLOYD_WARSHALL.cpp">
+    <P i="4" n="rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}::VariantID({lambda(long, long, long)#1} const&amp;)" ln="_ZZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS_9VariantIDEENUllllE_C1ERKS3_" l="133" v="{[0xaa180-0xaa181)}">
+      <S i="5" l="0" v="{[0x1160-0x1180)}"/>
+      <S i="6" l="133" v="{[0xaa180-0xaa2a0) [0xaaa40-0xaaad0) [0xab2b0-0xab2d0)}"/>
+      <A i="7" l="75" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/View.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="8" l="75" v="{[0xaa2a0-0xaaa40) [0xaaad0-0xab2b0)}"/>
+      </A>
+      <L i="9" l="133" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/src/polybench/POLYBENCH_FLOYD_WARSHALL.cpp" v="{[0xab2d0-0xab2d1)}">
+        <S i="10" l="133" v="{[0xab2d0-0xab2e0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="11" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp">
+    <P i="12" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4RAJA17TypedRangeSegmentIllEC2EOS1_" l="110" v="{[0x9b580-0x9b581)}">
+      <S i="13" l="0" v="{[0x290-0x300)}"/>
+      <S i="14" l="110" v="{[0x9b580-0x9b760) [0x9b770-0x9b800)}"/>
+      <C i="15" l="110" v="{[0x9b760-0x9b770)}" t="0xaea00" d="NVIDIA sm_70"/>
+      <L i="16" l="110" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0x9b800-0x9b801)}">
+        <S i="17" l="110" v="{[0x9b800-0x9b810)}"/>
+      </L>
+    </P>
+    <P i="18" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(long, long)" ln="_ZN4RAJA17TypedRangeSegmentIllEC2Ell" l="101" v="{[0xa1c00-0xa1c01)}">
+      <S i="19" l="0" v="{[0x350-0x380)}"/>
+      <S i="20" l="101" v="{[0xa1c00-0xa1e80) [0xa1e90-0xa1f40)}"/>
+      <C i="21" l="101" v="{[0xa1e80-0xa1e90)}" t="0xac180" d="NVIDIA sm_70"/>
+      <L i="22" l="101" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0xa1f40-0xa1f41)}">
+        <S i="23" l="101" v="{[0xa1f40-0xa1f50)}"/>
+      </L>
+    </P>
+    <P i="24" n="RAJA::TypedRangeSegment&lt;long, long&gt;::~TypedRangeSegment()" ln="_ZN4RAJA17TypedRangeSegmentIllED2Ev" l="128" v="{[0xa8400-0xa8401)}">
+      <S i="25" l="0" v="{[0x250-0x280)}"/>
+      <S i="26" l="128" v="{[0xa8400-0xa8640)}"/>
+      <L i="27" l="128" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0xa8640-0xa8641)}">
+        <S i="28" l="128" v="{[0xa8640-0xa8650)}"/>
+      </L>
+    </P>
+    <P i="29" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(long, long)" ln="_ZN4RAJA17TypedRangeSegmentIllEC1Ell" l="98" v="{[0xac180-0xac181)}">
+      <S i="30" l="0" v="{[0x5c0-0x600)}"/>
+      <S i="31" l="98" v="{[0xac180-0xac540)}"/>
+      <S i="32" l="99" v="{[0xac540-0xac5a0) [0xac5b0-0xac690)}"/>
+      <S i="33" l="101" v="{[0xac6a0-0xac730)}"/>
+      <C i="34" l="99" v="{[0xac5a0-0xac5b0)}" t="0xa6200" d="NVIDIA sm_70"/>
+      <C i="35" l="99" v="{[0xac690-0xac6a0)}" t="0xa6200" d="NVIDIA sm_70"/>
+      <L i="36" l="101" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0xac730-0xac731)}">
+        <S i="37" l="101" v="{[0xac730-0xac740)}"/>
+      </L>
+    </P>
+    <P i="38" n="RAJA::TypedRangeSegment&lt;long, long&gt;::TypedRangeSegment(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4RAJA17TypedRangeSegmentIllEC1EOS1_" l="107" v="{[0xaea00-0xaea01)}">
+      <S i="39" l="0" v="{[0x4c0-0x500)}"/>
+      <S i="40" l="107" v="{[0xaea00-0xaebe0)}"/>
+      <S i="41" l="108" v="{[0xaebe0-0xaec20) [0xaec30-0xaecb0) [0xaecc0-0xaed60) [0xaed70-0xaedf0)}"/>
+      <S i="42" l="110" v="{[0xaee00-0xaeeb0)}"/>
+      <C i="43" l="108" v="{[0xaec20-0xaec30)}" t="0x9f700" d="NVIDIA sm_70"/>
+      <C i="44" l="108" v="{[0xaecb0-0xaecc0)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <C i="45" l="108" v="{[0xaed60-0xaed70)}" t="0x9f700" d="NVIDIA sm_70"/>
+      <C i="46" l="108" v="{[0xaedf0-0xaee00)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <L i="47" l="110" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/RangeSegment.hpp" v="{[0xaeeb0-0xaeeb1)}">
+        <S i="48" l="110" v="{[0xaeeb0-0xaeec0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="49" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp">
+    <P i="50" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator[](long) const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEixEl" l="184" v="{[0x99a80-0x99a81)}">
+      <S i="51" l="0" v="{[0x290-0x300)}"/>
+      <S i="52" l="184" v="{[0x99a80-0x99b50)}"/>
+      <S i="53" l="186" v="{[0x99b50-0x99cb0) [0x99cd0-0x99d00)}"/>
+      <L i="54" l="186" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x99cb0-0x99cb1)}">
+        <S i="55" l="186" v="{[0x99cb0-0x99cd0)}"/>
+      </L>
+      <L i="56" l="186" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x99d00-0x99d01)}">
+        <S i="57" l="186" v="{[0x99d00-0x99d10)}"/>
+      </L>
+    </P>
+    <P i="58" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC2ERKS3_" l="66" v="{[0x9cc80-0x9cc81)}">
+      <S i="59" l="0" v="{[0x290-0x300)}"/>
+      <S i="60" l="66" v="{[0x9cc80-0x9ce60) [0x9ce70-0x9cf00)}"/>
+      <C i="61" l="66" v="{[0x9ce60-0x9ce70)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <L i="62" l="66" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0x9cf00-0x9cf01)}">
+        <S i="63" l="66" v="{[0x9cf00-0x9cf10)}"/>
+      </L>
+    </P>
+    <P i="64" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator+(long const&amp;) const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEplERKl" l="153" v="{[0x9fd80-0x9fd81)}">
+      <S i="65" l="0" v="{[0x670-0x680)}"/>
+      <S i="66" l="153" v="{[0x9fd80-0xa0090)}"/>
+      <S i="67" l="156" v="{[0xa0090-0xa0260) [0xa0270-0xa03e0)}"/>
+      <C i="68" l="156" v="{[0xa0260-0xa0270)}" t="0xa6200" d="NVIDIA sm_70"/>
+      <L i="69" l="156" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xa03e0-0xa03e1)}">
+        <S i="70" l="156" v="{[0xa03e0-0xa03f0)}"/>
+      </L>
+    </P>
+    <P i="71" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(long const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC1ERKl" l="59" v="{[0xa6200-0xa6201)}">
+      <S i="72" l="0" v="{[0x160-0x180)}"/>
+      <S i="73" l="59" v="{[0xa6200-0xa62d0)}"/>
+      <S i="74" l="60" v="{[0xa62d0-0xa6330)}"/>
+      <S i="75" l="62" v="{[0xa6330-0xa6350)}"/>
+      <L i="76" l="62" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xa6350-0xa6351)}">
+        <S i="77" l="62" v="{[0xa6350-0xa6360)}"/>
+      </L>
+    </P>
+    <P i="78" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator-(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;) const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEmiERKS3_" l="148" v="{[0xa9e80-0xa9e81)}">
+      <S i="79" l="0" v="{[0x2c0-0x300)}"/>
+      <S i="80" l="148" v="{[0xa9e80-0xa9f50)}"/>
+      <S i="81" l="151" v="{[0xa9f50-0xaa0e0) [0xaa100-0xaa130)}"/>
+      <L i="82" l="151" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xaa0e0-0xaa0e1)}">
+        <S i="83" l="151" v="{[0xaa0e0-0xaa100)}"/>
+      </L>
+      <L i="84" l="151" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xaa130-0xaa131)}">
+        <S i="85" l="151" v="{[0xaa130-0xaa140)}"/>
+      </L>
+    </P>
+    <P i="86" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::operator*() const" ln="_ZNK4RAJA9Iterators16numeric_iteratorIllPlEdeEv" l="176" v="{[0xad100-0xad101)}">
+      <S i="87" l="0" v="{[0x210-0x280)}"/>
+      <S i="88" l="176" v="{[0xad100-0xad170)}"/>
+      <S i="89" l="178" v="{[0xad170-0xad2b0) [0xad2d0-0xad300)}"/>
+      <L i="90" l="178" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xad2b0-0xad2b1)}">
+        <S i="91" l="178" v="{[0xad2b0-0xad2d0)}"/>
+      </L>
+      <L i="92" l="178" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xad300-0xad301)}">
+        <S i="93" l="178" v="{[0xad300-0xad310)}"/>
+      </L>
+    </P>
+    <P i="94" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(long const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC2ERKl" l="62" v="{[0xb2e80-0xb2e81)}">
+      <S i="95" l="0" v="{[0x290-0x300)}"/>
+      <S i="96" l="62" v="{[0xb2e80-0xb3060) [0xb3070-0xb3100)}"/>
+      <C i="97" l="62" v="{[0xb3060-0xb3070)}" t="0xa6200" d="NVIDIA sm_70"/>
+      <L i="98" l="62" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xb3100-0xb3101)}">
+        <S i="99" l="62" v="{[0xb3100-0xb3110)}"/>
+      </L>
+    </P>
+    <P i="100" n="RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;::numeric_iterator(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt; const&amp;)" ln="_ZN4RAJA9Iterators16numeric_iteratorIllPlEC1ERKS3_" l="63" v="{[0xb4580-0xb4581)}">
+      <S i="101" l="0" v="{[0x160-0x180)}"/>
+      <S i="102" l="63" v="{[0xb4580-0xb4650)}"/>
+      <S i="103" l="64" v="{[0xb4650-0xb46b0)}"/>
+      <S i="104" l="66" v="{[0xb46b0-0xb46d0)}"/>
+      <L i="105" l="66" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Iterators.hpp" v="{[0xb46d0-0xb46d1)}">
+        <S i="106" l="66" v="{[0xb46d0-0xb46e0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="107" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp">
+    <P i="108" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC2EOS6_" l="51" v="{[0x9dd80-0x9dd81)}">
+      <S i="109" l="0" v="{[0x290-0x300)}"/>
+      <S i="110" l="51" v="{[0x9dd80-0x9df60) [0x9df70-0x9e000)}"/>
+      <C i="111" l="51" v="{[0x9df60-0x9df70)}" t="0xb3b00" d="NVIDIA sm_70"/>
+      <L i="112" l="51" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0x9e000-0x9e001)}">
+        <S i="113" l="51" v="{[0x9e000-0x9e010)}"/>
+      </L>
+    </P>
+    <P i="114" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC2ERKS6_" l="51" v="{[0xa1400-0xa1401)}">
+      <S i="115" l="0" v="{[0x290-0x300)}"/>
+      <S i="116" l="51" v="{[0xa1400-0xa15e0) [0xa15f0-0xa1680)}"/>
+      <C i="117" l="51" v="{[0xa15e0-0xa15f0)}" t="0xab800" d="NVIDIA sm_70"/>
+      <L i="118" l="51" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0xa1680-0xa1681)}">
+        <S i="119" l="51" v="{[0xa1680-0xa1690)}"/>
+      </L>
+    </P>
+    <P i="120" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC2ES5_S5_" l="68" v="{[0xa5300-0xa5301)}">
+      <S i="121" l="0" v="{[0x350-0x380)}"/>
+      <S i="122" l="68" v="{[0xa5300-0xa5580) [0xa5590-0xa5640)}"/>
+      <C i="123" l="68" v="{[0xa5580-0xa5590)}" t="0xa6780" d="NVIDIA sm_70"/>
+      <L i="124" l="68" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0xa5640-0xa5641)}">
+        <S i="125" l="68" v="{[0xa5640-0xa5650)}"/>
+      </L>
+    </P>
+    <P i="126" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC1ES5_S5_" l="65" v="{[0xa6780-0xa6781)}">
+      <S i="127" l="0" v="{[0x3e0-0x400)}"/>
+      <S i="128" l="65" v="{[0xa6780-0xa69a0)}"/>
+      <S i="129" l="66" v="{[0xa69a0-0xa6a00) [0xa6a10-0xa6a90)}"/>
+      <S i="130" l="68" v="{[0xa6aa0-0xa6b50)}"/>
+      <C i="131" l="66" v="{[0xa6a00-0xa6a10)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <C i="132" l="66" v="{[0xa6a90-0xa6aa0)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <L i="133" l="68" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0xa6b50-0xa6b51)}">
+        <S i="134" l="68" v="{[0xa6b50-0xa6b60)}"/>
+      </L>
+    </P>
+    <P i="135" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC1ERKS6_" l="51" v="{[0xab800-0xab801)}">
+      <S i="136" l="51" v="{[0xab800-0xaba20) [0xaba30-0xabad0) [0xabae0-0xabb70)}"/>
+      <C i="137" l="51" v="{[0xaba20-0xaba30)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <C i="138" l="51" v="{[0xabad0-0xabae0)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <L i="139" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0xabb70-0xabb71)}">
+        <S i="140" l="51" v="{[0xabb70-0xabb80)}"/>
+      </L>
+    </P>
+    <P i="141" n="RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;::Span(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4RAJA4impl4SpanINS_9Iterators16numeric_iteratorIllPlEElEC1EOS6_" l="51" v="{[0xb3b00-0xb3b01)}">
+      <S i="142" l="51" v="{[0xb3b00-0xb3d20) [0xb3d30-0xb3dd0) [0xb3de0-0xb3e70)}"/>
+      <C i="143" l="51" v="{[0xb3d20-0xb3d30)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <C i="144" l="51" v="{[0xb3dd0-0xb3de0)}" t="0xb4580" d="NVIDIA sm_70"/>
+      <L i="145" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/internal/Span.hpp" v="{[0xb3e70-0xb3e71)}">
+        <S i="146" l="51" v="{[0xb3e70-0xb3e80)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="147" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Layout.hpp">
+    <P i="148" n="RAJA::detail::LayoutBase_impl&lt;camp::int_seq&lt;long, 0l, 1l&gt;, long, 1l&gt;::LayoutBase_impl&lt;long, -1l&gt;(RAJA::detail::LayoutBase_impl&lt;camp::int_seq&lt;long, 0l, 1l&gt;, long, -1l&gt; const&amp;)" ln="_ZN4RAJA6detail15LayoutBase_implIN4camp7int_seqIlJLl0ELl1EEEElLl1EEC2IlLln1EEERKNS1_IS4_T_XT0_EEE" l="160" v="{[0xa2f00-0xa2f01)}">
+      <S i="149" l="0" v="{[0x1370-0x1380)}"/>
+      <S i="150" l="160" v="{[0xa2f00-0xa3230) [0xa4230-0xa4260)}"/>
+      <A i="151" l="155" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Layout.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="152" l="155" v="{[0xa3230-0xa3570)}"/>
+        <S i="153" l="156" v="{[0xa3570-0xa39b0)}"/>
+        <S i="154" l="157" v="{[0xa39b0-0xa3df0)}"/>
+        <S i="155" l="158" v="{[0xa3df0-0xa4230)}"/>
+      </A>
+      <L i="156" l="160" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Layout.hpp" v="{[0xa4260-0xa4261)}">
+        <S i="157" l="160" v="{[0xa4260-0xa4270)}"/>
+      </L>
+    </P>
+    <P i="158" n="RAJA::detail::LayoutBase_impl&lt;camp::int_seq&lt;long, 0l, 1l&gt;, long, -1l&gt;::LayoutBase_impl&lt;long, long&gt;(long, long)" ln="_ZN4RAJA6detail15LayoutBase_implIN4camp7int_seqIlJLl0ELl1EEEElLln1EEC2IJllEEEDpT_" l="146" v="{[0xafb80-0xafb81)}">
+      <S i="159" l="0" v="{[0x2d70-0x2d80)}"/>
+      <S i="160" l="146" v="{[0xafb80-0xaff30) [0xb28b0-0xb28e0)}"/>
+      <A i="161" l="92" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Layout.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="162" l="92" v="{[0xb06d0-0xb0e30) [0xb0fb0-0xb0ff0)}"/>
+        <S i="163" l="102" v="{[0xb0e30-0xb0fb0) [0xb1480-0xb15d0)}"/>
+        <S i="164" l="137" v="{[0xaff30-0xaff40) [0xaff80-0xb0030) [0xb0180-0xb0190) [0xb01d0-0xb02d0)}"/>
+        <S i="165" l="138" v="{[0xb0030-0xb0180) [0xb02d0-0xb06d0) [0xb0ff0-0xb1480) [0xb15d0-0xb16f0)}"/>
+        <S i="166" l="141" v="{[0xb16f0-0xb2050)}"/>
+        <S i="167" l="142" v="{[0xb2050-0xb28b0)}"/>
+      </A>
+      <A i="168" l="338" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/index/IndexValue.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="169" l="338" v="{[0xaff40-0xaff80) [0xb0190-0xb01d0)}"/>
+      </A>
+      <L i="170" l="146" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Layout.hpp" v="{[0xb28e0-0xb28e1)}">
+        <S i="171" l="146" v="{[0xb28e0-0xb28f0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="172" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp">
+    <P i="173" n="RAJA::operators::plus&lt;long, long, long&gt;::operator()(long const&amp;, long const&amp;) const" ln="_ZNK4RAJA9operators4plusIlllEclERKlS4_" l="313" v="{[0xa4780-0xa4781)}">
+      <S i="174" l="0" v="{[0x320-0x380)}"/>
+      <S i="175" l="313" v="{[0xa4780-0xa48b0)}"/>
+      <S i="176" l="316" v="{[0xa48b0-0xa4a40) [0xa4a60-0xa4a90)}"/>
+      <L i="177" l="316" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0xa4a40-0xa4a41)}">
+        <S i="178" l="316" v="{[0xa4a40-0xa4a60)}"/>
+      </L>
+      <L i="179" l="316" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/Operators.hpp" v="{[0xa4a90-0xa4a91)}">
+        <S i="180" l="316" v="{[0xa4a90-0xa4aa0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="181" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/View.hpp">
+    <P i="182" n="RAJA::View&lt;double, RAJA::detail::LayoutBase_impl&lt;camp::int_seq&lt;long, 0l, 1l&gt;, long, 1l&gt;, double*&gt;::View(RAJA::View&lt;double, RAJA::detail::LayoutBase_impl&lt;camp::int_seq&lt;long, 0l, 1l&gt;, long, 1l&gt;, double*&gt; const&amp;)" ln="_ZN4RAJA4ViewIdNS_6detail15LayoutBase_implIN4camp7int_seqIlJLl0ELl1EEEElLl1EEEPdEC2ERKS8_" l="77" v="{[0x9e680-0x9e681)}">
+      <S i="183" l="0" v="{[0xd50-0xd80)}"/>
+      <S i="184" l="77" v="{[0x9e680-0x9e9b0) [0x9f390-0x9f3c0)}"/>
+      <A i="185" l="75" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/View.hpp" n="&lt;inline&gt;" v="{}">
+        <S i="186" l="75" v="{[0x9e9b0-0x9f390)}"/>
+      </A>
+      <L i="187" l="77" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/RAJA/util/View.hpp" v="{[0x9f3c0-0x9f3c1)}">
+        <S i="188" l="77" v="{[0x9f3c0-0x9f3d0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="189" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/helpers.hpp">
+    <P i="190" n="camp::forward&lt;long&amp;&gt;(camp::type::ref::rem_s&lt;long&amp;&gt;::type&amp;)" ln="_ZN4camp7forwardIRlEEOT_RNS_4type3ref5rem_sIS2_E4typeE" l="194" v="{[0x9b880-0x9b881)}">
+      <S i="191" l="0" v="{[0x140-0x180)}"/>
+      <S i="192" l="194" v="{[0x9b880-0x9b8f0)}"/>
+      <S i="193" l="196" v="{[0x9b8f0-0x9b960) [0x9b980-0x9b9b0)}"/>
+      <L i="194" l="196" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/helpers.hpp" v="{[0x9b960-0x9b961)}">
+        <S i="195" l="196" v="{[0x9b960-0x9b980)}"/>
+      </L>
+      <L i="196" l="196" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/helpers.hpp" v="{[0x9b9b0-0x9b9b1)}">
+        <S i="197" l="196" v="{[0x9b9b0-0x9b9c0)}"/>
+      </L>
+    </P>
+    <P i="198" n="camp::forward&lt;RAJA::operators::plus&lt;long, long, long&gt; &gt;(camp::type::ref::rem_s&lt;RAJA::operators::plus&lt;long, long, long&gt; &gt;::type&amp;)" ln="_ZN4camp7forwardIN4RAJA9operators4plusIlllEEEEOT_RNS_4type3ref5rem_sIS5_E4typeE" l="194" v="{[0xaef00-0xaef01)}">
+      <S i="199" l="0" v="{[0x360-0x380)}"/>
+      <S i="200" l="194" v="{[0xaef00-0xaf0a0)}"/>
+      <S i="201" l="196" v="{[0xaf0a0-0xaf1f0) [0xaf210-0xaf250)}"/>
+      <L i="202" l="196" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/helpers.hpp" v="{[0xaf1f0-0xaf1f1)}">
+        <S i="203" l="196" v="{[0xaf1f0-0xaf210)}"/>
+      </L>
+      <L i="204" l="196" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/helpers.hpp" v="{[0xaf250-0xaf251)}">
+        <S i="205" l="196" v="{[0xaf250-0xaf260)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="206" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp">
+    <P i="207" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IS9_EEOT_" l="95" v="{[0x99d80-0x99d81)}">
+      <S i="208" l="0" v="{[0x290-0x300)}"/>
+      <S i="209" l="95" v="{[0x99d80-0x99f60) [0x99f70-0x9a000)}"/>
+      <C i="210" l="95" v="{[0x99f60-0x99f70)}" t="0xa0700" d="NVIDIA sm_70"/>
+      <L i="211" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9a000-0x9a001)}">
+        <S i="212" l="95" v="{[0x9a000-0x9a010)}"/>
+      </L>
+    </P>
+    <P i="213" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="102" v="{[0x9a080-0x9a081)}">
+      <S i="214" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="215" l="102" v="{[0x9a080-0x9a1c0) [0x9a1e0-0x9a210)}"/>
+      <L i="216" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9a1c0-0x9a1c1)}">
+        <S i="217" l="102" v="{[0x9a1c0-0x9a1e0)}"/>
+      </L>
+      <L i="218" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9a210-0x9a211)}">
+        <S i="219" l="102" v="{[0x9a210-0x9a220)}"/>
+      </L>
+    </P>
+    <P i="220" n="camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, (void*)0&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp5tupleIJN4RAJA4impl4SpanINS1_9Iterators16numeric_iteratorIllPlEElEES8_S8_EEC1IJS8_S8_S8_ELPv0EEEDpOT_" l="225" v="{[0x9a280-0x9a281)}">
+      <S i="221" l="225" v="{[0x9a280-0x9a560)}"/>
+      <S i="222" l="226" v="{[0x9a560-0x9a5a0) [0x9a5b0-0x9a630) [0x9a640-0x9a6c0) [0x9a6d0-0x9a7b0)}"/>
+      <S i="223" l="228" v="{[0x9a7c0-0x9a8f0)}"/>
+      <C i="224" l="226" v="{[0x9a5a0-0x9a5b0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="225" l="226" v="{[0x9a630-0x9a640)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="226" l="226" v="{[0x9a6c0-0x9a6d0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="227" l="226" v="{[0x9a7b0-0x9a7c0)}" t="0xa8900" d="NVIDIA sm_70"/>
+      <L i="228" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9a8f0-0x9a8f1)}">
+        <S i="229" l="228" v="{[0x9a8f0-0x9a900)}"/>
+      </L>
+    </P>
+    <P i="230" n="camp::get&lt;1l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl1ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKSC_" l="339" v="{[0x9aa80-0x9aa81)}">
+      <S i="231" l="0" v="{[0x290-0x300)}"/>
+      <S i="232" l="339" v="{[0x9aa80-0x9ab80)}"/>
+      <S i="233" l="344" v="{[0x9ab80-0x9ac00) [0x9ac10-0x9ac60) [0x9ac80-0x9ad00)}"/>
+      <C i="234" l="344" v="{[0x9ac00-0x9ac10)}" t="0xb3e80" d="NVIDIA sm_70"/>
+      <L i="235" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9ac60-0x9ac61)}">
+        <S i="236" l="344" v="{[0x9ac60-0x9ac80)}"/>
+      </L>
+      <L i="237" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9ad00-0x9ad01)}">
+        <S i="238" l="344" v="{[0x9ad00-0x9ad10)}"/>
+      </L>
+    </P>
+    <P i="239" n="camp::get&lt;1l, camp::tuple&lt;long, long, long&gt; &gt;(camp::tuple&lt;long, long, long&gt;&amp;)" ln="_ZN4camp3getILl1ENS_5tupleIJlllEEEEERNS_13tuple_elementIXT_ET0_E4typeERS4_" l="348" v="{[0x9ad80-0x9ad81)}">
+      <S i="240" l="0" v="{[0x290-0x300)}"/>
+      <S i="241" l="348" v="{[0x9ad80-0x9ae80)}"/>
+      <S i="242" l="353" v="{[0x9ae80-0x9af00) [0x9af10-0x9af60) [0x9af80-0x9b000)}"/>
+      <C i="243" l="353" v="{[0x9af00-0x9af10)}" t="0xa4280" d="NVIDIA sm_70"/>
+      <L i="244" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9af60-0x9af61)}">
+        <S i="245" l="353" v="{[0x9af60-0x9af80)}"/>
+      </L>
+      <L i="246" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9b000-0x9b001)}">
+        <S i="247" l="353" v="{[0x9b000-0x9b010)}"/>
+      </L>
+    </P>
+    <P i="248" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IRKS9_EEOT_" l="95" v="{[0x9b080-0x9b081)}">
+      <S i="249" l="0" v="{[0x290-0x300)}"/>
+      <S i="250" l="95" v="{[0x9b080-0x9b260) [0x9b270-0x9b300)}"/>
+      <C i="251" l="95" v="{[0x9b260-0x9b270)}" t="0xabe80" d="NVIDIA sm_70"/>
+      <L i="252" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9b300-0x9b301)}">
+        <S i="253" l="95" v="{[0x9b300-0x9b310)}"/>
+      </L>
+    </P>
+    <P i="254" n="camp::internal::tuple_storage&lt;0l, rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl0EZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS2_9VariantIDEEUllllE_E9get_innerEv" l="97" v="{[0x9b380-0x9b381)}">
+      <S i="255" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="256" l="97" v="{[0x9b380-0x9b410)}"/>
+      <S i="257" l="99" v="{[0x9b410-0x9b4c0) [0x9b4e0-0x9b510)}"/>
+      <L i="258" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9b4c0-0x9b4c1)}">
+        <S i="259" l="99" v="{[0x9b4c0-0x9b4e0)}"/>
+      </L>
+      <L i="260" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9b510-0x9b511)}">
+        <S i="261" l="99" v="{[0x9b510-0x9b520)}"/>
+      </L>
+    </P>
+    <P i="262" n="camp::internal::tuple_storage&lt;1l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl1EN4RAJA17TypedRangeSegmentIllEEE9get_innerEv" l="97" v="{[0x9bd80-0x9bd81)}">
+      <S i="263" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="264" l="97" v="{[0x9bd80-0x9be10)}"/>
+      <S i="265" l="99" v="{[0x9be10-0x9bec0) [0x9bee0-0x9bf10)}"/>
+      <L i="266" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9bec0-0x9bec1)}">
+        <S i="267" l="99" v="{[0x9bec0-0x9bee0)}"/>
+      </L>
+      <L i="268" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9bf10-0x9bf11)}">
+        <S i="269" l="99" v="{[0x9bf10-0x9bf20)}"/>
+      </L>
+    </P>
+    <P i="270" n="camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, (void*)0&gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp5tupleIJN4RAJA17TypedRangeSegmentIllEES3_S3_EEC1IJS3_S3_S3_ELPv0EEEDpOT_" l="225" v="{[0x9bf80-0x9bf81)}">
+      <S i="271" l="225" v="{[0x9bf80-0x9c260)}"/>
+      <S i="272" l="226" v="{[0x9c260-0x9c2a0) [0x9c2b0-0x9c330) [0x9c340-0x9c3c0) [0x9c3d0-0x9c4b0)}"/>
+      <S i="273" l="228" v="{[0x9c4c0-0x9c5f0)}"/>
+      <C i="274" l="226" v="{[0x9c2a0-0x9c2b0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="275" l="226" v="{[0x9c330-0x9c340)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="276" l="226" v="{[0x9c3c0-0x9c3d0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="277" l="226" v="{[0x9c4b0-0x9c4c0)}" t="0xa2600" d="NVIDIA sm_70"/>
+      <L i="278" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9c5f0-0x9c5f1)}">
+        <S i="279" l="228" v="{[0x9c5f0-0x9c600)}"/>
+      </L>
+    </P>
+    <P i="280" n="camp::internal::tuple_storage&lt;0l, rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::tuple_storage&lt;{lambda(long, long, long)#1} const&amp;&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS2_9VariantIDEEUllllE_EC2IRKS6_EEOT_" l="95" v="{[0x9c600-0x9c601)}">
+      <S i="281" l="0" v="{[0x290-0x300)}"/>
+      <S i="282" l="95" v="{[0x9c600-0x9c7e0) [0x9c7f0-0x9c880)}"/>
+      <C i="283" l="95" v="{[0x9c7e0-0x9c7f0)}" t="0xa8100" d="NVIDIA sm_70"/>
+      <L i="284" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9c880-0x9c881)}">
+        <S i="285" l="95" v="{[0x9c880-0x9c890)}"/>
+      </L>
+    </P>
+    <P i="286" n="camp::make_tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp10make_tupleIJN4RAJA4impl4SpanINS1_9Iterators16numeric_iteratorIllPlEElEES8_S8_EEENS_5tupleIJDpNS_8internal17unwrap_refwrapperINSt5decayIT_E4typeEE4typeEEEEDpOSD_" l="403" v="{[0x9cf80-0x9cf81)}">
+      <S i="287" l="403" v="{[0x9cf80-0x9d260)}"/>
+      <S i="288" l="406" v="{[0x9d260-0x9d2a0) [0x9d2b0-0x9d330) [0x9d340-0x9d3c0) [0x9d3d0-0x9d4b0) [0x9d4c0-0x9d5f0)}"/>
+      <C i="289" l="406" v="{[0x9d2a0-0x9d2b0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="290" l="406" v="{[0x9d330-0x9d340)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="291" l="406" v="{[0x9d3c0-0x9d3d0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="292" l="406" v="{[0x9d4b0-0x9d4c0)}" t="0x9a280" d="NVIDIA sm_70"/>
+      <L i="293" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9d5f0-0x9d5f1)}">
+        <S i="294" l="406" v="{[0x9d5f0-0x9d600)}"/>
+      </L>
+    </P>
+    <P i="295" n="camp::internal::tuple_storage&lt;0l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA17TypedRangeSegmentIllEEEC2IS4_EEOT_" l="95" v="{[0x9d600-0x9d601)}">
+      <S i="296" l="0" v="{[0x290-0x300)}"/>
+      <S i="297" l="95" v="{[0x9d600-0x9d7e0) [0x9d7f0-0x9d880)}"/>
+      <C i="298" l="95" v="{[0x9d7e0-0x9d7f0)}" t="0xaf880" d="NVIDIA sm_70"/>
+      <L i="299" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9d880-0x9d881)}">
+        <S i="300" l="95" v="{[0x9d880-0x9d890)}"/>
+      </L>
+    </P>
+    <P i="301" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;::tuple_helper&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA17TypedRangeSegmentIllEES7_S7_EEEEC2IJS7_S7_S7_EEEDpOT_" l="135" v="{[0x9d900-0x9d901)}">
+      <S i="302" l="0" v="{[0x410-0x480)}"/>
+      <S i="303" l="135" v="{[0x9d900-0x9dc20) [0x9dc30-0x9dd00)}"/>
+      <C i="304" l="135" v="{[0x9dc20-0x9dc30)}" t="0xa2600" d="NVIDIA sm_70"/>
+      <L i="305" l="135" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9dd00-0x9dd01)}">
+        <S i="306" l="135" v="{[0x9dd00-0x9dd10)}"/>
+      </L>
+    </P>
+    <P i="307" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IS9_EEOT_" l="95" v="{[0x9e080-0x9e081)}">
+      <S i="308" l="0" v="{[0x290-0x300)}"/>
+      <S i="309" l="95" v="{[0x9e080-0x9e260) [0x9e270-0x9e300)}"/>
+      <C i="310" l="95" v="{[0x9e260-0x9e270)}" t="0xa6f00" d="NVIDIA sm_70"/>
+      <L i="311" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9e300-0x9e301)}">
+        <S i="312" l="95" v="{[0x9e300-0x9e310)}"/>
+      </L>
+    </P>
+    <P i="313" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IS9_EEOT_" l="89" v="{[0x9e380-0x9e381)}">
+      <S i="314" l="89" v="{[0x9e380-0x9e500)}"/>
+      <S i="315" l="93" v="{[0x9e500-0x9e540) [0x9e550-0x9e5d0)}"/>
+      <S i="316" l="95" v="{[0x9e5e0-0x9e670)}"/>
+      <C i="317" l="93" v="{[0x9e540-0x9e550)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="318" l="93" v="{[0x9e5d0-0x9e5e0)}" t="0xb3b00" d="NVIDIA sm_70"/>
+      <L i="319" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9e670-0x9e671)}">
+        <S i="320" l="95" v="{[0x9e670-0x9e680)}"/>
+      </L>
+    </P>
+    <P i="321" n="camp::get&lt;1l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;&amp;)" ln="_ZN4camp3getILl1ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERNS_13tuple_elementIXT_ET0_E4typeERSC_" l="348" v="{[0x9f400-0x9f401)}">
+      <S i="322" l="0" v="{[0x290-0x300)}"/>
+      <S i="323" l="348" v="{[0x9f400-0x9f500)}"/>
+      <S i="324" l="353" v="{[0x9f500-0x9f580) [0x9f590-0x9f5e0) [0x9f600-0x9f680)}"/>
+      <C i="325" l="353" v="{[0x9f580-0x9f590)}" t="0x9a080" d="NVIDIA sm_70"/>
+      <L i="326" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9f5e0-0x9f5e1)}">
+        <S i="327" l="353" v="{[0x9f5e0-0x9f600)}"/>
+      </L>
+      <L i="328" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9f680-0x9f681)}">
+        <S i="329" l="353" v="{[0x9f680-0x9f690)}"/>
+      </L>
+    </P>
+    <P i="330" n="camp::tuple&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::tuple&lt;{lambda(long, long, long)#1} const&amp;, (void*)0&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp5tupleIJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS1_9VariantIDEEUllllE_EEC1IJRKS5_ELPv0EEEDpOT_" l="225" v="{[0x9fa80-0x9fa81)}">
+      <S i="331" l="225" v="{[0x9fa80-0x9fc00)}"/>
+      <S i="332" l="226" v="{[0x9fc00-0x9fc40) [0x9fc50-0x9fcd0)}"/>
+      <S i="333" l="228" v="{[0x9fce0-0x9fd70)}"/>
+      <C i="334" l="226" v="{[0x9fc40-0x9fc50)}" t="0xb3480" d="NVIDIA sm_70"/>
+      <C i="335" l="226" v="{[0x9fcd0-0x9fce0)}" t="0xa4e00" d="NVIDIA sm_70"/>
+      <L i="336" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0x9fd70-0x9fd71)}">
+        <S i="337" l="228" v="{[0x9fd70-0x9fd80)}"/>
+      </L>
+    </P>
+    <P i="338" n="camp::internal::tuple_storage&lt;2l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA17TypedRangeSegmentIllEEEC2IS4_EEOT_" l="95" v="{[0xa0400-0xa0401)}">
+      <S i="339" l="0" v="{[0x290-0x300)}"/>
+      <S i="340" l="95" v="{[0xa0400-0xa05e0) [0xa05f0-0xa0680)}"/>
+      <C i="341" l="95" v="{[0xa05e0-0xa05f0)}" t="0xb3800" d="NVIDIA sm_70"/>
+      <L i="342" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa0680-0xa0681)}">
+        <S i="343" l="95" v="{[0xa0680-0xa0690)}"/>
+      </L>
+    </P>
+    <P i="344" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IS9_EEOT_" l="89" v="{[0xa0700-0xa0701)}">
+      <S i="345" l="89" v="{[0xa0700-0xa0880)}"/>
+      <S i="346" l="93" v="{[0xa0880-0xa08c0) [0xa08d0-0xa0950)}"/>
+      <S i="347" l="95" v="{[0xa0960-0xa09f0)}"/>
+      <C i="348" l="93" v="{[0xa08c0-0xa08d0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="349" l="93" v="{[0xa0950-0xa0960)}" t="0xb3b00" d="NVIDIA sm_70"/>
+      <L i="350" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa09f0-0xa09f1)}">
+        <S i="351" l="95" v="{[0xa09f0-0xa0a00)}"/>
+      </L>
+    </P>
+    <P i="352" n="camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; const&amp;)" ln="_ZN4camp5tupleIJN4RAJA4impl4SpanINS1_9Iterators16numeric_iteratorIllPlEElEES8_S8_EEC1ERKS9_" l="207" v="{[0xa0a00-0xa0a01)}">
+      <S i="353" l="0" v="{[0x290-0x300)}"/>
+      <S i="354" l="207" v="{[0xa0a00-0xa0be0) [0xa0bf0-0xa0c80)}"/>
+      <C i="355" l="207" v="{[0xa0be0-0xa0bf0)}" t="0xaf280" d="NVIDIA sm_70"/>
+      <L i="356" l="207" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa0c80-0xa0c81)}">
+        <S i="357" l="207" v="{[0xa0c80-0xa0c90)}"/>
+      </L>
+    </P>
+    <P i="358" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="97" v="{[0xa1700-0xa1701)}">
+      <S i="359" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="360" l="97" v="{[0xa1700-0xa1790)}"/>
+      <S i="361" l="99" v="{[0xa1790-0xa1840) [0xa1860-0xa1890)}"/>
+      <L i="362" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa1840-0xa1841)}">
+        <S i="363" l="99" v="{[0xa1840-0xa1860)}"/>
+      </L>
+      <L i="364" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa1890-0xa1891)}">
+        <S i="365" l="99" v="{[0xa1890-0xa18a0)}"/>
+      </L>
+    </P>
+    <P i="366" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;::tuple_helper(camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt; const&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA4impl4SpanINS5_9Iterators16numeric_iteratorIllPlEElEESC_SC_EEEEC2ERKSE_" l="124" v="{[0xa1900-0xa1901)}">
+      <S i="367" l="0" v="{[0x290-0x300)}"/>
+      <S i="368" l="124" v="{[0xa1900-0xa1ae0) [0xa1af0-0xa1b80)}"/>
+      <C i="369" l="124" v="{[0xa1ae0-0xa1af0)}" t="0xaf280" d="NVIDIA sm_70"/>
+      <L i="370" l="124" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa1b80-0xa1b81)}">
+        <S i="371" l="124" v="{[0xa1b80-0xa1b90)}"/>
+      </L>
+    </P>
+    <P i="372" n="camp::make_tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp10make_tupleIJN4RAJA17TypedRangeSegmentIllEES3_S3_EEENS_5tupleIJDpNS_8internal17unwrap_refwrapperINSt5decayIT_E4typeEE4typeEEEEDpOS8_" l="403" v="{[0xa1f80-0xa1f81)}">
+      <S i="373" l="403" v="{[0xa1f80-0xa2260)}"/>
+      <S i="374" l="406" v="{[0xa2260-0xa22a0) [0xa22b0-0xa2330) [0xa2340-0xa23c0) [0xa23d0-0xa24b0) [0xa24c0-0xa25f0)}"/>
+      <C i="375" l="406" v="{[0xa22a0-0xa22b0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="376" l="406" v="{[0xa2330-0xa2340)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="377" l="406" v="{[0xa23c0-0xa23d0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="378" l="406" v="{[0xa24b0-0xa24c0)}" t="0x9bf80" d="NVIDIA sm_70"/>
+      <L i="379" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa25f0-0xa25f1)}">
+        <S i="380" l="406" v="{[0xa25f0-0xa2600)}"/>
+      </L>
+    </P>
+    <P i="381" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;::tuple_helper&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA17TypedRangeSegmentIllEES7_S7_EEEEC1IJS7_S7_S7_EEEDpOT_" l="132" v="{[0xa2600-0xa2601)}">
+      <S i="382" l="0" v="{[0x6e0-0x700)}"/>
+      <S i="383" l="132" v="{[0xa2600-0xa28c0)}"/>
+      <S i="384" l="133" v="{[0xa28c0-0xa2900) [0xa2910-0xa2990) [0xa29a0-0xa2a20) [0xa2a30-0xa2ab0) [0xa2ac0-0xa2b40) [0xa2b50-0xa2bd0)}"/>
+      <S i="385" l="135" v="{[0xa2be0-0xa2cd0)}"/>
+      <C i="386" l="133" v="{[0xa2900-0xa2910)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="387" l="133" v="{[0xa2990-0xa29a0)}" t="0x9d600" d="NVIDIA sm_70"/>
+      <C i="388" l="133" v="{[0xa2a20-0xa2a30)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="389" l="133" v="{[0xa2ab0-0xa2ac0)}" t="0xab300" d="NVIDIA sm_70"/>
+      <C i="390" l="133" v="{[0xa2b40-0xa2b50)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="391" l="133" v="{[0xa2bd0-0xa2be0)}" t="0xa0400" d="NVIDIA sm_70"/>
+      <L i="392" l="135" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa2cd0-0xa2cd1)}">
+        <S i="393" l="135" v="{[0xa2cd0-0xa2ce0)}"/>
+      </L>
+    </P>
+    <P i="394" n="camp::internal::tuple_storage&lt;0l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl0EN4RAJA17TypedRangeSegmentIllEEE9get_innerEv" l="97" v="{[0xa2d00-0xa2d01)}">
+      <S i="395" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="396" l="97" v="{[0xa2d00-0xa2d90)}"/>
+      <S i="397" l="99" v="{[0xa2d90-0xa2e40) [0xa2e60-0xa2e90)}"/>
+      <L i="398" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa2e40-0xa2e41)}">
+        <S i="399" l="99" v="{[0xa2e40-0xa2e60)}"/>
+      </L>
+      <L i="400" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa2e90-0xa2e91)}">
+        <S i="401" l="99" v="{[0xa2e90-0xa2ea0)}"/>
+      </L>
+    </P>
+    <P i="402" n="camp::internal::tuple_storage&lt;1l, long&gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl1ElE9get_innerEv" l="102" v="{[0xa4280-0xa4281)}">
+      <S i="403" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="404" l="102" v="{[0xa4280-0xa43c0) [0xa43e0-0xa4410)}"/>
+      <L i="405" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa43c0-0xa43c1)}">
+        <S i="406" l="102" v="{[0xa43c0-0xa43e0)}"/>
+      </L>
+      <L i="407" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa4410-0xa4411)}">
+        <S i="408" l="102" v="{[0xa4410-0xa4420)}"/>
+      </L>
+    </P>
+    <P i="409" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l&gt;, camp::list&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt; &gt;::tuple_helper&lt;{lambda(long, long, long)#1} const&amp;&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0EEEENS_4listIJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS5_9VariantIDEEUllllE_EEEEC2IJRKS9_EEEDpOT_" l="135" v="{[0xa4480-0xa4481)}">
+      <S i="410" l="0" v="{[0x290-0x300)}"/>
+      <S i="411" l="135" v="{[0xa4480-0xa4660) [0xa4670-0xa4700)}"/>
+      <C i="412" l="135" v="{[0xa4660-0xa4670)}" t="0xa4e00" d="NVIDIA sm_70"/>
+      <L i="413" l="135" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa4700-0xa4701)}">
+        <S i="414" l="135" v="{[0xa4700-0xa4710)}"/>
+      </L>
+    </P>
+    <P i="415" n="camp::get&lt;1l, camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl1ENS_5tupleIJN4RAJA17TypedRangeSegmentIllEES4_S4_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKS7_" l="339" v="{[0xa4b00-0xa4b01)}">
+      <S i="416" l="0" v="{[0x290-0x300)}"/>
+      <S i="417" l="339" v="{[0xa4b00-0xa4c00)}"/>
+      <S i="418" l="344" v="{[0xa4c00-0xa4c80) [0xa4c90-0xa4ce0) [0xa4d00-0xa4d80)}"/>
+      <C i="419" l="344" v="{[0xa4c80-0xa4c90)}" t="0x9bd80" d="NVIDIA sm_70"/>
+      <L i="420" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa4ce0-0xa4ce1)}">
+        <S i="421" l="344" v="{[0xa4ce0-0xa4d00)}"/>
+      </L>
+      <L i="422" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa4d80-0xa4d81)}">
+        <S i="423" l="344" v="{[0xa4d80-0xa4d90)}"/>
+      </L>
+    </P>
+    <P i="424" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l&gt;, camp::list&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt; &gt;::tuple_helper&lt;{lambda(long, long, long)#1} const&amp;&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0EEEENS_4listIJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS5_9VariantIDEEUllllE_EEEEC1IJRKS9_EEEDpOT_" l="132" v="{[0xa4e00-0xa4e01)}">
+      <S i="425" l="132" v="{[0xa4e00-0xa4f80)}"/>
+      <S i="426" l="133" v="{[0xa4f80-0xa4fc0) [0xa4fd0-0xa5050)}"/>
+      <S i="427" l="135" v="{[0xa5060-0xa50f0)}"/>
+      <C i="428" l="133" v="{[0xa4fc0-0xa4fd0)}" t="0xb3480" d="NVIDIA sm_70"/>
+      <C i="429" l="133" v="{[0xa5050-0xa5060)}" t="0x9c600" d="NVIDIA sm_70"/>
+      <L i="430" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa50f0-0xa50f1)}">
+        <S i="431" l="135" v="{[0xa50f0-0xa5100)}"/>
+      </L>
+    </P>
+    <P i="432" n="camp::internal::tuple_storage&lt;2l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl2EN4RAJA17TypedRangeSegmentIllEEE9get_innerEv" l="97" v="{[0xa5100-0xa5101)}">
+      <S i="433" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="434" l="97" v="{[0xa5100-0xa5190)}"/>
+      <S i="435" l="99" v="{[0xa5190-0xa5240) [0xa5260-0xa5290)}"/>
+      <L i="436" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa5240-0xa5241)}">
+        <S i="437" l="99" v="{[0xa5240-0xa5260)}"/>
+      </L>
+      <L i="438" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa5290-0xa5291)}">
+        <S i="439" l="99" v="{[0xa5290-0xa52a0)}"/>
+      </L>
+    </P>
+    <P i="440" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IRKS9_EEOT_" l="95" v="{[0xa5680-0xa5681)}">
+      <S i="441" l="0" v="{[0x290-0x300)}"/>
+      <S i="442" l="95" v="{[0xa5680-0xa5860) [0xa5870-0xa5900)}"/>
+      <C i="443" l="95" v="{[0xa5860-0xa5870)}" t="0xad580" d="NVIDIA sm_70"/>
+      <L i="444" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa5900-0xa5901)}">
+        <S i="445" l="95" v="{[0xa5900-0xa5910)}"/>
+      </L>
+    </P>
+    <P i="446" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IRKS9_EEOT_" l="89" v="{[0xa5980-0xa5981)}">
+      <S i="447" l="89" v="{[0xa5980-0xa5b00)}"/>
+      <S i="448" l="93" v="{[0xa5b00-0xa5b40) [0xa5b50-0xa5bd0)}"/>
+      <S i="449" l="95" v="{[0xa5be0-0xa5c70)}"/>
+      <C i="450" l="93" v="{[0xa5b40-0xa5b50)}" t="0xa6b80" d="NVIDIA sm_70"/>
+      <C i="451" l="93" v="{[0xa5bd0-0xa5be0)}" t="0xab800" d="NVIDIA sm_70"/>
+      <L i="452" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa5c70-0xa5c71)}">
+        <S i="453" l="95" v="{[0xa5c70-0xa5c80)}"/>
+      </L>
+    </P>
+    <P i="454" n="camp::get&lt;0l, camp::tuple&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt; &gt;(camp::tuple_element const&amp;)" ln="_ZN4camp3getILl0ENS_5tupleIJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS2_9VariantIDEEUllllE_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKS9_" l="339" v="{[0xa5f80-0xa5f81)}">
+      <S i="455" l="0" v="{[0x250-0x280)}"/>
+      <S i="456" l="339" v="{[0xa5f80-0xa6080)}"/>
+      <S i="457" l="344" v="{[0xa6080-0xa60c0) [0xa60d0-0xa6120) [0xa6140-0xa61c0)}"/>
+      <C i="458" l="344" v="{[0xa60c0-0xa60d0)}" t="0x9b380" d="NVIDIA sm_70"/>
+      <L i="459" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa6120-0xa6121)}">
+        <S i="460" l="344" v="{[0xa6120-0xa6140)}"/>
+      </L>
+      <L i="461" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa61c0-0xa61c1)}">
+        <S i="462" l="344" v="{[0xa61c0-0xa61d0)}"/>
+      </L>
+    </P>
+    <P i="463" n="camp::tuple&lt;long, long, long&gt;::tuple&lt;true, (void*)0&gt;()" ln="_ZN4camp5tupleIJlllEEC1ILb1ELPv0EEEv" l="203" v="{[0xa6380-0xa6381)}">
+      <S i="464" l="0" v="{[0x3e0-0x400)}"/>
+      <S i="465" l="203" v="{[0xa6380-0xa6730)}"/>
+      <S i="466" l="205" v="{[0xa6730-0xa6750)}"/>
+      <L i="467" l="205" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa6750-0xa6751)}">
+        <S i="468" l="205" v="{[0xa6750-0xa6760)}"/>
+      </L>
+    </P>
+    <P i="469" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IS9_EEOT_" l="89" v="{[0xa6f00-0xa6f01)}">
+      <S i="470" l="89" v="{[0xa6f00-0xa7080)}"/>
+      <S i="471" l="93" v="{[0xa7080-0xa70c0) [0xa70d0-0xa7150)}"/>
+      <S i="472" l="95" v="{[0xa7160-0xa71f0)}"/>
+      <C i="473" l="93" v="{[0xa70c0-0xa70d0)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="474" l="93" v="{[0xa7150-0xa7160)}" t="0xb3b00" d="NVIDIA sm_70"/>
+      <L i="475" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa71f0-0xa71f1)}">
+        <S i="476" l="95" v="{[0xa71f0-0xa7200)}"/>
+      </L>
+    </P>
+    <P i="477" n="camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, (void*)0&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp5tupleIJN4RAJA4impl4SpanINS1_9Iterators16numeric_iteratorIllPlEElEES8_S8_EEC2IJS8_S8_S8_ELPv0EEEDpOT_" l="228" v="{[0xa7200-0xa7201)}">
+      <S i="478" l="0" v="{[0x410-0x480)}"/>
+      <S i="479" l="228" v="{[0xa7200-0xa7520) [0xa7530-0xa7600)}"/>
+      <C i="480" l="228" v="{[0xa7520-0xa7530)}" t="0x9a280" d="NVIDIA sm_70"/>
+      <L i="481" l="228" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa7600-0xa7601)}">
+        <S i="482" l="228" v="{[0xa7600-0xa7610)}"/>
+      </L>
+    </P>
+    <P i="483" n="camp::get&lt;2l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl2ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKSC_" l="339" v="{[0xa7900-0xa7901)}">
+      <S i="484" l="0" v="{[0x290-0x300)}"/>
+      <S i="485" l="339" v="{[0xa7900-0xa7a00)}"/>
+      <S i="486" l="344" v="{[0xa7a00-0xa7a80) [0xa7a90-0xa7ae0) [0xa7b00-0xa7b80)}"/>
+      <C i="487" l="344" v="{[0xa7a80-0xa7a90)}" t="0xa1700" d="NVIDIA sm_70"/>
+      <L i="488" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa7ae0-0xa7ae1)}">
+        <S i="489" l="344" v="{[0xa7ae0-0xa7b00)}"/>
+      </L>
+      <L i="490" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa7b80-0xa7b81)}">
+        <S i="491" l="344" v="{[0xa7b80-0xa7b90)}"/>
+      </L>
+    </P>
+    <P i="492" n="camp::get&lt;2l, camp::tuple&lt;long, long, long&gt; &gt;(camp::tuple&lt;long, long, long&gt;&amp;)" ln="_ZN4camp3getILl2ENS_5tupleIJlllEEEEERNS_13tuple_elementIXT_ET0_E4typeERS4_" l="348" v="{[0xa7c00-0xa7c01)}">
+      <S i="493" l="0" v="{[0x290-0x300)}"/>
+      <S i="494" l="348" v="{[0xa7c00-0xa7d00)}"/>
+      <S i="495" l="353" v="{[0xa7d00-0xa7d80) [0xa7d90-0xa7de0) [0xa7e00-0xa7e80)}"/>
+      <C i="496" l="353" v="{[0xa7d80-0xa7d90)}" t="0xb2900" d="NVIDIA sm_70"/>
+      <L i="497" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa7de0-0xa7de1)}">
+        <S i="498" l="353" v="{[0xa7de0-0xa7e00)}"/>
+      </L>
+      <L i="499" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa7e80-0xa7e81)}">
+        <S i="500" l="353" v="{[0xa7e80-0xa7e90)}"/>
+      </L>
+    </P>
+    <P i="501" n="camp::internal::tuple_storage&lt;0l, long&gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl0ElE9get_innerEv" l="102" v="{[0xa7f00-0xa7f01)}">
+      <S i="502" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="503" l="102" v="{[0xa7f00-0xa8040) [0xa8060-0xa8090)}"/>
+      <L i="504" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa8040-0xa8041)}">
+        <S i="505" l="102" v="{[0xa8040-0xa8060)}"/>
+      </L>
+      <L i="506" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa8090-0xa8091)}">
+        <S i="507" l="102" v="{[0xa8090-0xa80a0)}"/>
+      </L>
+    </P>
+    <P i="508" n="camp::internal::tuple_storage&lt;0l, rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::tuple_storage&lt;{lambda(long, long, long)#1} const&amp;&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS2_9VariantIDEEUllllE_EC1IRKS6_EEOT_" l="89" v="{[0xa8100-0xa8101)}">
+      <S i="509" l="89" v="{[0xa8100-0xa8280)}"/>
+      <S i="510" l="93" v="{[0xa8280-0xa82c0) [0xa82d0-0xa8350)}"/>
+      <S i="511" l="95" v="{[0xa8360-0xa83f0)}"/>
+      <C i="512" l="93" v="{[0xa82c0-0xa82d0)}" t="0xb3480" d="NVIDIA sm_70"/>
+      <C i="513" l="93" v="{[0xa8350-0xa8360)}" t="0xaa180" d="NVIDIA sm_70"/>
+      <L i="514" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa83f0-0xa83f1)}">
+        <S i="515" l="95" v="{[0xa83f0-0xa8400)}"/>
+      </L>
+    </P>
+    <P i="516" n="camp::get&lt;0l, camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl0ENS_5tupleIJN4RAJA17TypedRangeSegmentIllEES4_S4_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKS7_" l="339" v="{[0xa8680-0xa8681)}">
+      <S i="517" l="0" v="{[0x250-0x280)}"/>
+      <S i="518" l="339" v="{[0xa8680-0xa8780)}"/>
+      <S i="519" l="344" v="{[0xa8780-0xa87c0) [0xa87d0-0xa8820) [0xa8840-0xa88c0)}"/>
+      <C i="520" l="344" v="{[0xa87c0-0xa87d0)}" t="0xa2d00" d="NVIDIA sm_70"/>
+      <L i="521" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa8820-0xa8821)}">
+        <S i="522" l="344" v="{[0xa8820-0xa8840)}"/>
+      </L>
+      <L i="523" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa88c0-0xa88c1)}">
+        <S i="524" l="344" v="{[0xa88c0-0xa88d0)}"/>
+      </L>
+    </P>
+    <P i="525" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;::tuple_helper&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA4impl4SpanINS5_9Iterators16numeric_iteratorIllPlEElEESC_SC_EEEEC1IJSC_SC_SC_EEEDpOT_" l="132" v="{[0xa8900-0xa8901)}">
+      <S i="526" l="0" v="{[0x6e0-0x700)}"/>
+      <S i="527" l="132" v="{[0xa8900-0xa8bc0)}"/>
+      <S i="528" l="133" v="{[0xa8bc0-0xa8c00) [0xa8c10-0xa8c90) [0xa8ca0-0xa8d20) [0xa8d30-0xa8db0) [0xa8dc0-0xa8e40) [0xa8e50-0xa8ed0)}"/>
+      <S i="529" l="135" v="{[0xa8ee0-0xa8fd0)}"/>
+      <C i="530" l="133" v="{[0xa8c00-0xa8c10)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="531" l="133" v="{[0xa8c90-0xa8ca0)}" t="0x99d80" d="NVIDIA sm_70"/>
+      <C i="532" l="133" v="{[0xa8d20-0xa8d30)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="533" l="133" v="{[0xa8db0-0xa8dc0)}" t="0x9e080" d="NVIDIA sm_70"/>
+      <C i="534" l="133" v="{[0xa8e40-0xa8e50)}" t="0x9ba00" d="NVIDIA sm_70"/>
+      <C i="535" l="133" v="{[0xa8ed0-0xa8ee0)}" t="0xae280" d="NVIDIA sm_70"/>
+      <L i="536" l="135" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa8fd0-0xa8fd1)}">
+        <S i="537" l="135" v="{[0xa8fd0-0xa8fe0)}"/>
+      </L>
+    </P>
+    <P i="538" n="camp::internal::tuple_storage&lt;1l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA17TypedRangeSegmentIllEEEC1IS4_EEOT_" l="89" v="{[0xa9000-0xa9001)}">
+      <S i="539" l="89" v="{[0xa9000-0xa9180)}"/>
+      <S i="540" l="93" v="{[0xa9180-0xa91c0) [0xa91d0-0xa9250)}"/>
+      <S i="541" l="95" v="{[0xa9260-0xa92f0)}"/>
+      <C i="542" l="93" v="{[0xa91c0-0xa91d0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="543" l="93" v="{[0xa9250-0xa9260)}" t="0xaea00" d="NVIDIA sm_70"/>
+      <L i="544" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa92f0-0xa92f1)}">
+        <S i="545" l="95" v="{[0xa92f0-0xa9300)}"/>
+      </L>
+    </P>
+    <P i="546" n="camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, (void*)0&gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;, RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp5tupleIJN4RAJA17TypedRangeSegmentIllEES3_S3_EEC2IJS3_S3_S3_ELPv0EEEDpOT_" l="228" v="{[0xa9300-0xa9301)}">
+      <S i="547" l="0" v="{[0x410-0x480)}"/>
+      <S i="548" l="228" v="{[0xa9300-0xa9620) [0xa9630-0xa9700)}"/>
+      <C i="549" l="228" v="{[0xa9620-0xa9630)}" t="0x9bf80" d="NVIDIA sm_70"/>
+      <L i="550" l="228" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xa9700-0xa9701)}">
+        <S i="551" l="228" v="{[0xa9700-0xa9710)}"/>
+      </L>
+    </P>
+    <P i="552" n="camp::internal::tuple_storage&lt;1l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA17TypedRangeSegmentIllEEEC2IS4_EEOT_" l="95" v="{[0xab300-0xab301)}">
+      <S i="553" l="0" v="{[0x290-0x300)}"/>
+      <S i="554" l="95" v="{[0xab300-0xab4e0) [0xab4f0-0xab580)}"/>
+      <C i="555" l="95" v="{[0xab4e0-0xab4f0)}" t="0xa9000" d="NVIDIA sm_70"/>
+      <L i="556" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xab580-0xab581)}">
+        <S i="557" l="95" v="{[0xab580-0xab590)}"/>
+      </L>
+    </P>
+    <P i="558" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="102" v="{[0xab600-0xab601)}">
+      <S i="559" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="560" l="102" v="{[0xab600-0xab740) [0xab760-0xab790)}"/>
+      <L i="561" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xab740-0xab741)}">
+        <S i="562" l="102" v="{[0xab740-0xab760)}"/>
+      </L>
+      <L i="563" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xab790-0xab791)}">
+        <S i="564" l="102" v="{[0xab790-0xab7a0)}"/>
+      </L>
+    </P>
+    <P i="565" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IRKS9_EEOT_" l="95" v="{[0xabb80-0xabb81)}">
+      <S i="566" l="0" v="{[0x290-0x300)}"/>
+      <S i="567" l="95" v="{[0xabb80-0xabd60) [0xabd70-0xabe00)}"/>
+      <C i="568" l="95" v="{[0xabd60-0xabd70)}" t="0xa5980" d="NVIDIA sm_70"/>
+      <L i="569" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xabe00-0xabe01)}">
+        <S i="570" l="95" v="{[0xabe00-0xabe10)}"/>
+      </L>
+    </P>
+    <P i="571" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IRKS9_EEOT_" l="89" v="{[0xabe80-0xabe81)}">
+      <S i="572" l="89" v="{[0xabe80-0xac000)}"/>
+      <S i="573" l="93" v="{[0xac000-0xac040) [0xac050-0xac0d0)}"/>
+      <S i="574" l="95" v="{[0xac0e0-0xac170)}"/>
+      <C i="575" l="93" v="{[0xac040-0xac050)}" t="0xa6b80" d="NVIDIA sm_70"/>
+      <C i="576" l="93" v="{[0xac0d0-0xac0e0)}" t="0xab800" d="NVIDIA sm_70"/>
+      <L i="577" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xac170-0xac171)}">
+        <S i="578" l="95" v="{[0xac170-0xac180)}"/>
+      </L>
+    </P>
+    <P i="579" n="camp::get&lt;2l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;&amp;)" ln="_ZN4camp3getILl2ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERNS_13tuple_elementIXT_ET0_E4typeERSC_" l="348" v="{[0xac780-0xac781)}">
+      <S i="580" l="0" v="{[0x290-0x300)}"/>
+      <S i="581" l="348" v="{[0xac780-0xac880)}"/>
+      <S i="582" l="353" v="{[0xac880-0xac900) [0xac910-0xac960) [0xac980-0xaca00)}"/>
+      <C i="583" l="353" v="{[0xac900-0xac910)}" t="0xb4080" d="NVIDIA sm_70"/>
+      <L i="584" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xac960-0xac961)}">
+        <S i="585" l="353" v="{[0xac960-0xac980)}"/>
+      </L>
+      <L i="586" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xaca00-0xaca01)}">
+        <S i="587" l="353" v="{[0xaca00-0xaca10)}"/>
+      </L>
+    </P>
+    <P i="588" n="camp::tuple&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::tuple&lt;{lambda(long, long, long)#1} const&amp;, (void*)0&gt;({lambda(long, long, long)#1} const&amp;)" ln="_ZN4camp5tupleIJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS1_9VariantIDEEUllllE_EEC2IJRKS5_ELPv0EEEDpOT_" l="228" v="{[0xace00-0xace01)}">
+      <S i="589" l="0" v="{[0x290-0x300)}"/>
+      <S i="590" l="228" v="{[0xace00-0xacfe0) [0xacff0-0xad080)}"/>
+      <C i="591" l="228" v="{[0xacfe0-0xacff0)}" t="0x9fa80" d="NVIDIA sm_70"/>
+      <L i="592" l="228" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xad080-0xad081)}">
+        <S i="593" l="228" v="{[0xad080-0xad090)}"/>
+      </L>
+    </P>
+    <P i="594" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="97" v="{[0xad380-0xad381)}">
+      <S i="595" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="596" l="97" v="{[0xad380-0xad410)}"/>
+      <S i="597" l="99" v="{[0xad410-0xad4c0) [0xad4e0-0xad510)}"/>
+      <L i="598" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xad4c0-0xad4c1)}">
+        <S i="599" l="99" v="{[0xad4c0-0xad4e0)}"/>
+      </L>
+      <L i="600" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xad510-0xad511)}">
+        <S i="601" l="99" v="{[0xad510-0xad520)}"/>
+      </L>
+    </P>
+    <P i="602" n="camp::internal::tuple_storage&lt;0l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC1IRKS9_EEOT_" l="89" v="{[0xad580-0xad581)}">
+      <S i="603" l="89" v="{[0xad580-0xad700)}"/>
+      <S i="604" l="93" v="{[0xad700-0xad740) [0xad750-0xad7d0)}"/>
+      <S i="605" l="95" v="{[0xad7e0-0xad870)}"/>
+      <C i="606" l="93" v="{[0xad740-0xad750)}" t="0xa6b80" d="NVIDIA sm_70"/>
+      <C i="607" l="93" v="{[0xad7d0-0xad7e0)}" t="0xab800" d="NVIDIA sm_70"/>
+      <L i="608" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xad870-0xad871)}">
+        <S i="609" l="95" v="{[0xad870-0xad880)}"/>
+      </L>
+    </P>
+    <P i="610" n="camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; const&amp;)" ln="_ZN4camp5tupleIJN4RAJA4impl4SpanINS1_9Iterators16numeric_iteratorIllPlEElEES8_S8_EEC2ERKS9_" l="207" v="{[0xad880-0xad881)}">
+      <S i="611" l="0" v="{[0x290-0x300)}"/>
+      <S i="612" l="207" v="{[0xad880-0xada60) [0xada70-0xadb00)}"/>
+      <C i="613" l="207" v="{[0xada60-0xada70)}" t="0xa0a00" d="NVIDIA sm_70"/>
+      <L i="614" l="207" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xadb00-0xadb01)}">
+        <S i="615" l="207" v="{[0xadb00-0xadb10)}"/>
+      </L>
+    </P>
+    <P i="616" n="camp::get&lt;0l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl0ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKSC_" l="339" v="{[0xadd80-0xadd81)}">
+      <S i="617" l="0" v="{[0x250-0x280)}"/>
+      <S i="618" l="339" v="{[0xadd80-0xade80)}"/>
+      <S i="619" l="344" v="{[0xade80-0xadec0) [0xaded0-0xadf20) [0xadf40-0xadfc0)}"/>
+      <C i="620" l="344" v="{[0xadec0-0xaded0)}" t="0xad380" d="NVIDIA sm_70"/>
+      <L i="621" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xadf20-0xadf21)}">
+        <S i="622" l="344" v="{[0xadf20-0xadf40)}"/>
+      </L>
+      <L i="623" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xadfc0-0xadfc1)}">
+        <S i="624" l="344" v="{[0xadfc0-0xadfd0)}"/>
+      </L>
+    </P>
+    <P i="625" n="camp::get&lt;0l, camp::tuple&lt;long, long, long&gt; &gt;(camp::tuple&lt;long, long, long&gt;&amp;)" ln="_ZN4camp3getILl0ENS_5tupleIJlllEEEEERNS_13tuple_elementIXT_ET0_E4typeERS4_" l="348" v="{[0xae000-0xae001)}">
+      <S i="626" l="0" v="{[0x250-0x280)}"/>
+      <S i="627" l="348" v="{[0xae000-0xae100)}"/>
+      <S i="628" l="353" v="{[0xae100-0xae140) [0xae150-0xae1a0) [0xae1c0-0xae240)}"/>
+      <C i="629" l="353" v="{[0xae140-0xae150)}" t="0xa7f00" d="NVIDIA sm_70"/>
+      <L i="630" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xae1a0-0xae1a1)}">
+        <S i="631" l="353" v="{[0xae1a0-0xae1c0)}"/>
+      </L>
+      <L i="632" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xae240-0xae241)}">
+        <S i="633" l="353" v="{[0xae240-0xae250)}"/>
+      </L>
+    </P>
+    <P i="634" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::tuple_storage&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEEC2IS9_EEOT_" l="95" v="{[0xae280-0xae281)}">
+      <S i="635" l="0" v="{[0x290-0x300)}"/>
+      <S i="636" l="95" v="{[0xae280-0xae460) [0xae470-0xae500)}"/>
+      <C i="637" l="95" v="{[0xae460-0xae470)}" t="0x9e380" d="NVIDIA sm_70"/>
+      <L i="638" l="95" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xae500-0xae501)}">
+        <S i="639" l="95" v="{[0xae500-0xae510)}"/>
+      </L>
+    </P>
+    <P i="640" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;::tuple_helper&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;&amp;&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA4impl4SpanINS5_9Iterators16numeric_iteratorIllPlEElEESC_SC_EEEEC2IJSC_SC_SC_EEEDpOT_" l="135" v="{[0xae580-0xae581)}">
+      <S i="641" l="0" v="{[0x410-0x480)}"/>
+      <S i="642" l="135" v="{[0xae580-0xae8a0) [0xae8b0-0xae980)}"/>
+      <C i="643" l="135" v="{[0xae8a0-0xae8b0)}" t="0xa8900" d="NVIDIA sm_70"/>
+      <L i="644" l="135" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xae980-0xae981)}">
+        <S i="645" l="135" v="{[0xae980-0xae990)}"/>
+      </L>
+    </P>
+    <P i="646" n="camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;::tuple_helper(camp::internal::tuple_helper&lt;camp::int_seq&lt;long, 0l, 1l, 2l&gt;, camp::list&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt; const&amp;)" ln="_ZN4camp8internal12tuple_helperINS_7int_seqIlJLl0ELl1ELl2EEEENS_4listIJN4RAJA4impl4SpanINS5_9Iterators16numeric_iteratorIllPlEElEESC_SC_EEEEC1ERKSE_" l="120" v="{[0xaf280-0xaf281)}">
+      <S i="647" l="120" v="{[0xaf280-0xaf460)}"/>
+      <S i="648" l="121" v="{[0xaf540-0xaf580) [0xaf680-0xaf6c0)}"/>
+      <S i="649" l="122" v="{[0xaf460-0xaf4a0) [0xaf4b0-0xaf530) [0xaf580-0xaf5e0) [0xaf5f0-0xaf670) [0xaf6c0-0xaf720) [0xaf730-0xaf7b0)}"/>
+      <S i="650" l="124" v="{[0xaf7c0-0xaf870)}"/>
+      <C i="651" l="122" v="{[0xaf4a0-0xaf4b0)}" t="0xad380" d="NVIDIA sm_70"/>
+      <C i="652" l="122" v="{[0xaf530-0xaf540)}" t="0xa5680" d="NVIDIA sm_70"/>
+      <C i="653" l="122" v="{[0xaf5e0-0xaf5f0)}" t="0xb3e80" d="NVIDIA sm_70"/>
+      <C i="654" l="122" v="{[0xaf670-0xaf680)}" t="0xabb80" d="NVIDIA sm_70"/>
+      <C i="655" l="122" v="{[0xaf720-0xaf730)}" t="0xa1700" d="NVIDIA sm_70"/>
+      <C i="656" l="122" v="{[0xaf7b0-0xaf7c0)}" t="0x9b080" d="NVIDIA sm_70"/>
+      <L i="657" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xaf870-0xaf871)}">
+        <S i="658" l="124" v="{[0xaf870-0xaf880)}"/>
+      </L>
+    </P>
+    <P i="659" n="camp::internal::tuple_storage&lt;0l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl0EN4RAJA17TypedRangeSegmentIllEEEC1IS4_EEOT_" l="89" v="{[0xaf880-0xaf881)}">
+      <S i="660" l="89" v="{[0xaf880-0xafa00)}"/>
+      <S i="661" l="93" v="{[0xafa00-0xafa40) [0xafa50-0xafad0)}"/>
+      <S i="662" l="95" v="{[0xafae0-0xafb70)}"/>
+      <C i="663" l="93" v="{[0xafa40-0xafa50)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="664" l="93" v="{[0xafad0-0xafae0)}" t="0xaea00" d="NVIDIA sm_70"/>
+      <L i="665" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xafb70-0xafb71)}">
+        <S i="666" l="95" v="{[0xafb70-0xafb80)}"/>
+      </L>
+    </P>
+    <P i="667" n="camp::internal::tuple_storage&lt;2l, long&gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl2ElE9get_innerEv" l="102" v="{[0xb2900-0xb2901)}">
+      <S i="668" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="669" l="102" v="{[0xb2900-0xb2a40) [0xb2a60-0xb2a90)}"/>
+      <L i="670" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb2a40-0xb2a41)}">
+        <S i="671" l="102" v="{[0xb2a40-0xb2a60)}"/>
+      </L>
+      <L i="672" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb2a90-0xb2a91)}">
+        <S i="673" l="102" v="{[0xb2a90-0xb2aa0)}"/>
+      </L>
+    </P>
+    <P i="674" n="camp::get&lt;2l, camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; const&amp;)" ln="_ZN4camp3getILl2ENS_5tupleIJN4RAJA17TypedRangeSegmentIllEES4_S4_EEEEERKNS_13tuple_elementIXT_ET0_E4typeERKS7_" l="339" v="{[0xb3180-0xb3181)}">
+      <S i="675" l="0" v="{[0x290-0x300)}"/>
+      <S i="676" l="339" v="{[0xb3180-0xb3280)}"/>
+      <S i="677" l="344" v="{[0xb3280-0xb3300) [0xb3310-0xb3360) [0xb3380-0xb3400)}"/>
+      <C i="678" l="344" v="{[0xb3300-0xb3310)}" t="0xa5100" d="NVIDIA sm_70"/>
+      <L i="679" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb3360-0xb3361)}">
+        <S i="680" l="344" v="{[0xb3360-0xb3380)}"/>
+      </L>
+      <L i="681" l="344" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb3400-0xb3401)}">
+        <S i="682" l="344" v="{[0xb3400-0xb3410)}"/>
+      </L>
+    </P>
+    <P i="683" n="camp::internal::tuple_storage&lt;2l, RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::tuple_storage&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(RAJA::TypedRangeSegment&lt;long, long&gt;&amp;&amp;)" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA17TypedRangeSegmentIllEEEC1IS4_EEOT_" l="89" v="{[0xb3800-0xb3801)}">
+      <S i="684" l="89" v="{[0xb3800-0xb3980)}"/>
+      <S i="685" l="93" v="{[0xb3980-0xb39c0) [0xb39d0-0xb3a50)}"/>
+      <S i="686" l="95" v="{[0xb3a60-0xb3af0)}"/>
+      <C i="687" l="93" v="{[0xb39c0-0xb39d0)}" t="0xaca80" d="NVIDIA sm_70"/>
+      <C i="688" l="93" v="{[0xb3a50-0xb3a60)}" t="0xaea00" d="NVIDIA sm_70"/>
+      <L i="689" l="0" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb3af0-0xb3af1)}">
+        <S i="690" l="95" v="{[0xb3af0-0xb3b00)}"/>
+      </L>
+    </P>
+    <P i="691" n="camp::internal::tuple_storage&lt;1l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner() const" ln="_ZNK4camp8internal13tuple_storageILl1EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="97" v="{[0xb3e80-0xb3e81)}">
+      <S i="692" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="693" l="97" v="{[0xb3e80-0xb3f10)}"/>
+      <S i="694" l="99" v="{[0xb3f10-0xb3fc0) [0xb3fe0-0xb4010)}"/>
+      <L i="695" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb3fc0-0xb3fc1)}">
+        <S i="696" l="99" v="{[0xb3fc0-0xb3fe0)}"/>
+      </L>
+      <L i="697" l="99" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb4010-0xb4011)}">
+        <S i="698" l="99" v="{[0xb4010-0xb4020)}"/>
+      </L>
+    </P>
+    <P i="699" n="camp::internal::tuple_storage&lt;2l, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::get_inner()" ln="_ZN4camp8internal13tuple_storageILl2EN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEEE9get_innerEv" l="102" v="{[0xb4080-0xb4081)}">
+      <S i="700" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="701" l="102" v="{[0xb4080-0xb41c0) [0xb41e0-0xb4210)}"/>
+      <L i="702" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb41c0-0xb41c1)}">
+        <S i="703" l="102" v="{[0xb41c0-0xb41e0)}"/>
+      </L>
+      <L i="704" l="102" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb4210-0xb4211)}">
+        <S i="705" l="102" v="{[0xb4210-0xb4220)}"/>
+      </L>
+    </P>
+    <P i="706" n="camp::get&lt;0l, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt; &gt;(camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;&amp;)" ln="_ZN4camp3getILl0ENS_5tupleIJN4RAJA4impl4SpanINS2_9Iterators16numeric_iteratorIllPlEElEES9_S9_EEEEERNS_13tuple_elementIXT_ET0_E4typeERSC_" l="348" v="{[0xb4300-0xb4301)}">
+      <S i="707" l="0" v="{[0x250-0x280)}"/>
+      <S i="708" l="348" v="{[0xb4300-0xb4400)}"/>
+      <S i="709" l="353" v="{[0xb4400-0xb4440) [0xb4450-0xb44a0) [0xb44c0-0xb4540)}"/>
+      <C i="710" l="353" v="{[0xb4440-0xb4450)}" t="0xab600" d="NVIDIA sm_70"/>
+      <L i="711" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb44a0-0xb44a1)}">
+        <S i="712" l="353" v="{[0xb44a0-0xb44c0)}"/>
+      </L>
+      <L i="713" l="353" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb4540-0xb4541)}">
+        <S i="714" l="353" v="{[0xb4540-0xb4550)}"/>
+      </L>
+    </P>
+    <P i="715" n="camp::tuple&lt;long, long, long&gt;::tuple&lt;true, (void*)0&gt;()" ln="_ZN4camp5tupleIJlllEEC2ILb1ELPv0EEEv" l="205" v="{[0xb4700-0xb4701)}">
+      <S i="716" l="0" v="{[0x1d0-0x200)}"/>
+      <S i="717" l="205" v="{[0xb4700-0xb4840) [0xb4850-0xb48c0)}"/>
+      <C i="718" l="205" v="{[0xb4840-0xb4850)}" t="0xa6380" d="NVIDIA sm_70"/>
+      <L i="719" l="205" f="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/include/camp/tuple.hpp" v="{[0xb48c0-0xb48c1)}">
+        <S i="720" l="205" v="{[0xb48c0-0xb48d0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="721" n="/home/kz21/Codes/hpctoolkit-gpu-samples/RAJAPerf/tpl/RAJA/tpl/cub/cub/util_device.cuh">
+    <P i="722" n="cub::EmptyKernel&lt;void&gt;()" ln="_ZN3cub11EmptyKernelIvEEvv" l="110" v="{[0xb4280-0xb4281)}">
+      <S i="723" l="0" v="{[0x40-0x80)}"/>
+      <S i="724" l="110" v="{[0xb4280-0xb42c0)}"/>
+    </P>
+  </F>
+  <F i="725" n="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h">
+    <P i="726" n="std::forward&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;(std::remove_reference&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;::type&amp;)" ln="_ZSt7forwardIN4RAJA4impl4SpanINS0_9Iterators16numeric_iteratorIllPlEElEEEOT_RNSt16remove_referenceIS8_E4typeE" l="73" v="{[0x9ba00-0x9ba01)}">
+      <S i="727" l="0" v="{[0x360-0x380)}"/>
+      <S i="728" l="73" v="{[0x9ba00-0x9bba0)}"/>
+      <S i="729" l="74" v="{[0x9bba0-0x9bcf0) [0x9bd10-0x9bd50)}"/>
+      <L i="730" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9bcf0-0x9bcf1)}">
+        <S i="731" l="74" v="{[0x9bcf0-0x9bd10)}"/>
+      </L>
+      <L i="732" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9bd50-0x9bd51)}">
+        <S i="733" l="74" v="{[0x9bd50-0x9bd60)}"/>
+      </L>
+    </P>
+    <P i="734" n="std::forward&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;(std::remove_reference&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;::type&amp;)" ln="_ZSt7forwardIZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS0_9VariantIDEEUllllE_EOT_RNSt16remove_referenceIS5_E4typeE" l="73" v="{[0x9c900-0x9c901)}">
+      <S i="735" l="0" v="{[0x360-0x380)}"/>
+      <S i="736" l="73" v="{[0x9c900-0x9caa0)}"/>
+      <S i="737" l="74" v="{[0x9caa0-0x9cbf0) [0x9cc10-0x9cc50)}"/>
+      <L i="738" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9cbf0-0x9cbf1)}">
+        <S i="739" l="74" v="{[0x9cbf0-0x9cc10)}"/>
+      </L>
+      <L i="740" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9cc50-0x9cc51)}">
+        <S i="741" l="74" v="{[0x9cc50-0x9cc60)}"/>
+      </L>
+    </P>
+    <P i="742" n="std::move&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;&amp;&gt;(RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;&amp;)" ln="_ZSt4moveIRN4RAJA9Iterators16numeric_iteratorIllPlEEEONSt16remove_referenceIT_E4typeEOS7_" l="98" v="{[0x9f700-0x9f701)}">
+      <S i="743" l="0" v="{[0x360-0x380)}"/>
+      <S i="744" l="98" v="{[0x9f700-0x9f8a0)}"/>
+      <S i="745" l="99" v="{[0x9f8a0-0x9f9f0) [0x9fa10-0x9fa50)}"/>
+      <L i="746" l="99" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9f9f0-0x9f9f1)}">
+        <S i="747" l="99" v="{[0x9f9f0-0x9fa10)}"/>
+      </L>
+      <L i="748" l="99" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0x9fa50-0x9fa51)}">
+        <S i="749" l="99" v="{[0x9fa50-0x9fa60)}"/>
+      </L>
+    </P>
+    <P i="750" n="std::forward&lt;RAJA::internal::LoopData&lt;camp::list&lt;RAJA::statement::For&lt;0l, RAJA::policy::loop::loop_exec, RAJA::statement::For&lt;1l, RAJA::policy::loop::loop_exec, RAJA::statement::For&lt;2l, RAJA::policy::loop::loop_exec, RAJA::statement::Lambda&lt;0l&gt; &gt; &gt; &gt; &gt;, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;, camp::tuple&lt;&gt;, rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;&amp;&gt;(std::remove_reference&lt;RAJA::internal::LoopData&lt;camp::list&lt;RAJA::statement::For&lt;0l, RAJA::policy::loop::loop_exec, RAJA::statement::For&lt;1l, RAJA::policy::loop::loop_exec, RAJA::statement::For&lt;2l, RAJA::policy::loop::loop_exec, RAJA::statement::Lambda&lt;0l&gt; &gt; &gt; &gt; &gt;, camp::tuple&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt;, RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; &gt;, camp::tuple&lt;&gt;, rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1}&gt;&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRN4RAJA8internal8LoopDataIN4camp4listIJNS0_9statement3ForILl0ENS0_6policy4loop9loop_execEJNS6_ILl1ES9_JNS6_ILl2ES9_JNS5_6LambdaILl0EEEEEEEEEEEEEEENS3_5tupleIJNS0_4impl4SpanINS0_9Iterators16numeric_iteratorIllPlEElEESN_SN_EEENSG_IJEEEJZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENSQ_9VariantIDEEUllllE_EEEEOT_RNSt16remove_referenceISX_E4typeE" l="73" v="{[0xa1080-0xa1081)}">
+      <S i="751" l="0" v="{[0x360-0x380)}"/>
+      <S i="752" l="73" v="{[0xa1080-0xa1220)}"/>
+      <S i="753" l="74" v="{[0xa1220-0xa1370) [0xa1390-0xa13d0)}"/>
+      <L i="754" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa1370-0xa1371)}">
+        <S i="755" l="74" v="{[0xa1370-0xa1390)}"/>
+      </L>
+      <L i="756" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa13d0-0xa13d1)}">
+        <S i="757" l="74" v="{[0xa13d0-0xa13e0)}"/>
+      </L>
+    </P>
+    <P i="758" n="std::forward&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;(std::remove_reference&lt;RAJA::impl::Span&lt;RAJA::Iterators::numeric_iterator&lt;long, long, long*&gt;, long&gt; const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKN4RAJA4impl4SpanINS0_9Iterators16numeric_iteratorIllPlEElEEEOT_RNSt16remove_referenceISA_E4typeE" l="73" v="{[0xa6b80-0xa6b81)}">
+      <S i="759" l="0" v="{[0x360-0x380)}"/>
+      <S i="760" l="73" v="{[0xa6b80-0xa6d20)}"/>
+      <S i="761" l="74" v="{[0xa6d20-0xa6e70) [0xa6e90-0xa6ed0)}"/>
+      <L i="762" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa6e70-0xa6e71)}">
+        <S i="763" l="74" v="{[0xa6e70-0xa6e90)}"/>
+      </L>
+      <L i="764" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa6ed0-0xa6ed1)}">
+        <S i="765" l="74" v="{[0xa6ed0-0xa6ee0)}"/>
+      </L>
+    </P>
+    <P i="766" n="std::forward&lt;camp::tuple&lt;&gt; &gt;(std::remove_reference&lt;camp::tuple&lt;&gt; &gt;::type&amp;)" ln="_ZSt7forwardIN4camp5tupleIJEEEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0xa9b00-0xa9b01)}">
+      <S i="767" l="0" v="{[0x360-0x380)}"/>
+      <S i="768" l="73" v="{[0xa9b00-0xa9ca0)}"/>
+      <S i="769" l="74" v="{[0xa9ca0-0xa9df0) [0xa9e10-0xa9e50)}"/>
+      <L i="770" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa9df0-0xa9df1)}">
+        <S i="771" l="74" v="{[0xa9df0-0xa9e10)}"/>
+      </L>
+      <L i="772" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xa9e50-0xa9e51)}">
+        <S i="773" l="74" v="{[0xa9e50-0xa9e60)}"/>
+      </L>
+    </P>
+    <P i="774" n="std::forward&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;(std::remove_reference&lt;RAJA::TypedRangeSegment&lt;long, long&gt; &gt;::type&amp;)" ln="_ZSt7forwardIN4RAJA17TypedRangeSegmentIllEEEOT_RNSt16remove_referenceIS3_E4typeE" l="73" v="{[0xaca80-0xaca81)}">
+      <S i="775" l="0" v="{[0x360-0x380)}"/>
+      <S i="776" l="73" v="{[0xaca80-0xacc20)}"/>
+      <S i="777" l="74" v="{[0xacc20-0xacd70) [0xacd90-0xacdd0)}"/>
+      <L i="778" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xacd70-0xacd71)}">
+        <S i="779" l="74" v="{[0xacd70-0xacd90)}"/>
+      </L>
+      <L i="780" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xacdd0-0xacdd1)}">
+        <S i="781" l="74" v="{[0xacdd0-0xacde0)}"/>
+      </L>
+    </P>
+    <P i="782" n="std::forward&lt;camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;(std::remove_reference&lt;camp::tuple&lt;RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt;, RAJA::TypedRangeSegment&lt;long, long&gt; &gt; &gt;::type&amp;)" ln="_ZSt7forwardIN4camp5tupleIJN4RAJA17TypedRangeSegmentIllEES4_S4_EEEEOT_RNSt16remove_referenceIS6_E4typeE" l="73" v="{[0xb2b00-0xb2b01)}">
+      <S i="783" l="0" v="{[0x360-0x380)}"/>
+      <S i="784" l="73" v="{[0xb2b00-0xb2ca0)}"/>
+      <S i="785" l="74" v="{[0xb2ca0-0xb2df0) [0xb2e10-0xb2e50)}"/>
+      <L i="786" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xb2df0-0xb2df1)}">
+        <S i="787" l="74" v="{[0xb2df0-0xb2e10)}"/>
+      </L>
+      <L i="788" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xb2e50-0xb2e51)}">
+        <S i="789" l="74" v="{[0xb2e50-0xb2e60)}"/>
+      </L>
+    </P>
+    <P i="790" n="std::forward&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1} const&amp;&gt;(std::remove_reference&lt;rajaperf::polybench::POLYBENCH_FLOYD_WARSHALL::runKernel(rajaperf::VariantID)::{lambda(long, long, long)#1} const&amp;&gt;::type&amp;)" ln="_ZSt7forwardIRKZN8rajaperf9polybench24POLYBENCH_FLOYD_WARSHALL9runKernelENS0_9VariantIDEEUllllE_EOT_RNSt16remove_referenceIS7_E4typeE" l="73" v="{[0xb3480-0xb3481)}">
+      <S i="791" l="0" v="{[0x360-0x380)}"/>
+      <S i="792" l="73" v="{[0xb3480-0xb3620)}"/>
+      <S i="793" l="74" v="{[0xb3620-0xb3770) [0xb3790-0xb37d0)}"/>
+      <L i="794" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xb3770-0xb3771)}">
+        <S i="795" l="74" v="{[0xb3770-0xb3790)}"/>
+      </L>
+      <L i="796" l="74" f="/projects/spack/pkgs/linux-rhel7-ppc64le/gcc-4.8.5/gcc-7.3.0-ploqhwmybyd3wojblviucugocg3w7rdo/include/c++/7.3.0/bits/move.h" v="{[0xb37d0-0xb37d1)}">
+        <S i="797" l="74" v="{[0xb37d0-0xb37e0)}"/>
+      </L>
+    </P>
+  </F>
+  <F i="798" n="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h">
+    <P i="799" n="cudaGetDevice" l="90" v="{[0x9a900-0x9a901)}">
+      <S i="800" l="0" v="{[0x120-0x180)}"/>
+      <S i="801" l="90" v="{[0x9a900-0x9a990)}"/>
+      <S i="802" l="92" v="{[0x9a990-0x9a9d0) [0x9a9f0-0x9aa10)}"/>
+      <L i="803" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x9a9d0-0x9a9d1)}">
+        <S i="804" l="92" v="{[0x9a9d0-0x9a9f0)}"/>
+      </L>
+      <L i="805" l="92" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0x9aa10-0x9aa11)}">
+        <S i="806" l="92" v="{[0x9aa10-0x9aa20)}"/>
+      </L>
+    </P>
+    <P i="807" n="cudaFuncGetAttributes" l="80" v="{[0xa0d00-0xa0d01)}">
+      <S i="808" l="0" v="{[0x310-0x380)}"/>
+      <S i="809" l="80" v="{[0xa0d00-0xa0f70)}"/>
+      <S i="810" l="82" v="{[0xa0f70-0xa0fb0) [0xa0fd0-0xa1000)}"/>
+      <L i="811" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa0fb0-0xa0fb1)}">
+        <S i="812" l="82" v="{[0xa0fb0-0xa0fd0)}"/>
+      </L>
+      <L i="813" l="82" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa1000-0xa1001)}">
+        <S i="814" l="82" v="{[0xa1000-0xa1010)}"/>
+      </L>
+    </P>
+    <P i="815" n="cudaOccupancyMaxActiveBlocksPerMultiprocessorWithFlags" l="100" v="{[0xa5c80-0xa5c81)}">
+      <S i="816" l="0" v="{[0x2a0-0x300)}"/>
+      <S i="817" l="100" v="{[0xa5c80-0xa5e90)}"/>
+      <S i="818" l="102" v="{[0xa5e90-0xa5ed0) [0xa5ef0-0xa5f10)}"/>
+      <L i="819" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa5ed0-0xa5ed1)}">
+        <S i="820" l="102" v="{[0xa5ed0-0xa5ef0)}"/>
+      </L>
+      <L i="821" l="102" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa5f10-0xa5f11)}">
+        <S i="822" l="102" v="{[0xa5f10-0xa5f20)}"/>
+      </L>
+    </P>
+    <P i="823" n="cudaOccupancyMaxActiveBlocksPerMultiprocessor" l="95" v="{[0xa7680-0xa7681)}">
+      <S i="824" l="0" v="{[0x260-0x280)}"/>
+      <S i="825" l="95" v="{[0xa7680-0xa7850)}"/>
+      <S i="826" l="97" v="{[0xa7850-0xa7890) [0xa78b0-0xa78d0)}"/>
+      <L i="827" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa7890-0xa7891)}">
+        <S i="828" l="97" v="{[0xa7890-0xa78b0)}"/>
+      </L>
+      <L i="829" l="97" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa78d0-0xa78d1)}">
+        <S i="830" l="97" v="{[0xa78d0-0xa78e0)}"/>
+      </L>
+    </P>
+    <P i="831" n="cudaMalloc" l="75" v="{[0xa9780-0xa9781)}">
+      <S i="832" l="0" v="{[0x310-0x380)}"/>
+      <S i="833" l="75" v="{[0xa9780-0xa99f0)}"/>
+      <S i="834" l="77" v="{[0xa99f0-0xa9a30) [0xa9a50-0xa9a80)}"/>
+      <L i="835" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa9a30-0xa9a31)}">
+        <S i="836" l="77" v="{[0xa9a30-0xa9a50)}"/>
+      </L>
+      <L i="837" l="77" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xa9a80-0xa9a81)}">
+        <S i="838" l="77" v="{[0xa9a80-0xa9a90)}"/>
+      </L>
+    </P>
+    <P i="839" n="cudaDeviceGetAttribute" l="85" v="{[0xadb80-0xadb81)}">
+      <S i="840" l="0" v="{[0x1a0-0x200)}"/>
+      <S i="841" l="85" v="{[0xadb80-0xadc90)}"/>
+      <S i="842" l="87" v="{[0xadc90-0xadcd0) [0xadcf0-0xadd10)}"/>
+      <L i="843" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xadcd0-0xadcd1)}">
+        <S i="844" l="87" v="{[0xadcd0-0xadcf0)}"/>
+      </L>
+      <L i="845" l="87" f="/usr/local/cuda-10.1/targets/ppc64le-linux/include/cuda_device_runtime_api.h" v="{[0xadd10-0xadd11)}">
+        <S i="846" l="87" v="{[0xadd10-0xadd20)}"/>
+      </L>
+    </P>
+  </F>
+</LM>
+</HPCToolkitStructure>

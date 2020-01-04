@@ -168,8 +168,8 @@ class CallingContextTree {
         std::hex << offset << "]->";
       std::stringstream sss;
       auto c_addr = iter.second.first.func_addr;
-      p = func_cubin_map[c_addr];
-      sss << prefix << ss.str() << "[" << p.first << "," << p.second <<
+      auto pp = func_cubin_map[c_addr];
+      sss << prefix << ss.str() << "[" << pp.first << "," << pp.second <<
         ",0]->" << iter.second.second << std::endl;
       ret += sss.str();
       dfs2(iter.second.first, prefix + ss.str(), ret, func_cubin_map);
